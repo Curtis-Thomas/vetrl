@@ -17,6 +17,7 @@
     "@mui/icons-material": "^5.15.11",
     "@mui/material": "^5.15.11",
     "@mui/material-nextjs": "^5.15.11",
+    "@netlify/plugin-nextjs": "^4.41.3",
     "@paypal/react-paypal-js": "^8.1.4",
     "@react-pdf/renderer": "^3.4.2",
     "@stripe/react-stripe-js": "^2.6.0",
