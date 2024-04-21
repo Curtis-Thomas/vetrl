@@ -1,4 +1,4 @@
-import { Box, TextField, Typography } from "@mui/material";
+import { Box, TextField } from "@mui/material";
 
 import { useState, useEffect, useCallback } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
@@ -22,7 +22,7 @@ function AppointmentCardHeader({
 }) {
   const domainUrl = process.env.NEXT_PUBLIC_DOMAIN_URL;
 
-  const { user, error, isLoading } = useUser();
+  const { user } = useUser();
   const [anamnesis, setAnamnesis] = useState("");
   const [diagnosis, setDiagnosis] = useState("");
   const [additionalNotes, setAdditionalNotes] = useState("");
