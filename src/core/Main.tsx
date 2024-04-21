@@ -113,7 +113,15 @@ function Main() {
         <ContactForm />
       </Box>
     );
-  if (error) return <div>{error.message}</div>;
+  if (error)
+    return (
+      <Box>
+        <Hero />
+        <Benefits />
+        <Features />
+        <ContactForm />
+      </Box>
+    );
 
   return (
     <Box>
