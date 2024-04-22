@@ -110,36 +110,33 @@ function AppointmentHeaderClientBackdrop({
       >
         <Box>
           <Box>
-            <Typography>Add Client Backdrop</Typography>
+            <Typography>Add Client</Typography>
           </Box>
           <Box>
             <TextField
-              sx={{ backgroundColor: "cyan", color: "black" }}
+              sx={{ backgroundColor: "white", color: "black" }}
               label="Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
               margin="normal"
             />
             <TextField
-              sx={{ backgroundColor: "white", color: "black" }}
-              label="phone"
+              sx={{ backgroundColor: "#eefafa", color: "black" }}
+              label="Phone"
               type="phone"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               margin="normal"
-              InputLabelProps={{
-                shrink: true,
-              }}
             />
             <TextField
-              sx={{ backgroundColor: "white", color: "black" }}
+              sx={{ backgroundColor: "#eefafa", color: "black" }}
               label="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               margin="normal"
             />
             <TextField
-              sx={{ backgroundColor: "white", color: "black" }}
+              sx={{ backgroundColor: "#eefafa", color: "black" }}
               label="Business ID"
               value={businessId}
               onChange={(e) => setBusinessId(e.target.value)}
@@ -147,7 +144,7 @@ function AppointmentHeaderClientBackdrop({
             />
 
             <TextField
-              sx={{ backgroundColor: "white", color: "black" }}
+              sx={{ backgroundColor: "#eefafa", color: "black" }}
               label="Street Address"
               value={streetAddress}
               onChange={(e) => setStreetAddress(e.target.value)}
@@ -155,7 +152,7 @@ function AppointmentHeaderClientBackdrop({
             />
 
             <TextField
-              sx={{ backgroundColor: "white", color: "black" }}
+              sx={{ backgroundColor: "#eefafa", color: "black" }}
               label="Zip Code"
               value={zipCode}
               onChange={(e) => setZipCode(e.target.value)}
@@ -163,7 +160,7 @@ function AppointmentHeaderClientBackdrop({
             />
 
             <TextField
-              sx={{ backgroundColor: "white", color: "black" }}
+              sx={{ backgroundColor: "#eefafa", color: "black" }}
               label="City"
               value={city}
               onChange={(e) => setCity(e.target.value)}
@@ -171,7 +168,7 @@ function AppointmentHeaderClientBackdrop({
             />
 
             <TextField
-              sx={{ backgroundColor: "white", color: "black" }}
+              sx={{ backgroundColor: "#eefafa", color: "black" }}
               label="County"
               value={county}
               onChange={(e) => setCounty(e.target.value)}
@@ -179,25 +176,45 @@ function AppointmentHeaderClientBackdrop({
             />
 
             <TextField
-              sx={{ backgroundColor: "white", color: "black" }}
+              sx={{ backgroundColor: "#eefafa", color: "black" }}
               label="Country"
               value={country}
               onChange={(e) => setCountry(e.target.value)}
               margin="normal"
             />
+            <Box sx={{ display: "flex" }}>
+              <Box>
+                <Button
+                  onClick={handleAddClient}
+                  sx={{
+                    backgroundColor: "#94ddde",
+                    color: "#ffffff",
+                    borderRadius: "16px",
+                  }}
+                >
+                  Add Client
+                </Button>
 
-            <Box>
-              <Button onClick={handleAddClient}>Add Client</Button>
+                <Snackbar open={open} autoHideDuration={6000}>
+                  <Alert severity="success" variant="filled">
+                    Client added successfully
+                  </Alert>
+                </Snackbar>
+              </Box>
 
-              <Snackbar open={open} autoHideDuration={6000}>
-                <Alert severity="success" variant="filled">
-                  Client added successfully
-                </Alert>
-              </Snackbar>
+              <Box sx={{ ml: 1 }}>
+                <Button
+                  onClick={handleAddClientClickClose}
+                  sx={{
+                    backgroundColor: "#94ddde",
+                    color: "#ffffff",
+                    borderRadius: "16px",
+                  }}
+                >
+                  Close
+                </Button>
+              </Box>
             </Box>
-          </Box>
-          <Box>
-            <Button onClick={handleAddClientClickClose}>Close</Button>
           </Box>
         </Box>
       </Backdrop>
