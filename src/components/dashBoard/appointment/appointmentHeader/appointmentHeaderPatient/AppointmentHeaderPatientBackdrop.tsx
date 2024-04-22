@@ -103,7 +103,7 @@ function AppointmentHeaderPatientBackdrop({
           </Box>
           <Box>
             <TextField
-              sx={{ backgroundColor: "white", color: "black" }}
+              sx={{ backgroundColor: "#eefafa", color: "black" }}
               label="ClientId"
               value={clientId}
               disabled
@@ -111,28 +111,28 @@ function AppointmentHeaderPatientBackdrop({
             />
 
             <TextField
-              sx={{ backgroundColor: "cyan", color: "black" }}
+              sx={{ backgroundColor: "white", color: "black" }}
               label="Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
               margin="normal"
             />
             <TextField
-              sx={{ backgroundColor: "white", color: "black" }}
+              sx={{ backgroundColor: "#eefafa", color: "black" }}
               label="Species"
               value={species}
               onChange={(e) => setSpecies(e.target.value)}
               margin="normal"
             />
             <TextField
-              sx={{ backgroundColor: "white", color: "black" }}
+              sx={{ backgroundColor: "#eefafa", color: "black" }}
               label="Breed"
               value={breed}
               onChange={(e) => setBreed(e.target.value)}
               margin="normal"
             />
             <TextField
-              sx={{ backgroundColor: "white", color: "black" }}
+              sx={{ backgroundColor: "#eefafa", color: "black" }}
               label="Age"
               value={age}
               onChange={(e) => setAge(e.target.value)}
@@ -140,7 +140,7 @@ function AppointmentHeaderPatientBackdrop({
             />
 
             <TextField
-              sx={{ backgroundColor: "white", color: "black" }}
+              sx={{ backgroundColor: "#eefafa", color: "black" }}
               label="Weight"
               value={weight}
               onChange={(e) => setWeight(e.target.value)}
@@ -148,25 +148,46 @@ function AppointmentHeaderPatientBackdrop({
             />
 
             <TextField
-              sx={{ backgroundColor: "white", color: "black" }}
+              sx={{ backgroundColor: "#eefafa", color: "black" }}
               label="Microchip"
               value={microchip}
               onChange={(e) => setMicrochip(e.target.value)}
               margin="normal"
             />
 
-            <Box>
-              <Button onClick={handleAddPatient}>Add Patient</Button>
+            <Box sx={{ display: "flex" }}>
+              <Box>
+                <Button
+                  onClick={handleAddPatient}
+                  sx={{
+                    backgroundColor: "#94ddde",
+                    color: "#ffffff",
+                    borderRadius: "16px",
+                  }}
+                >
+                  Add Patient
+                </Button>
 
-              <Snackbar open={open} autoHideDuration={6000}>
-                <Alert severity="success" variant="filled">
-                  Patient added successfully
-                </Alert>
-              </Snackbar>
+                <Snackbar open={open} autoHideDuration={6000}>
+                  <Alert severity="success" variant="filled">
+                    Patient added successfully
+                  </Alert>
+                </Snackbar>
+              </Box>
+
+              <Box sx={{ ml: 1 }}>
+                <Button
+                  onClick={handleAddPatientClickClose}
+                  sx={{
+                    backgroundColor: "#94ddde",
+                    color: "#ffffff",
+                    borderRadius: "16px",
+                  }}
+                >
+                  Close
+                </Button>
+              </Box>
             </Box>
-          </Box>
-          <Box>
-            <Button onClick={handleAddPatientClickClose}>Close</Button>
           </Box>
         </Box>
       </Backdrop>
