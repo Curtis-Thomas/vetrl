@@ -114,6 +114,7 @@ function Hero() {
           width: "100%",
           display: "flex",
           justifyContent: "center",
+          pt: 5,
         }}
       >
         <GitHubButton
