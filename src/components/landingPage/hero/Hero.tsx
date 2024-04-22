@@ -60,7 +60,7 @@ function Hero() {
             textAlign: { xs: "center", md: "" },
           }}
         >
-          Online Veterinary client management
+          Free Online Veterinary Client Management
         </Typography>
       </Box>
       <Box

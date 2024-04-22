@@ -17,13 +17,6 @@ const procedureRoute = require("./routes/Procedure");
 const suppliesRoute = require("./routes/Supplies");
 const taskRoute = require("./routes/Task");
 
-const CLIENT_URL = process.env.CLIENT_URL;
-console.log("CLIENT_URL", CLIENT_URL);
-if (!process.env.CLIENT_URL) {
-  console.error("CLIENT_URL is not defined");
-  process.exit(1);
-}
-
 // Create a new MongoClient
 const client = new MongoClient(process.env.MONGODB_URI, {
   useNewUrlParser: true,
