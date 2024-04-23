@@ -1,20 +1,22 @@
 import { Box, TextField, Typography } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../../redux/store"; // import your store type
 
-import { useState } from "react";
-
-function AppointmentDischargeNotes({
-  onAppointmentDischargeNotesChange,
-}: {
-  onAppointmentDischargeNotesChange: (dischargeNotes: string) => void;
-}) {
-  const [dischargeNotes, setDischargeNotes] = useState("");
+function AppointmentDischargeNotes() {
+  const dispatch = useDispatch();
+  const dischargeNotes = useSelector(
+    (state: RootState) => state.appointment.appointmentCardDischargeNotes
+  );
 
   const handleDischargeNotesChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setDischargeNotes(event.target.value);
-    onAppointmentDischargeNotesChange(event.target.value);
+    dispatch({
+      type: "SET_APPOINTMENT",
+      payload: { appointmentCardDischargeNotes: event.target.value },
+    });
   };
+
   return (
     <>
       <Box sx={{ height: "10%", p: 1 }}>

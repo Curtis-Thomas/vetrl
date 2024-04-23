@@ -3,6 +3,9 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import axios from "axios";
 
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../../redux/store"; // import your store type
+
 interface Supplies {
   name: string;
   price: number;
@@ -16,11 +19,9 @@ interface SuppliesUsed {
   amount: string;
 }
 
-function AppointmentSupplies({
-  onTotalPriceChange,
-}: {
-  onTotalPriceChange: (price: number) => void;
-}) {
+function AppointmentSupplies() {
+  const dispatch = useDispatch();
+
   const domainUrl = process.env.NEXT_PUBLIC_DOMAIN_URL;
 
   const { user, error, isLoading } = useUser();
@@ -33,13 +34,11 @@ function AppointmentSupplies({
   const [suppliesUsedAmount, setSuppliesUsedAmount] = useState("");
   const [suppliesUsedPrice, setSuppliesUsedPrice] = useState("");
 
-  const [suppliesTotalPrice, setSuppliesTotalPrice] = useState(0);
+  const appointmentCardSuppliesPrice = useSelector(
+    (state: RootState) => state.appointment.appointmentCardSuppliesPrice
+  );
 
   const formatNumber = (num: number) => num.toFixed(2);
-
-  useEffect(() => {
-    onTotalPriceChange(suppliesTotalPrice);
-  }, [suppliesTotalPrice, onTotalPriceChange]);
 
   const getSuppliesData = useCallback(async () => {
     if (!user) return;
@@ -67,36 +66,43 @@ function AppointmentSupplies({
 
   const handleAddSuppliesUsed = () => {
     if (!user) return;
-    setSuppliesUsed([
-      ...suppliesUsed,
-      {
-        name: suppliesUsedSupplies,
-        price: parseInt(suppliesUsedPrice),
-        amount: suppliesUsedAmount,
-      },
-    ]);
+    const newSupply = {
+      name: suppliesUsedSupplies,
+      price: parseInt(suppliesUsedPrice),
+      amount: suppliesUsedAmount,
+    };
+    setSuppliesUsed([...suppliesUsed, newSupply]);
+    setSuppliesUsedSupplies("");
     setSuppliesUsedAmount("");
     setSuppliesUsedPrice("");
-    setSuppliesUsedSupplies("");
+    dispatch({
+      type: "SET_APPOINTMENT",
+      payload: {
+        appointmentCardSuppliesPrice:
+          appointmentCardSuppliesPrice + newSupply.price,
+      },
+    });
   };
 
-  useEffect(() => {
-    let totalPrice = 0;
-    suppliesUsed.forEach((supplies) => {
-      totalPrice += supplies.price * parseInt(supplies.amount);
-    });
-    setSuppliesTotalPrice(totalPrice);
-  }, [suppliesUsed]);
-
-  const handleRemoveLastProcedure = () => {
+  const handleRemoveLastSupply = () => {
+    const lastSupply = suppliesUsed[suppliesUsed.length - 1];
     setSuppliesUsed(suppliesUsed.slice(0, -1));
+    dispatch({
+      type: "SET_APPOINTMENT",
+      payload: {
+        appointmentCardSuppliesPrice:
+          appointmentCardSuppliesPrice - lastSupply.price,
+      },
+    });
   };
 
   const handleClearSuppliesUsed = () => {
     setSuppliesUsed([]);
+    dispatch({
+      type: "SET_APPOINTMENT",
+      payload: { appointmentCardSuppliesPrice: 0 },
+    });
   };
-  if (user) {
-  }
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
@@ -174,22 +180,6 @@ function AppointmentSupplies({
         </Box>
       </Box>
       <Box sx={{ height: "55%" }}>
-        <Box
-          sx={{
-            display: " flex",
-            height: "10%",
-          }}
-        >
-          <Box sx={{ width: "33.33%" }}>
-            <Typography>Supplies</Typography>
-          </Box>
-          <Box sx={{ width: "33.33%" }}>
-            <Typography textAlign="center">Amount</Typography>
-          </Box>
-          <Box sx={{ width: "33.33%" }}>
-            <Typography textAlign="right">Price</Typography>
-          </Box>
-        </Box>
         <Box sx={{ border: "solid 1px #94ddde", height: "35%" }}>
           <Box
             sx={{
@@ -233,11 +223,7 @@ function AppointmentSupplies({
             ))}
           </Box>
         </Box>
-        <Box sx={{ height: "10%" }}>
-          <Typography textAlign={"right"}>
-            Total Price: {suppliesTotalPrice}
-          </Typography>
-        </Box>
+        <Box sx={{ height: "10%" }}></Box>
         <Box sx={{ height: "45%", display: "flex" }}>
           <Box sx={{ width: "70%", height: "100%" }}>
             <Box sx={{ height: "33.33%" }}>
@@ -256,7 +242,7 @@ function AppointmentSupplies({
               />
             </Box>
             <Box sx={{ height: "33.33%" }}>
-              <TextField
+              {/* <TextField
                 InputLabelProps={{
                   shrink: true,
                 }}
@@ -267,7 +253,7 @@ function AppointmentSupplies({
                 type="number"
                 autoComplete="off"
                 onChange={(event) => setSuppliesUsedAmount(event.target.value)}
-              />
+              /> */}
             </Box>
             <Box sx={{ height: "33.33%" }}>
               <TextField
@@ -296,7 +282,7 @@ function AppointmentSupplies({
                 mb: 1,
                 fontSize: 10,
               }}
-              onClick={handleRemoveLastProcedure}
+              onClick={handleRemoveLastSupply}
             >
               Remove Last
             </Button>
