@@ -3,6 +3,9 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import axios from "axios";
 
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../../redux/store"; // import your store type
+
 interface Medicine {
   name: string;
   price: number;
@@ -16,11 +19,9 @@ interface MedicineUsed {
   amount: string;
 }
 
-function AppointmentMedicine({
-  onTotalPriceChange,
-}: {
-  onTotalPriceChange: (price: number) => void;
-}) {
+function AppointmentMedicine() {
+  const dispatch = useDispatch();
+
   const domainUrl = process.env.NEXT_PUBLIC_DOMAIN_URL;
 
   const { user, error, isLoading } = useUser();
@@ -33,13 +34,11 @@ function AppointmentMedicine({
   const [medicineUsedAmount, setMedicineUsedAmount] = useState("");
   const [medicineUsedPrice, setMedicineUsedPrice] = useState("");
 
-  const [medicineTotalPrice, setMedicineTotalPrice] = useState(0);
+  const appointmentCardMedicinePrice = useSelector(
+    (state: RootState) => state.appointment.appointmentCardMedicinePrice
+  );
 
   const formatNumber = (num: number) => num.toFixed(2);
-
-  useEffect(() => {
-    onTotalPriceChange(medicineTotalPrice);
-  }, [medicineTotalPrice, onTotalPriceChange]);
 
   const getMedicineData = useCallback(async () => {
     if (!user) return;
@@ -67,36 +66,43 @@ function AppointmentMedicine({
 
   const handleAddMedicineUsed = () => {
     if (!user) return;
-    setMedicineUsed([
-      ...medicineUsed,
-      {
-        name: medicineUsedMedicine,
-        price: parseInt(medicineUsedPrice),
-        amount: medicineUsedAmount,
-      },
-    ]);
+    const newMedicine = {
+      name: medicineUsedMedicine,
+      price: parseInt(medicineUsedPrice),
+      amount: medicineUsedAmount,
+    };
+    setMedicineUsed([...medicineUsed, newMedicine]);
     setMedicineUsedMedicine("");
     setMedicineUsedAmount("");
     setMedicineUsedPrice("");
+    dispatch({
+      type: "SET_APPOINTMENT",
+      payload: {
+        appointmentCardMedicinePrice:
+          appointmentCardMedicinePrice + newMedicine.price,
+      },
+    });
   };
 
-  useEffect(() => {
-    let totalPrice = 0;
-    medicineUsed.forEach((medicine) => {
-      totalPrice += medicine.price * parseInt(medicine.amount);
-    });
-    setMedicineTotalPrice(totalPrice);
-  }, [medicineUsed]);
-
   const handleRemoveLastMedicine = () => {
+    const lastMedicine = medicineUsed[medicineUsed.length - 1];
     setMedicineUsed(medicineUsed.slice(0, -1));
+    dispatch({
+      type: "SET_APPOINTMENT",
+      payload: {
+        appointmentCardMedicinePrice:
+          appointmentCardMedicinePrice - lastMedicine.price,
+      },
+    });
   };
 
   const handleClearMedicineUsed = () => {
     setMedicineUsed([]);
+    dispatch({
+      type: "SET_APPOINTMENT",
+      payload: { appointmentCardMedicinePrice: 0 },
+    });
   };
-  if (user) {
-  }
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
@@ -174,22 +180,6 @@ function AppointmentMedicine({
         </Box>
       </Box>
       <Box sx={{ height: "55%" }}>
-        <Box
-          sx={{
-            display: " flex",
-            height: "10%",
-          }}
-        >
-          <Box sx={{ width: "33.33%" }}>
-            <Typography>Medicine</Typography>
-          </Box>
-          <Box sx={{ width: "33.33%" }}>
-            <Typography textAlign="center">Amount</Typography>
-          </Box>
-          <Box sx={{ width: "33.33%" }}>
-            <Typography textAlign="right">Price</Typography>
-          </Box>
-        </Box>
         <Box sx={{ border: "solid 1px #94ddde", height: "35%" }}>
           <Box
             sx={{
@@ -233,11 +223,7 @@ function AppointmentMedicine({
             ))}
           </Box>
         </Box>
-        <Box sx={{ height: "10%" }}>
-          <Typography textAlign={"right"}>
-            Total Price: {medicineTotalPrice}
-          </Typography>
-        </Box>
+        <Box sx={{ height: "10%" }}></Box>
         <Box sx={{ height: "45%", display: "flex" }}>
           <Box sx={{ width: "70%", height: "100%" }}>
             <Box sx={{ height: "33%" }}>
@@ -256,7 +242,7 @@ function AppointmentMedicine({
               />
             </Box>
             <Box sx={{ height: "33%" }}>
-              <TextField
+              {/* <TextField
                 sx={{ backgroundColor: "#ffffff" }}
                 value={medicineUsedAmount}
                 label="Amount - Num"
@@ -267,7 +253,7 @@ function AppointmentMedicine({
                 InputLabelProps={{
                   shrink: true,
                 }}
-              />
+              /> */}
             </Box>
             <Box sx={{ height: "33%" }}>
               <TextField

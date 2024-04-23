@@ -1,75 +1,89 @@
 import { Box, TextField } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../../redux/store"; // import your store type
 
 import { useState, useEffect, useCallback } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
 
 import axios from "axios";
 
-function AppointmentCardHeader({
-  onAppointmentAdditionalNotesChange,
-  onAppointmentAnamnesisChange,
-  onAppointmentDateChange,
-  onAppointmentDiagnosisChange,
-  onAppointmentNoChange,
-  onAppointmentTimeChange,
-}: {
-  onAppointmentNoChange: (appointmentNo: string) => void;
-  onAppointmentDateChange: (appointmentDate: string) => void;
-  onAppointmentTimeChange: (appointmentTime: string) => void;
-  onAppointmentAnamnesisChange: (anamnesis: string) => void;
-  onAppointmentDiagnosisChange: (diagnosis: string) => void;
-  onAppointmentAdditionalNotesChange: (additionalNotes: string) => void;
-}) {
+function AppointmentCardHeader() {
+  const dispatch = useDispatch();
   const domainUrl = process.env.NEXT_PUBLIC_DOMAIN_URL;
 
   const { user } = useUser();
-  const [anamnesis, setAnamnesis] = useState("");
-  const [diagnosis, setDiagnosis] = useState("");
-  const [additionalNotes, setAdditionalNotes] = useState("");
-  const [appointmentNo, setAppointmentNo] = useState("");
-  const [appointmentDate, setAppointmentDate] = useState("");
-  const [appointmentTime, setAppointmentTime] = useState("");
+  const appointmentCardAnamnesis = useSelector(
+    (state: RootState) => state.appointment.appointmentCardAnamnesis
+  );
+  const appointmentCardDiagnosis = useSelector(
+    (state: RootState) => state.appointment.appointmentCardDiagnosis
+  );
+  const appointmentCardAdditionalNotes = useSelector(
+    (state: RootState) => state.appointment.appointmentCardAdditionalNotes
+  );
+  const appointmentCardAppointmentNo = useSelector(
+    (state: RootState) => state.appointment.appointmentCardAppointmentNo
+  );
+  const appointmentCardDate = useSelector(
+    (state: RootState) => state.appointment.appointmentCardDate
+  );
+  const appointmentCardTime = useSelector(
+    (state: RootState) => state.appointment.appointmentCardTime
+  );
+
 
   const handleAppointmentNoChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setAppointmentNo(event.target.value);
-    onAppointmentNoChange(event.target.value);
+    dispatch({
+      type: "SET_APPOINTMENT",
+      payload: { appointmentNo: event.target.value },
+    });
   };
 
   const handleAppointmentDateChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setAppointmentDate(event.target.value);
-    onAppointmentDateChange(event.target.value);
+    dispatch({
+      type: "SET_APPOINTMENT",
+      payload: { appointmentCardDate: event.target.value },
+    });
   };
 
   const handleAppointmentTimeChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setAppointmentTime(event.target.value);
-    onAppointmentTimeChange(event.target.value);
+    dispatch({
+      type: "SET_APPOINTMENT",
+      payload: { appointmentCardTime: event.target.value },
+    });
   };
 
   const handleAnamnesisChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setAnamnesis(event.target.value);
-    onAppointmentAnamnesisChange(event.target.value);
+    dispatch({
+      type: "SET_APPOINTMENT",
+      payload: { appointmentCardAnamnesis: event.target.value },
+    });
   };
 
   const handleDiagnosisChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setDiagnosis(event.target.value);
-    onAppointmentDiagnosisChange(event.target.value);
+    dispatch({
+      type: "SET_APPOINTMENT",
+      payload: { appointmentCardDiagnosis: event.target.value },
+    });
   };
 
   const handleAdditionalNotesChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setAdditionalNotes(event.target.value);
-    onAppointmentAdditionalNotesChange(event.target.value);
+    dispatch({
+      type: "SET_APPOINTMENT",
+      payload: { appointmentCardAdditionalNotes: event.target.value },
+    });
   };
 
   const getNextId = useCallback(async () => {
@@ -82,12 +96,14 @@ function AppointmentCardHeader({
       };
 
       const response = await axios.get(url, { headers });
-      setAppointmentNo(response.data.nextId);
-      onAppointmentNoChange(response.data.nextId);
+      dispatch({
+        type: "SET_APPOINTMENT",
+        payload: { appointmentNo: response.data.nextId },
+      });
     } catch (error) {
       console.error("Error:", error);
     }
-  }, [user, domainUrl, onAppointmentNoChange]); // Added onAppointmentNoChange to the dependency array
+  }, [user, domainUrl, dispatch]); // Added dispatch to the dependency array
 
   useEffect(() => {
     getNextId();
@@ -112,7 +128,7 @@ function AppointmentCardHeader({
             <TextField
               autoComplete="off"
               label="Appointment No."
-              value={appointmentNo}
+              value={appointmentCardAppointmentNo}
               onChange={handleAppointmentNoChange}
               size="small"
               disabled
@@ -140,7 +156,7 @@ function AppointmentCardHeader({
               InputLabelProps={{
                 shrink: true,
               }}
-              value={appointmentDate}
+              value={appointmentCardDate}
               onChange={handleAppointmentDateChange}
               sx={{ width: "100%", height: "50%" }}
             />
@@ -153,7 +169,7 @@ function AppointmentCardHeader({
               InputLabelProps={{
                 shrink: true,
               }}
-              value={appointmentTime}
+              value={appointmentCardTime}
               onChange={handleAppointmentTimeChange}
               sx={{ width: "100%", height: "50%" }}
             />
@@ -175,7 +191,7 @@ function AppointmentCardHeader({
             autoComplete="off"
             size="small"
             label="Anamnesis"
-            value={anamnesis}
+            value={appointmentCardAnamnesis}
             InputLabelProps={{
               shrink: true,
             }}
@@ -199,7 +215,7 @@ function AppointmentCardHeader({
             autoComplete="off"
             size="small"
             label="Diagnosis"
-            value={diagnosis}
+            value={appointmentCardDiagnosis}
             InputLabelProps={{
               shrink: true,
             }}
@@ -223,7 +239,7 @@ function AppointmentCardHeader({
             autoComplete="off"
             size="small"
             label="Additional Notes"
-            value={additionalNotes}
+            value={appointmentCardAdditionalNotes}
             InputLabelProps={{
               shrink: true,
             }}

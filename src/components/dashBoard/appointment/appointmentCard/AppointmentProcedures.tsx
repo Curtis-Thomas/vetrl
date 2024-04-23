@@ -3,6 +3,9 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import axios from "axios";
 
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../../redux/store"; // import your store type
+
 interface Procedure {
   name: string;
   price: number;
@@ -16,11 +19,9 @@ interface ProceduresDone {
   amount: string;
 }
 
-function AppointmentProcedures({
-  onTotalPriceChange,
-}: {
-  onTotalPriceChange: (price: number) => void;
-}) {
+function AppointmentProcedures() {
+  const dispatch = useDispatch();
+
   const domainUrl = process.env.NEXT_PUBLIC_DOMAIN_URL;
 
   const { user, error, isLoading } = useUser();
@@ -33,13 +34,12 @@ function AppointmentProcedures({
   const [proceduresDoneAmount, setProceduresDoneAmount] = useState("");
   const [proceduresDonePrice, setProceduresDonePrice] = useState("");
 
-  const [proceduresTotalPrice, setProceduresTotalPrice] = useState(0);
+  const appointmentCardProceduresPrice = useSelector(
+    (state: RootState) => state.appointment.appointmentCardProceduresPrice
+  );
 
   const formatNumber = (num: number) => num.toFixed(2);
 
-  useEffect(() => {
-    onTotalPriceChange(proceduresTotalPrice);
-  }, [proceduresTotalPrice, onTotalPriceChange]);
   const getProceduresData = useCallback(async () => {
     if (!user) return;
     try {
@@ -66,37 +66,43 @@ function AppointmentProcedures({
 
   const handleAddProceduresDone = () => {
     if (!user) return;
-    setProceduresDone([
-      ...proceduresDone,
-      {
-        name: proceduresDoneProcedure,
-        price: parseInt(proceduresDonePrice),
-        amount: proceduresDoneAmount,
-      },
-    ]);
+    const newProcedure = {
+      name: proceduresDoneProcedure,
+      price: parseInt(proceduresDonePrice),
+      amount: proceduresDoneAmount,
+    };
+    setProceduresDone([...proceduresDone, newProcedure]);
     setProceduresDoneProcedure("");
     setProceduresDoneAmount("");
     setProceduresDonePrice("");
+    dispatch({
+      type: "SET_APPOINTMENT",
+      payload: {
+        appointmentCardProceduresPrice:
+          appointmentCardProceduresPrice + newProcedure.price,
+      },
+    });
   };
 
-  useEffect(() => {
-    let totalPrice = 0;
-    proceduresDone.forEach((procedure) => {
-      totalPrice += procedure.price * parseInt(procedure.amount);
-    });
-    setProceduresTotalPrice(totalPrice);
-  }, [proceduresDone]);
-
   const handleRemoveLastProcedure = () => {
+    const lastProcedure = proceduresDone[proceduresDone.length - 1];
     setProceduresDone(proceduresDone.slice(0, -1));
+    dispatch({
+      type: "SET_APPOINTMENT",
+      payload: {
+        appointmentCardProceduresPrice:
+          appointmentCardProceduresPrice - lastProcedure.price,
+      },
+    });
   };
 
   const handleClearProceduresDone = () => {
     setProceduresDone([]);
+    dispatch({
+      type: "SET_APPOINTMENT",
+      payload: { appointmentCardProceduresPrice: 0 },
+    });
   };
-  if (user) {
-  }
-
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
 
@@ -173,22 +179,6 @@ function AppointmentProcedures({
         </Box>
       </Box>
       <Box sx={{ height: "55%" }}>
-        <Box
-          sx={{
-            display: " flex",
-            height: "10%",
-          }}
-        >
-          <Box sx={{ width: "33.33%" }}>
-            <Typography>Procedures</Typography>
-          </Box>
-          <Box sx={{ width: "33.33%" }}>
-            <Typography textAlign="center">Amount</Typography>
-          </Box>
-          <Box sx={{ width: "33.33%" }}>
-            <Typography textAlign="right">Price</Typography>
-          </Box>
-        </Box>
         <Box sx={{ border: "solid 1px #94ddde", height: "35%" }}>
           <Box
             sx={{
@@ -232,11 +222,7 @@ function AppointmentProcedures({
             ))}
           </Box>
         </Box>
-        <Box sx={{ height: "10%" }}>
-          <Typography textAlign={"right"}>
-            Total Price: {proceduresTotalPrice}
-          </Typography>
-        </Box>
+        <Box sx={{ height: "10%" }}></Box>
         <Box sx={{ height: "45%", display: "flex" }}>
           <Box sx={{ width: "70%", height: "100%" }}>
             <Box sx={{ height: "33.33%" }}>
@@ -255,7 +241,7 @@ function AppointmentProcedures({
               />
             </Box>
             <Box sx={{ height: "33.33%" }}>
-              <TextField
+              {/* <TextField
                 InputLabelProps={{
                   shrink: true,
                 }}
@@ -268,7 +254,7 @@ function AppointmentProcedures({
                 onChange={(event) =>
                   setProceduresDoneAmount(event.target.value)
                 }
-              />
+              /> */}
             </Box>
             <Box sx={{ height: "33.33%" }}>
               <TextField

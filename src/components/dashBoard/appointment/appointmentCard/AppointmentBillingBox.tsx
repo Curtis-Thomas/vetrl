@@ -1,49 +1,27 @@
 import { Box, TextField, Typography } from "@mui/material";
 import { useState, useEffect, useCallback } from "react";
 
-function AppointmentBillingBox({
-  proceduresTotalPrice,
-  suppliesTotalPrice,
-  medicineTotalPrice,
-  onTotalPriceChange,
-}: {
-  proceduresTotalPrice: number;
-  suppliesTotalPrice: number;
-  medicineTotalPrice: number;
-  onTotalPriceChange: (totalPrice: number) => void;
-}) {
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../../redux/store"; // import your store type
+
+function AppointmentBillingBox() {
+  const dispatch = useDispatch();
+
   const [taxProcedures, setTaxProcedures] = useState(24);
   const [taxMedicine, setTaxMedicine] = useState(10);
   const [taxSupplies, setTaxSupplies] = useState(24);
-  const [taxOther, setTaxOther] = useState(24);
 
-  const [priceOther, setPriceOther] = useState(0);
+  const appointmentCardProceduresPrice = useSelector(
+    (state: RootState) => state.appointment.appointmentCardProceduresPrice
+  );
 
-  const [totalPrice, setTotalPrice] = useState(0);
+  const appointmentCardMedicinePrice = useSelector(
+    (state: RootState) => state.appointment.appointmentCardMedicinePrice
+  );
 
-  const calculateTotalPrice = useCallback(() => {
-    return (
-      proceduresTotalPrice +
-      (proceduresTotalPrice * taxProcedures) / 100 +
-      medicineTotalPrice +
-      (medicineTotalPrice * taxMedicine) / 100 +
-      suppliesTotalPrice +
-      (suppliesTotalPrice * taxSupplies) / 100
-    );
-  }, [
-    proceduresTotalPrice,
-    taxProcedures,
-    medicineTotalPrice,
-    taxMedicine,
-    suppliesTotalPrice,
-    taxSupplies,
-  ]);
-
-  useEffect(() => {
-    const totalPrice = calculateTotalPrice();
-    setTotalPrice(totalPrice);
-    onTotalPriceChange(totalPrice);
-  }, [calculateTotalPrice, onTotalPriceChange]);
+  const appointmentCardSuppliesPrice = useSelector(
+    (state: RootState) => state.appointment.appointmentCardSuppliesPrice
+  );
 
   // Helper function to format numbers to 2 decimal places
   const formatNumber = (num: number) => num.toFixed(2);
@@ -95,19 +73,21 @@ function AppointmentBillingBox({
         </Box>
         <Box sx={{ width: "20%", height: "100%" }}>
           <Typography>
-            {formatNumber((proceduresTotalPrice * taxProcedures) / 100)}
+            {((appointmentCardProceduresPrice * taxProcedures) / 100).toFixed(
+              2
+            )}
           </Typography>
-        </Box>
-        <Box sx={{ width: "20%", height: "100%" }}>
-          <Typography>{formatNumber(proceduresTotalPrice)}</Typography>
         </Box>
         <Box sx={{ width: "20%", height: "100%" }}>
           <Typography>
-            {formatNumber(
-              proceduresTotalPrice +
-                (proceduresTotalPrice * taxProcedures) / 100
-            )}
+            {(
+              appointmentCardProceduresPrice -
+              (appointmentCardProceduresPrice * taxProcedures) / 100
+            ).toFixed(2)}
           </Typography>
+        </Box>
+        <Box sx={{ width: "20%", height: "100%" }}>
+          <Typography>{appointmentCardProceduresPrice.toFixed(2)}</Typography>
         </Box>
       </Box>
       <Box
@@ -132,18 +112,19 @@ function AppointmentBillingBox({
         </Box>
         <Box sx={{ width: "20%", height: "100%" }}>
           <Typography>
-            {formatNumber((medicineTotalPrice * taxMedicine) / 100)}
+            {((appointmentCardMedicinePrice * taxMedicine) / 100).toFixed(2)}
           </Typography>
-        </Box>
-        <Box sx={{ width: "20%", height: "100%" }}>
-          <Typography>{formatNumber(medicineTotalPrice)}</Typography>
         </Box>
         <Box sx={{ width: "20%", height: "100%" }}>
           <Typography>
-            {formatNumber(
-              medicineTotalPrice + (medicineTotalPrice * taxMedicine) / 100
-            )}
+            {(
+              appointmentCardMedicinePrice -
+              (appointmentCardMedicinePrice * taxMedicine) / 100
+            ).toFixed(2)}
           </Typography>
+        </Box>
+        <Box sx={{ width: "20%", height: "100%" }}>
+          <Typography>{appointmentCardMedicinePrice.toFixed(2)}</Typography>
         </Box>
       </Box>
       <Box
@@ -168,55 +149,22 @@ function AppointmentBillingBox({
         </Box>
         <Box sx={{ width: "20%", height: "100%" }}>
           <Typography>
-            {formatNumber((suppliesTotalPrice * taxSupplies) / 100)}
+            {((appointmentCardSuppliesPrice * taxSupplies) / 100).toFixed(2)}
           </Typography>
-        </Box>
-        <Box sx={{ width: "20%", height: "100%" }}>
-          <Typography>{formatNumber(suppliesTotalPrice)}</Typography>
         </Box>
         <Box sx={{ width: "20%", height: "100%" }}>
           <Typography>
-            {formatNumber(
-              suppliesTotalPrice + (suppliesTotalPrice * taxSupplies) / 100
-            )}
+            {(
+              appointmentCardSuppliesPrice -
+              (appointmentCardSuppliesPrice * taxSupplies) / 100
+            ).toFixed(2)}
           </Typography>
         </Box>
-      </Box>
-      <Box
-        sx={{
-          display: "flex",
-          height: "15%",
-          width: "100%",
-          border: "solid 1px black",
-          p: 1,
-        }}
-      >
         <Box sx={{ width: "20%", height: "100%" }}>
-          <Typography>Other</Typography>
-        </Box>
-        <Box sx={{ width: "20%", height: "100%" }}>
-          <TextField
-            size="small"
-            type="number"
-            value={taxOther}
-            onChange={(e) => setTaxOther(Number(e.target.value))}
-          />
-        </Box>
-        <Box sx={{ width: "20%", height: "100%" }}>
-          <Typography></Typography>
-        </Box>
-        <Box sx={{ width: "20%", height: "100%" }}>
-          <Typography></Typography>
-        </Box>
-        <Box sx={{ width: "20%", height: "100%" }}>
-          <TextField
-            size="small"
-            type="number"
-            value={priceOther}
-            onChange={(e) => setPriceOther(Number(e.target.value))}
-          />
+          <Typography>{appointmentCardSuppliesPrice.toFixed(2)}</Typography>
         </Box>
       </Box>
+
       <Box
         sx={{
           display: "flex",
@@ -232,27 +180,36 @@ function AppointmentBillingBox({
         <Box sx={{ width: "20%", height: "100%" }}></Box>{" "}
         <Box sx={{ width: "20%", height: "100%" }}>
           <Typography>
-            {formatNumber(
-              (proceduresTotalPrice * taxProcedures) / 100 +
-                (medicineTotalPrice * taxMedicine) / 100 +
-                (suppliesTotalPrice * taxSupplies) / 100
-            )}
+            {(
+              ((appointmentCardProceduresPrice * taxProcedures) / 100 +
+                (appointmentCardMedicinePrice * taxMedicine) / 100 +
+                (appointmentCardSuppliesPrice * taxSupplies) / 100) *
+              1
+            ).toFixed(2)}
           </Typography>
         </Box>{" "}
         <Box sx={{ width: "20%", height: "100%" }}>
           <Typography>
-            {formatNumber(
-              proceduresTotalPrice + medicineTotalPrice + suppliesTotalPrice
-            )}
+            {/* {appointmentCardProceduresPrice -
+              (appointmentCardProceduresPrice * taxProcedures) / 100 +
+              +(
+                appointmentCardMedicinePrice -
+                (appointmentCardMedicinePrice * taxMedicine) / 100
+              ) +
+              +(
+                appointmentCardSuppliesPrice -
+                (appointmentCardSuppliesPrice * taxSupplies) / 100
+              )} */}
           </Typography>
         </Box>{" "}
         <Box sx={{ width: "20%", height: "100%" }}>
-          <TextField
-            size="small"
-            value={totalPrice.toFixed(2)}
-            disabled
-            sx={{ width: "100%", height: "100%" }}
-          />
+          <Typography>
+            {(
+              appointmentCardProceduresPrice +
+              appointmentCardMedicinePrice +
+              appointmentCardSuppliesPrice
+            ).toFixed(2)}
+          </Typography>
         </Box>
       </Box>
     </Box>
