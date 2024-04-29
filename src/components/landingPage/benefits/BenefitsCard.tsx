@@ -19,10 +19,10 @@ function BenefitsCard({
           width: { xs: "100%", md: "30%" },
         }}
       >
-        <Box sx={{ height: "50%", p: 2, pt: 5, textAlign: "center" }}>
+        <Box sx={{ height: "50%", pt: 5, textAlign: "center" }}>
           <Typography variant="h4">{title}</Typography>
         </Box>
-        <Box sx={{ height: "50%", p: 2 }}>
+        <Box sx={{ height: "50%", textAlign: "center" }}>
           <Typography variant="h6">{description}</Typography>
         </Box>
       </Card>

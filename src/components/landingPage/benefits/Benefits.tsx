@@ -32,8 +32,8 @@ function Benefits() {
         sx={{
           display: { xs: "block", md: "flex" },
           justifyContent: "space-evenly",
-          pl: { xs: 2, md: 15 },
-          pr: { xs: 5, md: 15 },
+          pl: { xs: 2, md: 0 },
+          pr: { xs: 5, md: 0 },
         }}
       >
         <BenefitsCard
