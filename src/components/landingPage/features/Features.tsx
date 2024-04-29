@@ -1,6 +1,17 @@
-import { Box, Button, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  ImageList,
+  ImageListItem,
+  Typography,
+} from "@mui/material";
+import Image from "next/image";
 
 import { useState } from "react";
+
+import imgOverview from "./assets/overview picture.png";
+import imgCalendar from "./assets/calendar picture.png";
+import { set } from "date-fns";
 
 function Features() {
   const [featuresOverview, setFeaturesOverview] = useState(
@@ -58,6 +69,7 @@ function Features() {
   }
 
   const [activeFeature, setActiveFeature] = useState(featuresOverview);
+  const [activeImg, setActiveImg] = useState(imgOverview);
 
   return (
     <Box
@@ -88,7 +100,9 @@ function Features() {
           </Typography>
         </Box>
 
-        <Box sx={{ display: "flex", flexWrap: "wrap", pl: 2, pr: 2 }}>
+        <Box
+          sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
+        >
           <Box
             sx={{
               backgroundColor: overviewButtonBackgroundColor,
@@ -98,6 +112,9 @@ function Features() {
               m: { xs: 1, md: 1 },
               p: { xs: 0, md: 1 },
               height: "100%",
+              width: { xs: "auto", md: "13vw" },
+              display: "flex",
+              justifyContent: "center",
             }}
           >
             <Button
@@ -108,8 +125,13 @@ function Features() {
                 setOverviewButtonBackgroundColor("#63CDCF");
                 handleButtonTextColorReset();
                 setOverviewButtonTextColor("#EF4349");
+                setActiveImg(imgOverview);
               }}
-              sx={{ color: overviewButtonTextColor }}
+              sx={{
+                color: overviewButtonTextColor,
+                width: "100%",
+                height: "100%",
+              }}
             >
               Overview
             </Button>
@@ -123,6 +145,9 @@ function Features() {
               m: { xs: 1, md: 1 },
               p: { xs: 0, md: 1 },
               height: "100%",
+              width: { xs: "auto", md: "13vw" },
+              display: "flex",
+              justifyContent: "center",
             }}
           >
             <Button
@@ -133,8 +158,13 @@ function Features() {
                 setCalendarButtonBackgroundColor("#63CDCF");
                 handleButtonTextColorReset();
                 setCalendarButtonTextColor("#EF4349");
+                setActiveImg(imgCalendar);
               }}
-              sx={{ color: calendarButtonTextColor }}
+              sx={{
+                color: calendarButtonTextColor,
+                width: "100%",
+                height: "100%",
+              }}
             >
               Calendar
             </Button>
@@ -148,6 +178,9 @@ function Features() {
               m: { xs: 1, md: 1 },
               p: { xs: 0, md: 1 },
               height: "100%",
+              width: { xs: "auto", md: "13vw" },
+              display: "flex",
+              justifyContent: "center",
             }}
           >
             <Button
@@ -159,7 +192,11 @@ function Features() {
                 handleButtonTextColorReset();
                 setBillingButtonTextColor("#EF4349");
               }}
-              sx={{ color: billingButtonTextColor }}
+              sx={{
+                color: billingButtonTextColor,
+                width: "100%",
+                height: "100%",
+              }}
             >
               Billing
             </Button>
@@ -173,6 +210,9 @@ function Features() {
               m: { xs: 1, md: 1 },
               p: { xs: 0, md: 1 },
               height: "100%",
+              width: { xs: "auto", md: "13vw" },
+              display: "flex",
+              justifyContent: "center",
             }}
           >
             <Button
@@ -184,7 +224,11 @@ function Features() {
                 handleButtonTextColorReset();
                 setSinglePageButtonTextColor("#EF4349");
               }}
-              sx={{ color: singlePageButtonTextColor }}
+              sx={{
+                color: singlePageButtonTextColor,
+                width: "100%",
+                height: "100%",
+              }}
             >
               Single-page layout
             </Button>
@@ -198,6 +242,9 @@ function Features() {
               m: { xs: 1, md: 1 },
               p: { xs: 0, md: 1 },
               height: "100%",
+              width: { xs: "auto", md: "13vw" },
+              display: "flex",
+              justifyContent: "center",
             }}
           >
             <Button
@@ -209,14 +256,43 @@ function Features() {
                 handleButtonTextColorReset();
                 setEasyEditButtonTextColor("#EF4349");
               }}
-              sx={{ color: easyEditButtonTextColor }}
+              sx={{
+                color: easyEditButtonTextColor,
+                width: "100%",
+                height: "100%",
+              }}
             >
               Easy-edit codex
             </Button>
           </Box>
         </Box>
-        <Box sx={{ p: 5, height: "10vh" }}>
-          <Typography>{activeFeature}</Typography>
+        <Box
+          sx={{
+            p: 1,
+            height: "5vh",
+
+            textAlign: "center",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Typography color="textSecondary">{activeFeature}</Typography>
+        </Box>
+
+        <Box
+          sx={{
+            width: "100%",
+            height: { xs: "25vh", md: "35vw" },
+            position: "relative",
+          }}
+        >
+          <Image
+            src={activeImg}
+            alt="Overview"
+            layout="fill"
+            objectFit="contain"
+          />
         </Box>
       </Box>
     </Box>

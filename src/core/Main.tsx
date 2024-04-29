@@ -1,7 +1,7 @@
 import Hero from "@/components/landingPage/hero/Hero";
 import Benefits from "@/components/landingPage/benefits/Benefits";
 import ContactForm from "@/components/landingPage/ContactForm";
-import Features from "@/components/landingPage/Features";
+import Features from "@/components/landingPage/features/Features";
 
 import { Box, Button, Card, Typography } from "@mui/material";
 import { useUser } from "@auth0/nextjs-auth0/client";
