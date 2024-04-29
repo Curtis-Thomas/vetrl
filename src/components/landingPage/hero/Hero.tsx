@@ -26,17 +26,15 @@ function Hero() {
         }}
       >
         <Box>
-          <Typography>
-            Please note that our website is currently in the alpha testing
-            phase.
-          </Typography>
-          <Typography>
-            This means that while you can explore and use some of our features,
-            the site is still under active development.
-          </Typography>
-          <Typography>
-            As a result, you may encounter bugs, incomplete features, or
-            unexpected behavior.
+          <Typography
+            sx={{
+              fontSize: 20,
+              fontWeight: "bold",
+
+              textAlign: "center",
+            }}
+          >
+            Phase: Alpha Testing - Under active development
           </Typography>
         </Box>
       </Box>
