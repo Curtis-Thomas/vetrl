@@ -20,18 +20,21 @@ client.connect();
 router.post(
   "/record/add",
   [
+    body("appointmentNo").notEmpty().isString(),
+
     body("clientId").isString(),
     body("patientId").isString(),
-    body("appointmentNo").notEmpty().isString(),
     body("date").isString(),
     body("time").isString(),
     body("anamnesis").isString(),
     body("diagnosis").isString(),
     body("additionalNotes").isString(),
-    body("procedures").isString(),
-    body("medicine").isString(),
-    body("supplies").isString(),
     body("dischargeNotes").isString(),
+
+    body("procedures").isNumeric(),
+    body("medicine").isNumeric(),
+    body("supplies").isNumeric(),
+
     body("totalPrice").isNumeric(),
   ],
   async (req, res) => {

@@ -12,6 +12,10 @@ function AppointmentCardHeader() {
   const domainUrl = process.env.NEXT_PUBLIC_DOMAIN_URL;
 
   const { user } = useUser();
+
+  const appointmentNo = useSelector(
+    (state: RootState) => state.appointment.appointmentCardAppointmentNo
+  );
   const appointmentCardAnamnesis = useSelector(
     (state: RootState) => state.appointment.appointmentCardAnamnesis
   );
@@ -21,9 +25,7 @@ function AppointmentCardHeader() {
   const appointmentCardAdditionalNotes = useSelector(
     (state: RootState) => state.appointment.appointmentCardAdditionalNotes
   );
-  const appointmentCardAppointmentNo = useSelector(
-    (state: RootState) => state.appointment.appointmentCardAppointmentNo
-  );
+
   const appointmentCardDate = useSelector(
     (state: RootState) => state.appointment.appointmentCardDate
   );
@@ -31,13 +33,12 @@ function AppointmentCardHeader() {
     (state: RootState) => state.appointment.appointmentCardTime
   );
 
-
   const handleAppointmentNoChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     dispatch({
       type: "SET_APPOINTMENT",
-      payload: { appointmentNo: event.target.value },
+      payload: { appointmentCardAppointmentNo: event.target.value },
     });
   };
 
@@ -98,12 +99,13 @@ function AppointmentCardHeader() {
       const response = await axios.get(url, { headers });
       dispatch({
         type: "SET_APPOINTMENT",
-        payload: { appointmentNo: response.data.nextId },
+        payload: { appointmentCardAppointmentNo: response.data.nextId },
       });
+      console.log(appointmentNo);
     } catch (error) {
       console.error("Error:", error);
     }
-  }, [user, domainUrl, dispatch]); // Added dispatch to the dependency array
+  }, [user, domainUrl]);
 
   useEffect(() => {
     getNextId();
@@ -128,7 +130,7 @@ function AppointmentCardHeader() {
             <TextField
               autoComplete="off"
               label="Appointment No."
-              value={appointmentCardAppointmentNo}
+              value={appointmentNo}
               onChange={handleAppointmentNoChange}
               size="small"
               disabled

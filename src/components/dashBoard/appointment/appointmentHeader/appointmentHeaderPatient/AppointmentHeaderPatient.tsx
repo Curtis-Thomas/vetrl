@@ -3,6 +3,9 @@ import { useState, useEffect, useCallback } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import AppointmentHeaderPatientBackdrop from "./AppointmentHeaderPatientBackdrop";
 
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../../../redux/store";
+
 interface Patient {
   ownerId: string;
   id: string;
@@ -31,9 +34,24 @@ function AppointmentHeaderPatient({
   clientId: string;
   clientPatients: string[];
 }) {
+  const dispatch = useDispatch();
+
   const { user, error, isLoading } = useUser();
 
   const domainUrl = process.env.NEXT_PUBLIC_DOMAIN_URL;
+
+  const patientId = useSelector(
+    (state: RootState) => state.appointment.appointmentCardPatientId
+  );
+
+  const handlePatientIDChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    dispatch({
+      type: "SET_APPOINTMENT",
+      payload: { appointmentCardPatientId: event.target.value },
+    });
+  };
 
   const [patientName, setPatientName] = useState("");
   const [patientData, setPatientData] = useState<PatientData | null>(null);
@@ -95,6 +113,12 @@ function AppointmentHeaderPatient({
 
   const selectPatient = (patient: Patient) => {
     setPatient(patient);
+    dispatch({
+      type: "SET_APPOINTMENT",
+      payload: { appointmentCardPatientId: patient.id },
+    });
+
+    console.log(patientId);
   };
 
   return (

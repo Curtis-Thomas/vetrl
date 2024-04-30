@@ -7,6 +7,8 @@ import {
   Alert,
   Snackbar,
 } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../../../redux/store";
 
 import { useState, useEffect } from "react";
 
@@ -48,9 +50,22 @@ function AppointmentHeaderClient({
   onClientIdChange,
   onClientPatientsChange,
 }: Props) {
+  const dispatch = useDispatch();
+
   const domainUrl = process.env.NEXT_PUBLIC_DOMAIN_URL;
 
   const { user, error, isLoading } = useUser();
+
+  const clientId = useSelector(
+    (state: RootState) => state.appointment.appointmentCardClientId
+  );
+
+  const handleClientIDChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch({
+      type: "SET_APPOINTMENT",
+      payload: { appointmentCardClientId: event.target.value },
+    });
+  };
 
   const [clientSearchData, setClientSearchData] = useState<ClientData | null>(
     null
@@ -59,7 +74,7 @@ function AppointmentHeaderClient({
   const [clientData, setClientData] = useState<Client | null>(null);
 
   const [clientName, setClientName] = useState("");
-  const [clientId, setClientId] = useState("");
+
   const [patientIds, setPatientIds] = useState<string[]>([]);
 
   useEffect(() => {
@@ -116,7 +131,12 @@ function AppointmentHeaderClient({
     }
   };
   const handleClientSelection = (client: Client) => {
-    setClientId(client.id);
+    dispatch({
+      type: "SET_APPOINTMENT",
+      payload: { appointmentCardClientId: client.id },
+    });
+    console.log(clientId);
+
     setClientName(client.name); // Set the client name
     setClientData(client); // Set the client data
     onClientNameChange(client.name);

@@ -3,32 +3,38 @@
 type Appointment = {
   date: string;
   time: string;
+  appointmentCardClientId: string;
+  appointmentCardPatientId: string;
   appointmentCardAppointmentNo: string;
   appointmentCardDate: string;
   appointmentCardTime: string;
   appointmentCardAnamnesis: string;
   appointmentCardDiagnosis: string;
   appointmentCardAdditionalNotes: string;
+  appointmentCardDischargeNotes: string;
+
   appointmentCardProceduresPrice: number;
   appointmentCardMedicinePrice: number;
   appointmentCardSuppliesPrice: number;
-  appointmentCardDischargeNotes: string;
   appointmentCardTotalPrice: number;
 };
 
 const initialState: Appointment = {
   date: "",
   time: "",
+  appointmentCardClientId: "",
+  appointmentCardPatientId: "",
   appointmentCardAppointmentNo: "",
   appointmentCardDate: "",
   appointmentCardTime: "",
   appointmentCardAnamnesis: "",
   appointmentCardDiagnosis: "",
   appointmentCardAdditionalNotes: "",
+  appointmentCardDischargeNotes: "",
+
   appointmentCardProceduresPrice: 0,
   appointmentCardMedicinePrice: 0,
   appointmentCardSuppliesPrice: 0,
-  appointmentCardDischargeNotes: "",
   appointmentCardTotalPrice: 0,
 };
 

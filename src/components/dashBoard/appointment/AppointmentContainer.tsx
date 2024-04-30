@@ -1,5 +1,7 @@
 import { Backdrop, Box, Button, Typography } from "@mui/material";
 import React, { useState, useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../redux/store";
 
 import { useUser } from "@auth0/nextjs-auth0/client";
 import AppointmentProcedures from "./appointmentCard/AppointmentProcedures";
@@ -18,8 +20,57 @@ function AppointmentContainer() {
 
   const [backdropState, setBackdropState] = useState(false);
 
-  const [appointmentCardClientId, setAppointmentCardClientId] = useState("");
-  const [appointmentCardPatientId, setAppointmentCardPatientId] = useState("");
+  const appointmentNo = useSelector(
+    (state: RootState) => state.appointment.appointmentCardAppointmentNo
+  );
+
+  const clientId = useSelector(
+    (state: RootState) => state.appointment.appointmentCardClientId
+  );
+
+  const patientId = useSelector(
+    (state: RootState) => state.appointment.appointmentCardPatientId
+  );
+
+  const date = useSelector(
+    (state: RootState) => state.appointment.appointmentCardDate
+  );
+
+  const time = useSelector(
+    (state: RootState) => state.appointment.appointmentCardTime
+  );
+
+  const anamnesis = useSelector(
+    (state: RootState) => state.appointment.appointmentCardAnamnesis
+  );
+
+  const diagnosis = useSelector(
+    (state: RootState) => state.appointment.appointmentCardDiagnosis
+  );
+
+  const additionalNotes = useSelector(
+    (state: RootState) => state.appointment.appointmentCardAdditionalNotes
+  );
+
+  const procedures = useSelector(
+    (state: RootState) => state.appointment.appointmentCardProceduresPrice
+  );
+
+  const medicine = useSelector(
+    (state: RootState) => state.appointment.appointmentCardMedicinePrice
+  );
+
+  const supplies = useSelector(
+    (state: RootState) => state.appointment.appointmentCardSuppliesPrice
+  );
+
+  const dischargeNotes = useSelector(
+    (state: RootState) => state.appointment.appointmentCardDischargeNotes
+  );
+
+  const totalPrice = useSelector(
+    (state: RootState) => state.appointment.appointmentCardTotalPrice
+  );
 
   const [recordSavedBackdrop, setRecordSavedBackdrop] = useState(false);
 
@@ -33,8 +84,21 @@ function AppointmentContainer() {
 
       const RecordData = {
         sub: user.sub,
-        clientId: appointmentCardClientId,
-        patientId: appointmentCardPatientId,
+
+        appointmentNo: appointmentNo,
+        clientId: clientId,
+        patientId: patientId,
+        date: date,
+        time: time,
+        anamnesis: anamnesis,
+        diagnosis: diagnosis,
+        additionalNotes: additionalNotes,
+        dischargeNotes: dischargeNotes,
+
+        procedures: procedures,
+        medicine: medicine,
+        supplies: supplies,
+        totalPrice: totalPrice,
       };
 
       const response = await fetch(domainUrl + `/record/record/add`, {
