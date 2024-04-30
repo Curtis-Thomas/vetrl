@@ -1,5 +1,7 @@
 # vetrl - Veterinary client management systems
+
 <br />
+
 ## Funding 
 
 The project currently has the running costs:
