@@ -1,5 +1,17 @@
 # vetrl - Veterinary client management systems
 
+<br />
+
+## Funding 
+
+The project currently has the running costs:
+
+Domain name registration - Yearly - $13.99
+
+Server hosting - monthly - $5
+
+If you are enjoying the project and would like to help with the costs, check out the sponsor section.
+
 ## Description
 
 <br />
