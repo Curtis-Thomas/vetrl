@@ -207,7 +207,7 @@ function AppointmentHeaderPatient({
                       backgroundColor: "black",
                       color: "#94ddde",
                       border: "solid 1px ",
-                      height: "50%",
+                      height: "100%",
                       width: "20%",
                     }}
                     onClick={() => selectPatient(patient)}
