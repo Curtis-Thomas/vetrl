@@ -20,6 +20,8 @@ function AppointmentContainer() {
 
   const [backdropState, setBackdropState] = useState(false);
 
+  const [activeCodexBox, setActiveCodexBox] = useState("procedures");
+
   const appointmentNo = useSelector(
     (state: RootState) => state.appointment.appointmentCardAppointmentNo
   );
@@ -195,62 +197,72 @@ function AppointmentContainer() {
             >
               <Box
                 sx={{
-                  width: "15%",
-                  height: "100%",
-
-                  p: 1,
+                  width: "45%",
+                  height: "90%",
                 }}
               >
-                <Box
-                  sx={{
-                    backgroundColor: "#eefafa",
-                    height: "100%",
-                    width: "100%",
-                    borderRadius: "16px",
-                    p: 1,
-                  }}
-                >
-                  <AppointmentProcedures />
-                </Box>
-              </Box>
-              <Box
-                sx={{
-                  width: "15%",
-                  p: 1,
-                }}
-              >
-                <Box
-                  sx={{
-                    height: "100%",
-                    width: "100%",
-                    borderRadius: "16px",
-                  }}
-                >
-                  <Box
-                    sx={{
-                      backgroundColor: "#eefafa",
-                      height: "100%",
-                      width: "100%",
-                      borderRadius: "16px",
-                      p: 1,
-                    }}
-                  >
-                    <AppointmentMedicine />
+                <Box sx={{ height: "10%", width: "100%", display: "flex" }}>
+                  <Box sx={{ width: "33.33%", height: "100%" }}>
+                    <Button
+                      onClick={() => setActiveCodexBox("procedures")}
+                      sx={{
+                        backgroundColor: "#94ddde",
+                        color: "#ffffff",
+                        width: "100%",
+                        height: "90%",
+                        borderRadius: "0px",
+                        border: "solid 1px white",
+                        "&:hover": {
+                          backgroundColor: "#C1EBEC",
+                        },
+                      }}
+                    >
+                      Procedures
+                    </Button>
                   </Box>
-                  <Box sx={{ height: "1%" }}></Box>
+                  <Box sx={{ width: "33.33%", height: "100%" }}>
+                    <Button
+                      onClick={() => setActiveCodexBox("medicine")}
+                      sx={{
+                        backgroundColor: "#94ddde",
+                        color: "#ffffff",
+                        width: "100%",
+                        height: "90%",
+                        borderRadius: "0px",
+                        border: "solid 1px white",
+
+                        "&:hover": {
+                          backgroundColor: "#C1EBEC",
+                        },
+                      }}
+                    >
+                      Medicine
+                    </Button>
+                  </Box>
+                  <Box sx={{ width: "33.33%", height: "100%" }}>
+                    <Button
+                      onClick={() => setActiveCodexBox("supplies")}
+                      sx={{
+                        backgroundColor: "#94ddde",
+                        color: "#ffffff",
+                        width: "100%",
+                        height: "90%",
+                        borderRadius: "0px",
+                        border: "solid 1px white",
+
+                        "&:hover": {
+                          backgroundColor: "#C1EBEC",
+                        },
+                      }}
+                    >
+                      Supplies
+                    </Button>
+                  </Box>
                 </Box>
-              </Box>
-              <Box sx={{ width: "15%", p: 1 }}>
-                <Box
-                  sx={{
-                    backgroundColor: "#eefafa",
-                    height: "100%",
-                    width: "100%",
-                    borderRadius: "16px",
-                    p: 1,
-                  }}
-                >
-                  <AppointmentSupplies />
+                <Box sx={{ height: "100%" }}>
+                  {activeCodexBox === "procedures" && <AppointmentProcedures />}
+                  {activeCodexBox === "medicine" && <AppointmentMedicine />}
+                  {activeCodexBox === "supplies" && <AppointmentSupplies />}
                 </Box>
               </Box>
 

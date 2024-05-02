@@ -99,6 +99,8 @@ function DashboardSideBar({
             backgroundColor: "#94ddde",
             color: "#ffffff",
             borderRadius: "26px",
+            p: 1,
+
             "&:hover": {
               backgroundColor: "#C1EBEC",
             },
