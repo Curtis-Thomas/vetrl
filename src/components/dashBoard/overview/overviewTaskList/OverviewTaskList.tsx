@@ -112,14 +112,16 @@ function OverviewTaskList() {
   if (error) return <div>{error.message}</div>;
 
   return (
-    <Box>
-      <Typography variant="h4">Task List</Typography>
+    <Box sx={{ height: "100%", width: "100%" }}>
+      <Box sx={{ height: "5%", width: "100%" }}>
+        <Typography variant="h4">Task List</Typography>
+      </Box>
+
       <Box
         sx={{
-          height: "55vh",
+          height: "60%",
           backgroundColor: "#ffffff",
-          borderRadius: "10px",
-          // p: 5,
+
           overflow: "auto",
           "&::-webkit-scrollbar": {
             width: "0.4em",
@@ -189,9 +191,17 @@ function OverviewTaskList() {
             ))}
         </Box>
       </Box>
-      <Box sx={{ p: 1 }}>
-        <Box sx={{ backgroundColor: "#eefafa", p: 1, borderRadius: "16px" }}>
-          <Box>
+      <Box sx={{ height: "35%" }}>
+        <Box
+          sx={{
+            backgroundColor: "#eefafa",
+            p: 1,
+            borderRadius: "16px",
+            height: "100%",
+            width: "100%",
+          }}
+        >
+          <Box sx={{ height: "25%", width: "100%" }}>
             <TextField
               required
               label="Title"
@@ -202,6 +212,9 @@ function OverviewTaskList() {
               InputLabelProps={{
                 shrink: true,
               }}
+              inputProps={{
+                style: { height: "10%" },
+              }}
               sx={{
                 backgroundColor: "#ffffff",
                 color: "#94ddde",
@@ -209,7 +222,7 @@ function OverviewTaskList() {
               }}
             />
           </Box>
-          <Box>
+          <Box sx={{ height: "25%", width: "100%" }}>
             <TextField
               label="Description"
               required
@@ -226,9 +239,12 @@ function OverviewTaskList() {
               InputLabelProps={{
                 shrink: true,
               }}
+              inputProps={{
+                style: { height: "10%" },
+              }}
             />
           </Box>
-          <Box>
+          <Box sx={{ height: "25%", width: "100%" }}>
             <TextField
               label="Deadline"
               value={deadline}
@@ -243,23 +259,34 @@ function OverviewTaskList() {
                 color: "#94ddde",
                 width: "100%",
               }}
+              inputProps={{
+                style: { height: "10%" },
+              }}
               margin="dense"
             />
           </Box>
-
-          <Button
+          <Box
             sx={{
-              backgroundColor: "#94ddde",
-              color: "#ffffff",
-              borderRadius: "16px",
-              "&:hover": {
-                backgroundColor: "#C1EBEC",
-              },
+              height: "25%",
+              width: "100%",
+              display: "flex",
+              alignItems: "center",
             }}
-            onClick={handleAddTask}
           >
-            + Add Task
-          </Button>
+            <Button
+              sx={{
+                backgroundColor: "#94ddde",
+                color: "#ffffff",
+                borderRadius: "16px",
+                "&:hover": {
+                  backgroundColor: "#C1EBEC",
+                },
+              }}
+              onClick={handleAddTask}
+            >
+              + Add Task
+            </Button>
+          </Box>
         </Box>
       </Box>
     </Box>
