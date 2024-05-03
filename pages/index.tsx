@@ -24,13 +24,14 @@ const Home: React.FC<HomeProps> = () => {
   return (
     <Box sx={{ backgroundColor: "#2d2b42", color: "#16140C" }}>
       <Head>
-        <title>vetrl</title>
+        <title>vetrl - online veterinary software </title>
         <meta
           name="description"
           content="Online Veterinary client management."
         />
       </Head>
       <Box
+        component="header"
         sx={{
           height: "10vh",
           position: "sticky",
@@ -41,7 +42,7 @@ const Home: React.FC<HomeProps> = () => {
       >
         <Header />
       </Box>
-      <Box sx={{ minHeight: "90vh" }}>
+      <Box component="main" sx={{ minHeight: "90vh" }}>
         <Main />
       </Box>
     </Box>
