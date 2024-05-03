@@ -51,19 +51,41 @@ function Main() {
           sx={{
             height: "20vh",
             width: "100%",
-            display: "flex",
-            justifyContent: "center",
           }}
         >
-          <GitHubButton
-            href="https://github.com/Curtis-Thomas/vertl"
-            data-icon="octicon-star"
-            aria-label="Star buttons/github-buttons on GitHub"
-            data-show-count="true"
-            data-size="large"
+          <Box
+            sx={{
+              width: "100%",
+              height: "50%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
           >
-            Star
-          </GitHubButton>
+            <Typography color={"white"}>
+              If you are enjoying vetrl, please take a moment to give the
+              project a star on GitHub by clicking the icon below.
+            </Typography>
+          </Box>
+          <Box
+            sx={{
+              width: "100%",
+              height: "50%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <GitHubButton
+              href="https://github.com/Curtis-Thomas/vertl"
+              data-icon="octicon-star"
+              aria-label="Star buttons/github-buttons on GitHub"
+              data-show-count="true"
+              data-size="large"
+            >
+              Star
+            </GitHubButton>
+          </Box>
         </Box>
         <Box sx={{ width: "100%", height: "50vh" }}>
           <>
