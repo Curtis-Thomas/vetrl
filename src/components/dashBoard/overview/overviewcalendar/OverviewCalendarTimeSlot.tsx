@@ -16,15 +16,18 @@ function OverviewCalendarTimeSlot({
       sx={{
         backgroundColor: "#eefafa",
         p: 1,
-        m: 1,
+        mb: 1,
         display: "flex",
         borderRadius: "16px",
+        height: "100%",
+        width: "100%",
       }}
     >
-      <Box sx={{ width: "30%" }}>
+      <Box sx={{ width: "20%", height: "100%" }}>
         <Box
           sx={{
             height: "40%",
+            width: "100%",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -35,6 +38,7 @@ function OverviewCalendarTimeSlot({
         <Box
           sx={{
             height: "10%",
+            width: "100%",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -45,6 +49,7 @@ function OverviewCalendarTimeSlot({
         <Box
           sx={{
             height: "40%",
+            width: "100%",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -53,9 +58,29 @@ function OverviewCalendarTimeSlot({
           <Typography variant="h6">{end}</Typography>
         </Box>
       </Box>
-      <Box sx={{ width: "70%" }}>
-        <Typography variant="h4">{title}</Typography>
-        <Typography variant="h5">{description}</Typography>
+      <Box sx={{ width: "80%", height: "100%" }}>
+        <Box
+          sx={{
+            height: "40%",
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <Typography variant="h5">{title}</Typography>
+        </Box>
+        <Box sx={{ height: "10%", width: "100%" }}></Box>
+
+        <Box
+          sx={{
+            height: "40%",
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <Typography>{description}</Typography>
+        </Box>
       </Box>
     </Box>
   );
