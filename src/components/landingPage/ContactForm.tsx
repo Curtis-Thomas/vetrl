@@ -5,8 +5,8 @@ function ContactForm() {
   return (
     <Box
       sx={{
-        backgroundColor: "#94ddde",
-        pt: 5,
+        color: "#ffffff",
+        pt: 10,
         pb: 5,
         pl: { xs: 0, md: 15 },
         pr: { xs: 0, md: 15 },
