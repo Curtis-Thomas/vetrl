@@ -16,7 +16,7 @@ function Hero() {
     >
       <Box
         sx={{
-          backgroundColor: "orange",
+          backgroundColor: "#f26b70",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
