@@ -19,9 +19,12 @@ function ContactForm() {
           textAlign: { xs: "center", md: "left" },
         }}
       >
-        <Typography sx={{ pb: 2, fontSize: { xs: 25, md: 50 } }} variant="h5">
-          {" "}
-          Let’s start working together on your future.
+        <Typography
+          sx={{ pb: 2, fontSize: { xs: 25, md: 50 } }}
+          variant="h5"
+          component={"h2"}
+        >
+          Try out the best cloud based veterinary software for free.
         </Typography>
         <Typography sx={{ pb: 4 }} variant="body1">
           {" "}

@@ -20,10 +20,14 @@ function BenefitsCard({
         }}
       >
         <Box sx={{ height: "50%", pt: 5, textAlign: "center" }}>
-          <Typography variant="h4">{title}</Typography>
+          <Typography variant="h4" component={"h3"}>
+            {title}
+          </Typography>
         </Box>
         <Box sx={{ height: "50%", textAlign: "center" }}>
-          <Typography variant="h6">{description}</Typography>
+          <Typography variant="h6" component={"h5"}>
+            {description}
+          </Typography>
         </Box>
       </Card>
     </>

@@ -58,7 +58,7 @@ function Hero() {
             textAlign: { xs: "center", md: "" },
           }}
         >
-          Free Online Veterinary Client Management
+          Online Veterinary Management Solution
         </Typography>
       </Box>
       <Box
@@ -75,8 +75,9 @@ function Hero() {
           pr: { xs: 2, md: 0 },
         }}
       >
-        <Typography sx={{ fontSize: { xs: 20, md: 25 } }}>
-          Keep on top of your workload in one easily accessible location
+        <Typography component="h2" sx={{ fontSize: { xs: 20, md: 25 } }}>
+          Free veterinary software - Keep on top of your workload in one easily
+          accessible location.
         </Typography>
       </Box>
       <Box

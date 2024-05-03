@@ -24,7 +24,7 @@ function Benefits() {
           color="#ffffff"
           sx={{ fontSize: { xs: 25, md: 50 } }}
         >
-          Creating innovative veterinary management systems
+          Innovative veterinary computer software.
         </Typography>
       </Box>
 
@@ -37,18 +37,18 @@ function Benefits() {
         }}
       >
         <BenefitsCard
-          title="Easy and intuitive"
-          description="Avoiding excess clutter and simplifying the user experience."
+          title="Easy and Intuitive Veterinary Management"
+          description="Streamlined Veterinary Management: Simplify operations and de-clutter your workflow."
         />
 
         <BenefitsCard
-          title="Low-cost and reliable"
-          description="Reduces the management costs of your veterinary practice."
+          title="Free and Reliable Veterinary Software"
+          description="Cost-Effective Solutions: Save on overheads with our affordable veterinary software."
         />
 
         <BenefitsCard
           title="Veterinarian driven design"
-          description="Improving design with direct feedback from the veterinary community."
+          description="Community-Centric Design: Crafted based on direct input from veterinarians."
         />
       </Box>
     </Box>

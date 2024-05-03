@@ -96,7 +96,7 @@ function Features() {
             component="h2"
             sx={{ fontSize: { xs: 25, md: 50 } }}
           >
-            Features
+            Management system features.
           </Typography>
         </Box>
 
