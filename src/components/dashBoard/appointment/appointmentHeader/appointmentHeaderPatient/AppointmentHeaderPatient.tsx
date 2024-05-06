@@ -59,6 +59,8 @@ function AppointmentHeaderPatient({
 
   const [patient, setPatient] = useState<Patient | null>(null);
 
+  const [patientBoxFontSize, setPatientBoxFontSize] = useState("0.8rem");
+
   const [backdropState, setBackdropState] = useState(false);
   const SearchPatientData = useCallback(
     async (clientPatients: string[]) => {
@@ -140,63 +142,102 @@ function AppointmentHeaderPatient({
           sx={{
             backgroundColor: "#ffffff",
             borderRadius: "16px",
-
             height: "100%",
             width: "100%",
             p: 1,
           }}
         >
-          <Box sx={{ width: "100%", height: "33.33%", display: "flex" }}>
-            <Box sx={{ width: "33.33%" }}>
-              {patient && (
-                <>
-                  <Typography>Name: {patient.name}</Typography>
-                </>
-              )}
+          <Box
+            sx={{
+              height: "70%",
+              width: "100%",
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                height: "50%",
+                width: "100%",
+              }}
+            >
+              <Box sx={{ width: "33.33%" }}>
+                <Typography sx={{ fontSize: patientBoxFontSize }}>
+                  Name:
+                </Typography>
+                {patient && (
+                  <Typography sx={{ fontSize: patientBoxFontSize }}>
+                    {patient.name}
+                  </Typography>
+                )}
+              </Box>
+              <Box sx={{ width: "33.33%" }}>
+                <Typography sx={{ fontSize: patientBoxFontSize }}>
+                  Species:
+                </Typography>
+                {patient && (
+                  <Typography sx={{ fontSize: patientBoxFontSize }}>
+                    {patient.species}
+                  </Typography>
+                )}
+              </Box>
+              <Box sx={{ width: "33.33%" }}>
+                <Typography sx={{ fontSize: patientBoxFontSize }}>
+                  Breed:
+                </Typography>
+                {patient && (
+                  <Typography sx={{ fontSize: patientBoxFontSize }}>
+                    {patient.breed}
+                  </Typography>
+                )}
+              </Box>
             </Box>
-            <Box sx={{ width: "33.33%" }}>
-              {patient && (
-                <>
-                  <Typography>Species: {patient.species}</Typography>
-                </>
-              )}
-            </Box>
-            <Box sx={{ width: "33.33%" }}>
-              {patient && (
-                <>
-                  <Typography>Breed: {patient.breed}</Typography>
-                </>
-              )}
-            </Box>
-          </Box>
-          <Box sx={{ width: "100%", height: "33.33%", display: "flex" }}>
-            <Box sx={{ width: "33.33%" }}>
-              {patient && (
-                <>
-                  <Typography>Weight Kg: {patient.weight}</Typography>
-                </>
-              )}
-            </Box>
-            <Box sx={{ width: "33.33%" }}>
-              {patient && (
-                <>
-                  <Typography>Weight Kg: {patient.weight}</Typography>
-                </>
-              )}
-            </Box>
-            <Box sx={{ width: "33.33%" }}>
-              {patient && (
-                <>
-                  <Typography>Microchip Id: {patient.microchip}</Typography>
-                </>
-              )}
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                height: "50%",
+                width: "100%",
+              }}
+            >
+              <Box sx={{ width: "33.33%" }}>
+                <Typography sx={{ fontSize: patientBoxFontSize }}>
+                  Age:
+                </Typography>
+                {patient && (
+                  <Typography sx={{ fontSize: patientBoxFontSize }}>
+                    {" "}
+                    {patient.age}
+                  </Typography>
+                )}
+              </Box>
+              <Box sx={{ width: "33.33%" }}>
+                <Typography sx={{ fontSize: patientBoxFontSize }}>
+                  Weight:
+                </Typography>
+                {patient && (
+                  <Typography sx={{ fontSize: patientBoxFontSize }}>
+                    {patient.weight}
+                  </Typography>
+                )}
+              </Box>
+              <Box sx={{ width: "33.33%" }}>
+                <Typography sx={{ fontSize: patientBoxFontSize }}>
+                  Microchip:
+                </Typography>
+                {patient && (
+                  <Typography sx={{ fontSize: patientBoxFontSize }}>
+                    {patient.microchip}
+                  </Typography>
+                )}
+              </Box>
             </Box>
           </Box>
           <Box
             sx={{
-              width: "100%",
-              height: "33.33%",
               display: "flex",
+              height: "30%",
+              width: "100%",
             }}
           >
             <Box sx={{ width: "75%" }}>
@@ -217,7 +258,9 @@ function AppointmentHeaderPatient({
                   </Button>
                 ))
               ) : (
-                <Typography>No patients</Typography>
+                <Typography sx={{ fontSize: patientBoxFontSize }}>
+                  No patients
+                </Typography>
               )}
             </Box>
             <Box
