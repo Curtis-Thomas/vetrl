@@ -108,24 +108,32 @@ function AppointmentSupplies() {
   if (error) return <div>{error.message}</div>;
 
   return (
-    <>
-      <Box sx={{ height: "7%" }}>
-        <Box sx={{ height: "60%" }}>
-          <TextField
-            label="Search"
-            value={searchTerm}
-            autoComplete="off"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            onChange={(event) => setSearchTerm(event.target.value)}
-            size="small"
-            sx={{ width: 200, backgroundColor: "#ffffff" }}
-          />
-        </Box>
+    <Box sx={{ height: "100%", width: "100%" }}>
+      <Box sx={{ height: "10%", width: "100%" }}>
+        <TextField
+          label="Search"
+          value={searchTerm}
+          autoComplete="off"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={(event) => setSearchTerm(event.target.value)}
+          size="small"
+          sx={{ width: 200, backgroundColor: "#ffffff" }}
+          inputProps={{
+            style: { height: "10%" },
+          }}
+        />
       </Box>
-      <Box sx={{ height: "38%" }}>
-        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+
+      <Box sx={{ height: "25%" }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            height: "20%",
+          }}
+        >
           <Box>
             <Typography>Supplies</Typography>
           </Box>
@@ -179,8 +187,8 @@ function AppointmentSupplies() {
           </Box>
         </Box>
       </Box>
-      <Box sx={{ height: "55%" }}>
-        <Box sx={{ border: "solid 1px #94ddde", height: "35%" }}>
+      <Box sx={{ height: "65%" }}>
+        <Box sx={{ border: "solid 1px #94ddde", height: "45%" }}>
           <Box
             sx={{
               height: "100%",
@@ -239,6 +247,9 @@ function AppointmentSupplies() {
                 onChange={(event) =>
                   setSuppliesUsedSupplies(event.target.value)
                 }
+                inputProps={{
+                  style: { height: "10%" },
+                }}
               />
             </Box>
             <Box sx={{ height: "33.33%" }}>
@@ -267,6 +278,9 @@ function AppointmentSupplies() {
                 size="small"
                 autoComplete="off"
                 onChange={(event) => setSuppliesUsedPrice(event.target.value)}
+                inputProps={{
+                  style: { height: "10%" },
+                }}
               />
             </Box>
           </Box>
@@ -317,7 +331,7 @@ function AppointmentSupplies() {
           </Box>
         </Box>
       </Box>
-    </>
+    </Box>
   );
 }
 

@@ -107,8 +107,8 @@ function AppointmentProcedures() {
   if (error) return <div>{error.message}</div>;
 
   return (
-    <>
-      <Box sx={{ height: "7%" }}>
+    <Box sx={{ height: "100%", width: "100%" }}>
+      <Box sx={{ height: "10%", width: "100%" }}>
         <Box sx={{ height: "60%" }}>
           <TextField
             label="Search"
@@ -120,11 +120,20 @@ function AppointmentProcedures() {
               shrink: true,
             }}
             sx={{ width: 200, backgroundColor: "#ffffff" }}
+            inputProps={{
+              style: { height: "10%" },
+            }}
           />
         </Box>
       </Box>
-      <Box sx={{ height: "38%" }}>
-        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+      <Box sx={{ height: "25%" }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            height: "20%",
+          }}
+        >
           <Box>
             <Typography>Procedures</Typography>
           </Box>
@@ -178,8 +187,8 @@ function AppointmentProcedures() {
           </Box>
         </Box>
       </Box>
-      <Box sx={{ height: "55%" }}>
-        <Box sx={{ border: "solid 1px #94ddde", height: "35%" }}>
+      <Box sx={{ height: "65%" }}>
+        <Box sx={{ border: "solid 1px #94ddde", height: "45%" }}>
           <Box
             sx={{
               height: "100%",
@@ -238,6 +247,9 @@ function AppointmentProcedures() {
                 onChange={(event) =>
                   setProceduresDoneProcedure(event.target.value)
                 }
+                inputProps={{
+                  style: { height: "10%" },
+                }}
               />
             </Box>
             <Box sx={{ height: "33.33%" }}>
@@ -258,9 +270,6 @@ function AppointmentProcedures() {
             </Box>
             <Box sx={{ height: "33.33%" }}>
               <TextField
-                InputLabelProps={{
-                  shrink: true,
-                }}
                 sx={{ backgroundColor: "#ffffff" }}
                 value={proceduresDonePrice}
                 label="Price - Num"
@@ -268,6 +277,12 @@ function AppointmentProcedures() {
                 size="small"
                 autoComplete="off"
                 onChange={(event) => setProceduresDonePrice(event.target.value)}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                inputProps={{
+                  style: { height: "10%" },
+                }}
               />
             </Box>
           </Box>
@@ -318,7 +333,7 @@ function AppointmentProcedures() {
           </Box>
         </Box>
       </Box>
-    </>
+    </Box>
   );
 }
 

@@ -108,24 +108,31 @@ function AppointmentMedicine() {
   if (error) return <div>{error.message}</div>;
 
   return (
-    <>
-      <Box sx={{ height: "7%" }}>
-        <Box sx={{ height: "60%" }}>
-          <TextField
-            autoComplete="off"
-            label="Search"
-            value={searchTerm}
-            onChange={(event) => setSearchTerm(event.target.value)}
-            size="small"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            sx={{ width: 200, backgroundColor: "#ffffff" }}
-          />
-        </Box>
+    <Box sx={{ height: "100%", width: "100%" }}>
+      <Box sx={{ height: "10%", width: "100%" }}>
+        <TextField
+          autoComplete="off"
+          label="Search"
+          value={searchTerm}
+          onChange={(event) => setSearchTerm(event.target.value)}
+          size="small"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          sx={{ width: 200, backgroundColor: "#ffffff" }}
+          inputProps={{
+            style: { height: "10%" },
+          }}
+        />
       </Box>
-      <Box sx={{ height: "38%" }}>
-        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+      <Box sx={{ height: "25%" }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            height: "20%",
+          }}
+        >
           <Box>
             <Typography>Medicine</Typography>
           </Box>
@@ -137,6 +144,7 @@ function AppointmentMedicine() {
           sx={{
             height: "80%",
             overflowX: "hidden",
+
             overflowY: "auto",
             "&::-webkit-scrollbar": {
               width: "0.4em",
@@ -179,8 +187,8 @@ function AppointmentMedicine() {
           </Box>
         </Box>
       </Box>
-      <Box sx={{ height: "55%" }}>
-        <Box sx={{ border: "solid 1px #94ddde", height: "35%" }}>
+      <Box sx={{ height: "65%" }}>
+        <Box sx={{ border: "solid 1px #94ddde", height: "45%" }}>
           <Box
             sx={{
               height: "100%",
@@ -226,7 +234,7 @@ function AppointmentMedicine() {
         <Box sx={{ height: "10%" }}></Box>
         <Box sx={{ height: "45%", display: "flex" }}>
           <Box sx={{ width: "70%", height: "100%" }}>
-            <Box sx={{ height: "33%" }}>
+            <Box sx={{ height: "33.33%" }}>
               <TextField
                 sx={{ backgroundColor: "#ffffff" }}
                 value={medicineUsedMedicine}
@@ -238,6 +246,9 @@ function AppointmentMedicine() {
                 }
                 InputLabelProps={{
                   shrink: true,
+                }}
+                inputProps={{
+                  style: { height: "10%" },
                 }}
               />
             </Box>
@@ -266,6 +277,9 @@ function AppointmentMedicine() {
                 onChange={(event) => setMedicineUsedPrice(event.target.value)}
                 InputLabelProps={{
                   shrink: true,
+                }}
+                inputProps={{
+                  style: { height: "10%" },
                 }}
               />
             </Box>
@@ -317,7 +331,7 @@ function AppointmentMedicine() {
           </Box>
         </Box>
       </Box>
-    </>
+    </Box>
   );
 }
 
