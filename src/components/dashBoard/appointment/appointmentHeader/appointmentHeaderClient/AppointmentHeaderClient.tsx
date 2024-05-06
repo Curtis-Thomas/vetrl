@@ -217,118 +217,137 @@ function AppointmentHeaderClient({
             p: 1,
           }}
         >
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              height: "50%",
-            }}
-          >
-            <Box sx={{ width: "11.11%" }}>
-              <Typography sx={{ fontSize: clientBoxFontSize }}>
-                Full name:
-              </Typography>
+          <Box sx={{ height: "70%", width: "100%", p: 1 }}>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                height: "50%",
+                width: "100%",
+              }}
+            >
+              <Box sx={{ width: "20%" }}>
+                <Typography sx={{ fontSize: clientBoxFontSize }}>
+                  Full name:
+                </Typography>
 
-              {clientData && (
+                {clientData && (
+                  <Typography sx={{ fontSize: clientBoxFontSize }}>
+                    {clientData.name}
+                  </Typography>
+                )}
+              </Box>
+              <Box sx={{ width: "20%" }}>
                 <Typography sx={{ fontSize: clientBoxFontSize }}>
-                  {clientData.name}
+                  Phone No:
                 </Typography>
-              )}
-            </Box>
-            <Box sx={{ width: "11.11%" }}>
-              <Typography sx={{ fontSize: clientBoxFontSize }}>
-                Phone No:
-              </Typography>
 
-              {clientData && (
+                {clientData && (
+                  <Typography sx={{ fontSize: clientBoxFontSize }}>
+                    {clientData.phone}
+                  </Typography>
+                )}
+              </Box>
+              <Box sx={{ width: "20%" }}>
                 <Typography sx={{ fontSize: clientBoxFontSize }}>
-                  {clientData.phone}
+                  Email:
                 </Typography>
-              )}
-            </Box>
-            <Box sx={{ width: "11.11%" }}>
-              <Typography sx={{ fontSize: clientBoxFontSize }}>
-                Email:
-              </Typography>
 
-              {clientData && (
+                {clientData && (
+                  <Typography sx={{ fontSize: clientBoxFontSize }}>
+                    {clientData.email}
+                  </Typography>
+                )}
+              </Box>
+              <Box sx={{ width: "20%" }}>
                 <Typography sx={{ fontSize: clientBoxFontSize }}>
-                  {clientData.email}
+                  Business ID:
                 </Typography>
-              )}
-            </Box>
-            <Box sx={{ width: "11.11%" }}>
-              <Typography sx={{ fontSize: clientBoxFontSize }}>
-                Business ID:
-              </Typography>
-              {clientData && (
+                {clientData && (
+                  <Typography sx={{ fontSize: clientBoxFontSize }}>
+                    {clientData.businessId}
+                  </Typography>
+                )}
+              </Box>
+
+              <Box sx={{ width: "20%" }}>
                 <Typography sx={{ fontSize: clientBoxFontSize }}>
-                  {clientData.businessId}
+                  Street Address:
                 </Typography>
-              )}
+                {clientData && (
+                  <Typography sx={{ fontSize: clientBoxFontSize }}>
+                    {clientData.streetAddress}
+                  </Typography>
+                )}
+              </Box>
             </Box>
 
-            <Box sx={{ width: "11.11%" }}>
-              <Typography sx={{ fontSize: clientBoxFontSize }}>
-                Street Address:
-              </Typography>
-              {clientData && (
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                height: "50%",
+                width: "100%",
+              }}
+            >
+              <Box sx={{ width: "20%" }}>
                 <Typography sx={{ fontSize: clientBoxFontSize }}>
-                  {clientData.streetAddress}
+                  ZIP Code:
                 </Typography>
-              )}
-            </Box>
-            <Box sx={{ width: "11.11%" }}>
-              <Typography sx={{ fontSize: clientBoxFontSize }}>
-                ZIP Code:
-              </Typography>
-              {clientData && (
+                {clientData && (
+                  <Typography sx={{ fontSize: clientBoxFontSize }}>
+                    {clientData.zipCode}
+                  </Typography>
+                )}
+              </Box>
+              <Box sx={{ width: "20%" }}>
                 <Typography sx={{ fontSize: clientBoxFontSize }}>
-                  {clientData.zipCode}
+                  City:
                 </Typography>
-              )}
-            </Box>
-            <Box sx={{ width: "11.11%" }}>
-              <Typography sx={{ fontSize: clientBoxFontSize }}>
-                City:
-              </Typography>
-              {clientData && (
+                {clientData && (
+                  <Typography sx={{ fontSize: clientBoxFontSize }}>
+                    {clientData.city}
+                  </Typography>
+                )}
+              </Box>
+              <Box sx={{ width: "20%" }}>
                 <Typography sx={{ fontSize: clientBoxFontSize }}>
-                  {clientData.city}
+                  County:
                 </Typography>
-              )}
-            </Box>
-            <Box sx={{ width: "11.11%" }}>
-              <Typography sx={{ fontSize: clientBoxFontSize }}>
-                County:
-              </Typography>
-              {clientData && (
+                {clientData && (
+                  <Typography sx={{ fontSize: clientBoxFontSize }}>
+                    {clientData.county}
+                  </Typography>
+                )}
+              </Box>
+              <Box sx={{ width: "20%" }}>
                 <Typography sx={{ fontSize: clientBoxFontSize }}>
-                  {clientData.county}
+                  Country:
                 </Typography>
-              )}
-            </Box>
-            <Box sx={{ width: "11.11%" }}>
-              <Typography sx={{ fontSize: clientBoxFontSize }}>
-                Country:
-              </Typography>
-              {clientData && (
-                <Typography sx={{ fontSize: clientBoxFontSize }}>
-                  {clientData.country}
-                </Typography>
-              )}
+                {clientData && (
+                  <Typography sx={{ fontSize: clientBoxFontSize }}>
+                    {clientData.country}
+                  </Typography>
+                )}
+              </Box>
             </Box>
           </Box>
 
           <Box
             sx={{
               display: "flex",
-              height: "50%",
-              justifyContent: "space-evenly",
-              alignItems: "center",
+              height: "30%",
+              width: "100%",
             }}
           >
-            <Box sx={{ width: "10%" }}>
+            <Box
+              sx={{
+                width: "25%",
+                height: "100%",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
               <TextField
                 size="small"
                 label="Client Id"
@@ -337,10 +356,20 @@ function AppointmentHeaderClient({
                 InputLabelProps={{
                   shrink: true,
                 }}
-                sx={{ width: "100%", height: "50%" }}
+                sx={{ width: "80%" }}
+                inputProps={{
+                  style: { height: "10%" },
+                }}
               />
             </Box>
-            <Box>
+            <Box
+              sx={{
+                width: "25%",
+                height: "100%",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
               <TextField
                 label="Enter Client Name"
                 variant="outlined"
@@ -348,11 +377,23 @@ function AppointmentHeaderClient({
                 size="small"
                 autoComplete="off"
                 onChange={(event) => setClientName(event.target.value)}
+                sx={{ width: "80%" }}
                 InputLabelProps={{
                   shrink: true,
                 }}
+                inputProps={{
+                  style: { height: "10%" },
+                }}
               />
-
+            </Box>
+            <Box
+              sx={{
+                width: "25%",
+                height: "100%",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
               <Button
                 sx={{
                   backgroundColor: "#94ddde",
@@ -368,7 +409,14 @@ function AppointmentHeaderClient({
                 Select Client
               </Button>
             </Box>
-            <Box>
+            <Box
+              sx={{
+                width: "25%",
+                height: "100%",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
               <Button
                 onClick={() => setBackdropState(true)}
                 sx={{
