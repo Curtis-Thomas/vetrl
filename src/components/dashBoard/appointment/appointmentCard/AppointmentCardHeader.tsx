@@ -135,6 +135,9 @@ function AppointmentCardHeader() {
               size="small"
               disabled
               sx={{ width: "100%", height: "150%" }}
+              inputProps={{
+                style: { height: "10%" },
+              }}
             />
           </Box>
         </Box>
@@ -161,6 +164,9 @@ function AppointmentCardHeader() {
               value={appointmentCardDate}
               onChange={handleAppointmentDateChange}
               sx={{ width: "100%", height: "50%" }}
+              inputProps={{
+                style: { height: "10%" },
+              }}
             />
           </Box>
           <Box sx={{ ml: 1 }}>
@@ -174,6 +180,9 @@ function AppointmentCardHeader() {
               value={appointmentCardTime}
               onChange={handleAppointmentTimeChange}
               sx={{ width: "100%", height: "50%" }}
+              inputProps={{
+                style: { height: "10%" },
+              }}
             />
           </Box>
         </Box>
@@ -199,6 +208,9 @@ function AppointmentCardHeader() {
             }}
             onChange={handleAnamnesisChange}
             sx={{ width: "100%", height: "50%" }}
+            inputProps={{
+              style: { height: "10%" },
+            }}
           />
         </Box>
         <Box whiteSpace={{ width: "5%" }}></Box>
@@ -223,6 +235,9 @@ function AppointmentCardHeader() {
             }}
             onChange={handleDiagnosisChange}
             sx={{ width: "100%", height: "50%" }}
+            inputProps={{
+              style: { height: "10%" },
+            }}
           />
         </Box>
         <Box whiteSpace={{ width: "5%" }}></Box>
@@ -247,6 +262,9 @@ function AppointmentCardHeader() {
             }}
             onChange={handleAdditionalNotesChange}
             sx={{ width: "100%", height: "50%" }}
+            inputProps={{
+              style: { height: "10%" },
+            }}
           />
         </Box>
         <Box whiteSpace={{ width: "5%" }}></Box>
