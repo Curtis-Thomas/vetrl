@@ -18,35 +18,34 @@ function AppointmentDischargeNotes() {
   };
 
   return (
-    <>
-      <Box sx={{ height: "10%", p: 1 }}>
+    <Box sx={{ height: "100%", width: "100%", p: 1 }}>
+      <Box sx={{ height: "15%", p: 1, display: "flex", alignItems: "center" }}>
         <Typography>Discharge notes</Typography>
       </Box>
       <Box
-        sx={{ height: "90%", p: 2, display: "flex", flexDirection: "column" }}
+        sx={{
+          height: "85%",
+          p: 1,
+
+          display: "flex",
+          flexDirection: "column",
+          overflow: "auto",
+        }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flex: 1,
-            flexDirection: "column",
+        <TextField
+          InputProps={{
+            style: {
+              backgroundColor: "#ffffff",
+              height: "100%",
+            },
           }}
-        >
-          <TextField
-            sx={{ width: "100%", height: "100%" }}
-            InputProps={{
-              style: { backgroundColor: "#ffffff" },
-            }}
-            value={dischargeNotes}
-            onChange={handleDischargeNotesChange}
-            multiline
-            rows={4}
-          />
-        </Box>
+          value={dischargeNotes}
+          onChange={handleDischargeNotesChange}
+          multiline
+          fullWidth
+        />
       </Box>
-    </>
+    </Box>
   );
 }
 
