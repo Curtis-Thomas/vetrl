@@ -48,13 +48,17 @@ function DashboardSideBar({
           p: 1,
         }}
       >
-        <Box sx={{ height: "50%" }}>
-          <Avatar src={user?.picture || undefined} alt="User" />
+        <Box sx={{ height: "40%", width: "100%" }}>
+          <Avatar
+            src={user?.picture || undefined}
+            alt="User"
+            style={{ height: "auto", width: "10%" }}
+          />
         </Box>
-        <Box sx={{ height: "25%" }}>
+        <Box sx={{ height: "30%", display: "flex", alignItems: "center" }}>
           <Typography>{user?.nickname}</Typography>
         </Box>
-        <Box sx={{ height: "25%" }}>
+        <Box sx={{ height: "30%", display: "flex", alignItems: "center" }}>
           <Typography>Version: {packageJson.version}</Typography>
         </Box>
       </Box>
