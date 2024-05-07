@@ -1,18 +1,11 @@
-# vetrl - Veterinary client management systems
+![Cover Picture](https://github.com/Curtis-Thomas/vetrl/blob/main/vetrl.jpg)
+
+
+# vetrl - Veterinary management solution
 
 <br />
 
-## Funding 
-
-The project currently has the running costs:
-
-Domain name registration - Yearly - $13.99
-
-Server hosting - monthly - $5
-
-If you are enjoying the project and would like to help with the costs, check out the sponsor section.
-
-## Description
+## Description:
 
 <br />
 
@@ -64,7 +57,7 @@ Codex page -
 
 <br />
 
-## Tech Stack
+## Tech Stack:
 
 - **Framework:** [Next.js 14](https://nextjs.org)
 - **Authentication:** [Auth0](https://auth0.com/)
@@ -72,7 +65,10 @@ Codex page -
 - **Styling:** [Material-UI (MUI)](https://mui.com/)
 - **Hosting:** [Netlify](https://www.netlify.com/)
 
-## Getting Started - Locally
+  <br />
+
+
+## Getting Started - Local:
 
 To get started with vetrl locally, follow these steps:
 
@@ -125,6 +121,24 @@ nodemon server.js
 ```
 npm run dev
 ```
+
 6. Open http://localhost:3000 in your browser to see the application running locally.
 
 Remember to replace placeholders like YOUR_MONGODB_CONNECTION_STRING, YOUR_AUTH0_CLIENT_ID, and YOUR_AUTH0_CLIENT_SECRET with your actual credentials. Once you've completed these steps, you should have vetrl running locally on your machine, ready for development or testing.
+
+
+<br />
+
+
+
+
+
+## Funding:
+
+The project currently has the running costs:
+
+Domain name registration - Yearly - $13.99
+
+Server hosting - monthly - $5
+
+If you are enjoying the project and would like to help with the costs, check out the sponsor section.
