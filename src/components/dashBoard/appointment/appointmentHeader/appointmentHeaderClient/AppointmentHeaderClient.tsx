@@ -227,55 +227,125 @@ function AppointmentHeaderClient({
               }}
             >
               <Box sx={{ width: "20%" }}>
-                <Typography sx={{ fontSize: clientBoxFontSize }}>
+                <Typography
+                  sx={{
+                    fontSize: clientBoxFontSize,
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                  }}
+                >
                   Full name:
                 </Typography>
 
                 {clientData && (
-                  <Typography sx={{ fontSize: clientBoxFontSize }}>
+                  <Typography
+                    sx={{
+                      fontSize: clientBoxFontSize,
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
                     {clientData.name}
                   </Typography>
                 )}
               </Box>
               <Box sx={{ width: "20%" }}>
-                <Typography sx={{ fontSize: clientBoxFontSize }}>
+                <Typography
+                  sx={{
+                    fontSize: clientBoxFontSize,
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                  }}
+                >
                   Phone No:
                 </Typography>
 
                 {clientData && (
-                  <Typography sx={{ fontSize: clientBoxFontSize }}>
+                  <Typography
+                    sx={{
+                      fontSize: clientBoxFontSize,
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
                     {clientData.phone}
                   </Typography>
                 )}
               </Box>
               <Box sx={{ width: "20%" }}>
-                <Typography sx={{ fontSize: clientBoxFontSize }}>
+                <Typography
+                  sx={{
+                    fontSize: clientBoxFontSize,
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                  }}
+                >
                   Email:
                 </Typography>
 
                 {clientData && (
-                  <Typography sx={{ fontSize: clientBoxFontSize }}>
+                  <Typography
+                    sx={{
+                      fontSize: clientBoxFontSize,
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
                     {clientData.email}
                   </Typography>
                 )}
               </Box>
               <Box sx={{ width: "20%" }}>
-                <Typography sx={{ fontSize: clientBoxFontSize }}>
+                <Typography
+                  sx={{
+                    fontSize: clientBoxFontSize,
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                  }}
+                >
                   Business ID:
                 </Typography>
                 {clientData && (
-                  <Typography sx={{ fontSize: clientBoxFontSize }}>
+                  <Typography
+                    sx={{
+                      fontSize: clientBoxFontSize,
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
                     {clientData.businessId}
                   </Typography>
                 )}
               </Box>
 
               <Box sx={{ width: "20%" }}>
-                <Typography sx={{ fontSize: clientBoxFontSize }}>
+                <Typography
+                  sx={{
+                    fontSize: clientBoxFontSize,
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                  }}
+                >
                   Street Address:
                 </Typography>
                 {clientData && (
-                  <Typography sx={{ fontSize: clientBoxFontSize }}>
+                  <Typography
+                    sx={{
+                      fontSize: clientBoxFontSize,
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
                     {clientData.streetAddress}
                   </Typography>
                 )}
@@ -291,41 +361,97 @@ function AppointmentHeaderClient({
               }}
             >
               <Box sx={{ width: "20%" }}>
-                <Typography sx={{ fontSize: clientBoxFontSize }}>
+                <Typography
+                  sx={{
+                    fontSize: clientBoxFontSize,
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                  }}
+                >
                   ZIP Code:
                 </Typography>
                 {clientData && (
-                  <Typography sx={{ fontSize: clientBoxFontSize }}>
+                  <Typography
+                    sx={{
+                      fontSize: clientBoxFontSize,
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
                     {clientData.zipCode}
                   </Typography>
                 )}
               </Box>
               <Box sx={{ width: "20%" }}>
-                <Typography sx={{ fontSize: clientBoxFontSize }}>
+                <Typography
+                  sx={{
+                    fontSize: clientBoxFontSize,
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                  }}
+                >
                   City:
                 </Typography>
                 {clientData && (
-                  <Typography sx={{ fontSize: clientBoxFontSize }}>
+                  <Typography
+                    sx={{
+                      fontSize: clientBoxFontSize,
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
                     {clientData.city}
                   </Typography>
                 )}
               </Box>
               <Box sx={{ width: "20%" }}>
-                <Typography sx={{ fontSize: clientBoxFontSize }}>
+                <Typography
+                  sx={{
+                    fontSize: clientBoxFontSize,
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                  }}
+                >
                   County:
                 </Typography>
                 {clientData && (
-                  <Typography sx={{ fontSize: clientBoxFontSize }}>
+                  <Typography
+                    sx={{
+                      fontSize: clientBoxFontSize,
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
                     {clientData.county}
                   </Typography>
                 )}
               </Box>
               <Box sx={{ width: "20%" }}>
-                <Typography sx={{ fontSize: clientBoxFontSize }}>
+                <Typography
+                  sx={{
+                    fontSize: clientBoxFontSize,
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                  }}
+                >
                   Country:
                 </Typography>
                 {clientData && (
-                  <Typography sx={{ fontSize: clientBoxFontSize }}>
+                  <Typography
+                    sx={{
+                      fontSize: clientBoxFontSize,
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
                     {clientData.country}
                   </Typography>
                 )}

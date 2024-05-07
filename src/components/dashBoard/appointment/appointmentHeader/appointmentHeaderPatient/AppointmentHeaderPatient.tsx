@@ -162,31 +162,73 @@ function AppointmentHeaderPatient({
               }}
             >
               <Box sx={{ width: "33.33%" }}>
-                <Typography sx={{ fontSize: patientBoxFontSize }}>
+                <Typography
+                  sx={{
+                    fontSize: patientBoxFontSize,
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                  }}
+                >
                   Name:
                 </Typography>
                 {patient && (
-                  <Typography sx={{ fontSize: patientBoxFontSize }}>
+                  <Typography
+                    sx={{
+                      fontSize: patientBoxFontSize,
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
                     {patient.name}
                   </Typography>
                 )}
               </Box>
               <Box sx={{ width: "33.33%" }}>
-                <Typography sx={{ fontSize: patientBoxFontSize }}>
+                <Typography
+                  sx={{
+                    fontSize: patientBoxFontSize,
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                  }}
+                >
                   Species:
                 </Typography>
                 {patient && (
-                  <Typography sx={{ fontSize: patientBoxFontSize }}>
+                  <Typography
+                    sx={{
+                      fontSize: patientBoxFontSize,
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
                     {patient.species}
                   </Typography>
                 )}
               </Box>
               <Box sx={{ width: "33.33%" }}>
-                <Typography sx={{ fontSize: patientBoxFontSize }}>
+                <Typography
+                  sx={{
+                    fontSize: patientBoxFontSize,
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                  }}
+                >
                   Breed:
                 </Typography>
                 {patient && (
-                  <Typography sx={{ fontSize: patientBoxFontSize }}>
+                  <Typography
+                    sx={{
+                      fontSize: patientBoxFontSize,
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
                     {patient.breed}
                   </Typography>
                 )}
@@ -201,32 +243,74 @@ function AppointmentHeaderPatient({
               }}
             >
               <Box sx={{ width: "33.33%" }}>
-                <Typography sx={{ fontSize: patientBoxFontSize }}>
+                <Typography
+                  sx={{
+                    fontSize: patientBoxFontSize,
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                  }}
+                >
                   Age:
                 </Typography>
                 {patient && (
-                  <Typography sx={{ fontSize: patientBoxFontSize }}>
+                  <Typography
+                    sx={{
+                      fontSize: patientBoxFontSize,
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
                     {" "}
                     {patient.age}
                   </Typography>
                 )}
               </Box>
               <Box sx={{ width: "33.33%" }}>
-                <Typography sx={{ fontSize: patientBoxFontSize }}>
+                <Typography
+                  sx={{
+                    fontSize: patientBoxFontSize,
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                  }}
+                >
                   Weight:
                 </Typography>
                 {patient && (
-                  <Typography sx={{ fontSize: patientBoxFontSize }}>
+                  <Typography
+                    sx={{
+                      fontSize: patientBoxFontSize,
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
                     {patient.weight}
                   </Typography>
                 )}
               </Box>
               <Box sx={{ width: "33.33%" }}>
-                <Typography sx={{ fontSize: patientBoxFontSize }}>
+                <Typography
+                  sx={{
+                    fontSize: patientBoxFontSize,
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                  }}
+                >
                   Microchip:
                 </Typography>
                 {patient && (
-                  <Typography sx={{ fontSize: patientBoxFontSize }}>
+                  <Typography
+                    sx={{
+                      fontSize: patientBoxFontSize,
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
                     {patient.microchip}
                   </Typography>
                 )}
@@ -258,7 +342,14 @@ function AppointmentHeaderPatient({
                   </Button>
                 ))
               ) : (
-                <Typography sx={{ fontSize: patientBoxFontSize }}>
+                <Typography
+                  sx={{
+                    fontSize: patientBoxFontSize,
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                  }}
+                >
                   No patients
                 </Typography>
               )}
