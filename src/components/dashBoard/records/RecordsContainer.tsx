@@ -68,7 +68,7 @@ function RecordsContainer() {
           border: "solid 1px black",
         }}
       >
-        <Typography>Records</Typography>
+        <Typography variant="h5">Records</Typography>
       </Box>
       <Box sx={{ height: "90vh", overflow: "auto" }}>
         {(records || [])

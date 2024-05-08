@@ -264,10 +264,10 @@ function OverviewCalender(): JSX.Element {
         }}
       >
         <Box sx={{ height: "50%", width: "100%" }}>
-          <Typography variant="h4">Schedule</Typography>
+          <Typography variant="h5">Schedule</Typography>
         </Box>
         <Box sx={{ height: "50%", width: "100%" }}>
-          <Typography variant="h5">{dateToday}</Typography>
+          <Typography variant="subtitle1">{dateToday}</Typography>
         </Box>
       </Box>
       <Box

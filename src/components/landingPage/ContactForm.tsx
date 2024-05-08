@@ -26,7 +26,7 @@ function ContactForm() {
         >
           Try out the best cloud based veterinary software for free.
         </Typography>
-        <Typography sx={{ pb: 4 }} variant="body1">
+        <Typography sx={{ pb: 4 }} variant="subtitle1">
           {" "}
           Improve your focus on patients and start using our veterinary
           management system today.

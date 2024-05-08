@@ -29,7 +29,6 @@ function Hero() {
           <Typography
             sx={{
               fontSize: 20,
-              fontWeight: "bold",
 
               textAlign: "center",
             }}
@@ -75,7 +74,11 @@ function Hero() {
           pr: { xs: 2, md: 0 },
         }}
       >
-        <Typography component="h2" sx={{ fontSize: { xs: 20, md: 25 } }}>
+        <Typography
+          // component="h2"
+          variant="body1"
+          sx={{ fontSize: { xs: 20, md: 25 } }}
+        >
           Free veterinary software - Keep on top of your workload in one easily
           accessible location.
         </Typography>
@@ -102,7 +105,7 @@ function Hero() {
                 p: 3,
               }}
             >
-              Sign-Up
+              <Typography variant="subtitle1">Sign-Up</Typography>
             </Button>
           </Link>
         </Box>

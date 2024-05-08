@@ -92,7 +92,7 @@ function Features() {
           }}
         >
           <Typography
-            variant="h3"
+            variant="h5"
             component="h2"
             sx={{ fontSize: { xs: 25, md: 50 } }}
           >
@@ -277,7 +277,9 @@ function Features() {
             justifyContent: "center",
           }}
         >
-          <Typography color="textSecondary">{activeFeature}</Typography>
+          <Typography color="textSecondary" variant="subtitle1">
+            {activeFeature}
+          </Typography>
         </Box>
 
         <Box

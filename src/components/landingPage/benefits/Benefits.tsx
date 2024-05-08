@@ -19,7 +19,7 @@ function Benefits() {
         }}
       >
         <Typography
-          variant="h3"
+          variant="h5"
           component="h2"
           color="#ffffff"
           sx={{ fontSize: { xs: 25, md: 50 } }}

@@ -56,10 +56,12 @@ function DashboardSideBar({
           />
         </Box>
         <Box sx={{ height: "30%", display: "flex", alignItems: "center" }}>
-          <Typography>{user?.nickname}</Typography>
+          <Typography variant="subtitle1">{user?.nickname}</Typography>
         </Box>
         <Box sx={{ height: "30%", display: "flex", alignItems: "center" }}>
-          <Typography>Version: {packageJson.version}</Typography>
+          <Typography variant="body2">
+            Version: {packageJson.version}
+          </Typography>
         </Box>
       </Box>
       <Box
@@ -86,7 +88,9 @@ function DashboardSideBar({
               }}
               onClick={() => handleLocationClick(location)}
             >
-              {location.charAt(0).toUpperCase() + location.slice(1)}
+              <Typography variant="h6">
+                {location.charAt(0).toUpperCase() + location.slice(1)}
+              </Typography>
             </Button>
           </Box>
         ))}

@@ -25,7 +25,7 @@ function BenefitsCard({
           </Typography>
         </Box>
         <Box sx={{ height: "50%", textAlign: "center" }}>
-          <Typography variant="h6" component={"h5"}>
+          <Typography variant="subtitle1" component={"h5"}>
             {description}
           </Typography>
         </Box>

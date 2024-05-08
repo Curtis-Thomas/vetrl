@@ -19,7 +19,7 @@ function Settings() {
       }}
     >
       <Box sx={{ p: 1 }}>
-        <Typography variant="h3">Settings</Typography>
+        <Typography variant="h5">Settings</Typography>
       </Box>
       <Box sx={{ display: "flex", justifyContent: "space-between", p: 5 }}>
         <Box>
