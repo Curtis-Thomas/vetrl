@@ -325,6 +325,9 @@ function AppointmentProcedures() {
                 borderRadius: "16px",
                 width: "100%",
                 height: "30%",
+                "&:hover": {
+                  backgroundColor: "#C1EBEC",
+                },
               }}
               onClick={handleAddProceduresDone}
             >
