@@ -313,6 +313,10 @@ function AppointmentContainer() {
                         color: "#94ddde",
                         borderRadius: "16px",
                         border: "solid 1px ",
+                        ":hover": {
+                          backgroundColor: "#94ddde",
+                          color: "black",
+                        },
                       }}
                     >
                       Save Record
@@ -321,10 +325,14 @@ function AppointmentContainer() {
                     <Button
                       onClick={handleClickOpenBackdrop}
                       sx={{
-                        backgroundColor: "#ffffff",
+                        backgroundColor: "black",
                         color: "#94ddde",
                         borderRadius: "16px",
                         border: "solid 1px ",
+                        ":hover": {
+                          backgroundColor: "#94ddde",
+                          color: "black",
+                        },
                       }}
                     >
                       Print / Download Record
