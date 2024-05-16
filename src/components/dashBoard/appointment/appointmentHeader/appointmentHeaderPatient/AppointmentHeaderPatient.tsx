@@ -334,6 +334,10 @@ function AppointmentHeaderPatient({
                       border: "solid 1px ",
                       height: "100%",
                       width: "20%",
+                      ":hover": {
+                        backgroundColor: "#94ddde",
+                        color: "black",
+                      },
                     }}
                     onClick={() => selectPatient(patient)}
                     key={index}
