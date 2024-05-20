@@ -163,6 +163,10 @@ function OverviewCalender(): JSX.Element {
               color: "#94ddde",
               borderRadius: "16px",
               border: "solid 1px ",
+              ":hover": {
+                backgroundColor: "#94ddde",
+                color: "black",
+              },
             }}
             onClick={handleClickCloseBackdrop}
           >
@@ -241,6 +245,9 @@ function OverviewCalender(): JSX.Element {
                   backgroundColor: "#94ddde",
                   color: "#ffffff",
                   borderRadius: "16px",
+                  "&:hover": {
+                    backgroundColor: "#C1EBEC",
+                  },
                 }}
               >
                 Add Appointment
