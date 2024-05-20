@@ -148,8 +148,8 @@ function Main() {
   return (
     <Box>
       <Hero />
-      <Benefits />
       <Features />
+      <Benefits />
       <ContactForm />
     </Box>
   );

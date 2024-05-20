@@ -11,13 +11,13 @@ function BenefitsCard({
     <>
       <Card
         sx={{
-          backgroundColor: "#94ddde",
-          color: "#000000",
+          backgroundColor: "#434063",
+          color: "#AAA9C7",
           p: 1,
           m: 2,
           height: "40vh",
           borderRadius: "26px",
-          boxShadow: "10px 10px 10px black",
+          boxShadow: "10px 10px 10px #53517B",
           width: { xs: "100%", md: "30%" },
         }}
       >

@@ -36,7 +36,8 @@ const Home: React.FC<HomeProps> = () => {
           height: "10vh",
           position: "sticky",
           top: 0,
-          backgroundColor: "#ffffff",
+          backgroundColor: "#2D2B42",
+          color: "#ffffff",
           zIndex: 100,
         }}
       >

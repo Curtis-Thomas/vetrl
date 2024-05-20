@@ -60,7 +60,9 @@ const Header: React.FC = () => {
           alignItems: "center",
         }}
       >
-        <Typography variant="h5">vetrl</Typography>
+        <Typography variant="h5" color={"#F26B70"}>
+          vetrl
+        </Typography>
       </Box>
       <Box sx={{ width: "0vw" }}></Box>
       <Box sx={{ width: "66vw", display: "flex", justifyContent: "end" }}>
@@ -84,26 +86,14 @@ const Header: React.FC = () => {
             <Link href="/api/auth/login">
               <Button
                 sx={{
-                  backgroundColor: "#ffffff",
-                  color: "#000000",
-                  border: "solid 1px #f26b70",
-                  borderRadius: "16px",
-                }}
-              >
-                Sign-Up
-              </Button>
-            </Link>
-            <Link href="/api/auth/login">
-              <Button
-                sx={{
-                  color: "#000000",
-                  backgroundColor: "#f26b70",
-                  "&:hover": {
-                    backgroundColor: "#F58E92",
-                  },
-
+                  color: "#F26B70",
+                  border: "solid 1px #F26B70",
+                  backgroundColor: "#2D2B42",
                   borderRadius: "16px",
                   ml: 2,
+                  "&:hover": {
+                    color: "#F58E92",
+                  },
                 }}
               >
                 Login

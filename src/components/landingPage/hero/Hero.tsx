@@ -7,30 +7,27 @@ function Hero() {
     <Box
       sx={{
         minHeight: "40vh",
-
         pb: 15,
-
-        backgroundColor: "#ffffff",
-        color: "#0000001",
+        backgroundColor: "#2D2B42",
+        color: "#ffffff",
       }}
     >
       <Box
         sx={{
-          backgroundColor: "#f26b70",
+          backgroundColor: "#434063",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
           p: 2,
-          mb: 15,
-          border: "solid 1px black",
+          mb: 10,
         }}
       >
         <Box>
           <Typography
             sx={{
               fontSize: 20,
-
               textAlign: "center",
+              color: "#AAA9C7",
             }}
           >
             Phase: Alpha Testing - Under active development
@@ -55,6 +52,7 @@ function Hero() {
           sx={{
             fontSize: { xs: 35, md: 65 },
             textAlign: { xs: "center", md: "" },
+            color: "#F6E8EA",
           }}
         >
           Online Veterinary Management Solution
@@ -77,7 +75,7 @@ function Hero() {
         <Typography
           // component="h2"
           variant="body1"
-          sx={{ fontSize: { xs: 20, md: 25 } }}
+          sx={{ fontSize: { xs: 20, md: 25 }, color: "#F6E8EA" }}
         >
           Free veterinary software - Keep on top of your workload in one easily
           accessible location.
@@ -96,11 +94,11 @@ function Hero() {
           <Link href="/api/auth/login">
             <Button
               sx={{
-                backgroundColor: "#2b2d42",
-                color: "#ffffff",
-                borderRadius: "16px",
+                backgroundColor: "#434063",
+                borderRadius: "26px",
+                color: "#AAA9C7",
                 "&:hover": {
-                  backgroundColor: "#404363",
+                  border: "solid 1px #AAA9C7",
                 },
                 p: 3,
               }}
@@ -125,6 +123,7 @@ function Hero() {
           aria-label="Star buttons/github-buttons on GitHub"
           data-show-count="true"
           data-size="large"
+          data-color-scheme="no-preference: light; light: light; dark: dark;"
         >
           Star
         </GitHubButton>

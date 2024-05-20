@@ -5,7 +5,7 @@ function ContactForm() {
   return (
     <Box
       sx={{
-        color: "#ffffff",
+        color: "#F6E8EA",
         pt: 10,
         pb: 5,
         pl: { xs: 0, md: 15 },
@@ -35,7 +35,7 @@ function ContactForm() {
         <Link href="/api/auth/login">
           <Button
             sx={{
-              color: "#ffffff",
+              color: "#F6E8EA",
               backgroundColor: "#f26b70",
               borderRadius: "8px",
               "&:hover": {

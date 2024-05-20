@@ -21,7 +21,7 @@ function Benefits() {
         <Typography
           variant="h5"
           component="h2"
-          color="#ffffff"
+          color="#F6E8EA"
           sx={{ fontSize: { xs: 25, md: 50 } }}
         >
           Innovative veterinary computer software.
