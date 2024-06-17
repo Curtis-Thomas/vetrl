@@ -24,16 +24,13 @@ function OverviewCalender(): JSX.Element {
   const domainUrl = process.env.NEXT_PUBLIC_DOMAIN_URL;
   const { user, error, isLoading } = useUser();
   const [events, setEvents] = useState<Event[]>([]);
-
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
   const [clientId, setClientId] = useState("");
   const [patientId, setPatientId] = useState("");
-
   const [start, setStart] = useState("00:00");
   const [end, setEnd] = useState("00:00");
-
   const [backdropState, setBackdropState] = useState(false);
   const [snackBarState, setSnackBarState] = useState(false);
 
@@ -41,16 +38,13 @@ function OverviewCalender(): JSX.Element {
   useEffect(() => {
     if (user && domainUrl) {
       const currentDate = new Date().toISOString();
-
       const getEventsData = async () => {
         try {
           const url = domainUrl + `/event/calendarDay`;
-
           const headers = {
             sub: user.sub,
             "Custom-Date": currentDate,
           };
-
           const response = await axios.get(url, { headers });
           setEvents((prevEvents) => {
             if (JSON.stringify(response.data) !== JSON.stringify(prevEvents)) {
@@ -62,7 +56,6 @@ function OverviewCalender(): JSX.Element {
           console.error("Error:", error);
         }
       };
-
       getEventsData();
     }
   }, [user, domainUrl]);
@@ -73,7 +66,6 @@ function OverviewCalender(): JSX.Element {
         console.error("All fields are required");
         return;
       }
-
       const eventData = {
         sub: user.sub,
         title,
@@ -84,7 +76,6 @@ function OverviewCalender(): JSX.Element {
         start,
         end,
       };
-
       const response = await fetch(domainUrl + `/event/event/add`, {
         method: "POST",
         headers: {
@@ -284,7 +275,6 @@ function OverviewCalender(): JSX.Element {
           width: "100%",
           overflowX: "hidden",
           overflowY: "auto",
-
           "&::-webkit-scrollbar": {
             width: "0.4em",
           },

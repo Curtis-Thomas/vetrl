@@ -4,7 +4,7 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import React, { useState, useCallback, useEffect } from "react";
 import axios from "axios";
 interface task {
-  title: string; // Changed name to title
+  title: string;
   description: string;
   deadline: string;
 }
@@ -12,11 +12,9 @@ interface task {
 function OverviewTaskList() {
   const domainUrl = process.env.NEXT_PUBLIC_DOMAIN_URL;
   const { user, error, isLoading } = useUser();
-
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [deadline, setDeadline] = useState("");
-
   const [tasks, setTasks] = useState<
     { title: string; description: string; deadline: string }[]
   >([]);
@@ -59,11 +57,9 @@ function OverviewTaskList() {
     if (!user) return;
     try {
       const url = domainUrl + `/task/task/get`;
-
       const headers = {
         sub: user.sub,
       };
-
       const response = await axios.get(url, { headers });
       setTasks(response.data);
     } catch (error) {
@@ -116,12 +112,10 @@ function OverviewTaskList() {
       <Box sx={{ height: "5%", width: "100%" }}>
         <Typography variant="h4">Task List</Typography>
       </Box>
-
       <Box
         sx={{
           height: "60%",
           backgroundColor: "#ffffff",
-
           overflow: "auto",
           "&::-webkit-scrollbar": {
             width: "0.4em",
@@ -154,7 +148,6 @@ function OverviewTaskList() {
                   <Box
                     sx={{
                       width: "20%",
-                      // backgroundColor: "cyan",
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
