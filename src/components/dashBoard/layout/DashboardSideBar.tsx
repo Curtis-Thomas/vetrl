@@ -26,7 +26,9 @@ function DashboardSideBar({
 
   const buttonStyle = (location: string) => ({
     height: "13vh",
-    width: "100%",
+    width: "13vw",
+    ml: "auto",
+    mr: "auto",
     backgroundColor: activeButton === location ? "#38E5E5" : "#ffffff",
     "&:hover": {
       backgroundColor: "#81EFEF",
@@ -77,10 +79,12 @@ function DashboardSideBar({
           <Box key={location} sx={buttonStyle(location)}>
             <Button
               sx={{
-                backgroundColor: activeButton === location ? "" : "#ffffff",
+                backgroundColor:
+                  activeButton === location ? "#38E5E5" : "#ffffff",
                 color: activeButton === location ? "#ffffff" : "#2D2B42",
                 height: "100%",
                 width: "100%",
+                border: "none",
               }}
               onClick={() => handleLocationClick(location)}
             >

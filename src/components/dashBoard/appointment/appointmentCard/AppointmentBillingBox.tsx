@@ -33,10 +33,12 @@ function AppointmentBillingBox() {
           display: "flex",
           height: "20%",
           width: "100%",
-          borderTop: "solid 3px white",
-          borderLeft: "solid 3px white",
-          borderRight: "solid 3px white",
+          borderTop: "solid 3px #ADF5F5",
+          borderLeft: "solid 3px #ADF5F5",
+          borderRight: "solid 3px #ADF5F5",
           p: 1,
+          backgroundColor: "white",
+          borderRadius: "16px 16px 0px 0px",
         }}
       >
         <Box sx={{ width: "20%", height: "100%" }}></Box>
@@ -87,12 +89,13 @@ function AppointmentBillingBox() {
       </Box>
       <Box
         sx={{
+          backgroundColor: "white",
           display: "flex",
           height: "20%",
           width: "100%",
-          borderTop: "solid 3px white",
-          borderLeft: "solid 3px white",
-          borderRight: "solid 3px white",
+          borderTop: "solid 3px #ADF5F5",
+          borderLeft: "solid 3px #ADF5F5",
+          borderRight: "solid 3px #ADF5F5",
           p: 1,
         }}
       >
@@ -116,8 +119,7 @@ function AppointmentBillingBox() {
           }}
         >
           <TextField
-            sx={{ width: "70%", backgroundColor: "white" }}
-            size="small"
+            sx={{ width: "70%", backgroundColor: "#ADF5F5" }}
             type="number"
             value={taxProcedures}
             onChange={(e) => setTaxProcedures(Number(e.target.value))}
@@ -168,12 +170,13 @@ function AppointmentBillingBox() {
       </Box>
       <Box
         sx={{
+          backgroundColor: "white",
           display: "flex",
           height: "20%",
           width: "100%",
-          borderTop: "solid 3px white",
-          borderLeft: "solid 3px white",
-          borderRight: "solid 3px white",
+          borderTop: "solid 3px #ADF5F5",
+          borderLeft: "solid 3px #ADF5F5",
+          borderRight: "solid 3px #ADF5F5",
           p: 1,
         }}
       >
@@ -197,8 +200,7 @@ function AppointmentBillingBox() {
           }}
         >
           <TextField
-            sx={{ width: "70%", backgroundColor: "white" }}
-            size="small"
+            sx={{ width: "70%", backgroundColor: "#ADF5F5" }}
             type="number"
             value={taxMedicine}
             onChange={(e) => setTaxMedicine(Number(e.target.value))}
@@ -247,12 +249,14 @@ function AppointmentBillingBox() {
       </Box>
       <Box
         sx={{
+          backgroundColor: "white",
+
           display: "flex",
           height: "20%",
           width: "100%",
-          borderTop: "solid 3px white",
-          borderLeft: "solid 3px white",
-          borderRight: "solid 3px white",
+          borderTop: "solid 3px #ADF5F5",
+          borderLeft: "solid 3px #ADF5F5",
+          borderRight: "solid 3px #ADF5F5",
           p: 1,
         }}
       >
@@ -276,8 +280,7 @@ function AppointmentBillingBox() {
           }}
         >
           <TextField
-            sx={{ width: "70%", backgroundColor: "white" }}
-            size="small"
+            sx={{ width: "70%", backgroundColor: "#ADF5F5" }}
             type="number"
             value={taxSupplies}
             onChange={(e) => setTaxSupplies(Number(e.target.value))}
@@ -327,11 +330,14 @@ function AppointmentBillingBox() {
 
       <Box
         sx={{
+          backgroundColor: "white",
+
           display: "flex",
           height: "20%",
           width: "100%",
-          border: "solid 3px white",
+          border: "solid 3px #ADF5F5",
           p: 1,
+          borderRadius: "0px 0px 16px 16px",
         }}
       >
         <Box

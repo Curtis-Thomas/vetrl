@@ -288,7 +288,7 @@ function AppointmentSupplies() {
             <Button
               sx={{
                 backgroundColor: "#ffffff",
-                color: "#94ddde",
+                color: "black",
 
                 border: "solid 1px ",
                 width: "100%",
@@ -304,7 +304,7 @@ function AppointmentSupplies() {
             <Button
               sx={{
                 backgroundColor: "#ffffff",
-                color: "#94ddde",
+                color: "black",
 
                 border: "solid 1px ",
                 width: "100%",

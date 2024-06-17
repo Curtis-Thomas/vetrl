@@ -72,9 +72,13 @@ const Header: React.FC = () => {
               <Button
                 onClick={handleLogout}
                 sx={{
+                  backgroundColor: "#434063",
                   color: "#f26b70",
                   border: "solid 1px #f26b70",
-                  borderRadius: "16px",
+                  "&:hover": {
+                    backgroundColor: "#2D2B42",
+                    color: "#F58E92",
+                  },
                 }}
               >
                 Logout
@@ -93,6 +97,7 @@ const Header: React.FC = () => {
                   ml: 2,
                   "&:hover": {
                     color: "#F58E92",
+                    backgroundColor: "#2F2621",
                   },
                 }}
               >

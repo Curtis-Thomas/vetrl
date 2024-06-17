@@ -205,7 +205,7 @@ function AppointmentContainer() {
                       sx={{
                         width: "100%",
                         height: "90%",
-
+                        borderRadius: 0,
                         border: "solid 1px white",
                       }}
                     >
@@ -218,7 +218,7 @@ function AppointmentContainer() {
                       sx={{
                         width: "100%",
                         height: "90%",
-
+                        borderRadius: 0,
                         border: "solid 1px white",
                       }}
                     >
@@ -231,7 +231,7 @@ function AppointmentContainer() {
                       sx={{
                         width: "100%",
                         height: "90%",
-
+                        borderRadius: 0,
                         border: "solid 1px white",
                       }}
                     >
@@ -250,7 +250,7 @@ function AppointmentContainer() {
                 <Box
                   sx={{
                     height: "30%",
-                    backgroundColor: "#eefafa",
+                    backgroundColor: "#ADF5F5",
                     borderRadius: "16px",
                   }}
                 >
@@ -260,7 +260,7 @@ function AppointmentContainer() {
                 <Box
                   sx={{
                     height: "70%",
-                    backgroundColor: "#eefafa",
+                    backgroundColor: "#ADF5F5",
                     borderRadius: "16px",
                   }}
                 >
@@ -268,7 +268,6 @@ function AppointmentContainer() {
                     sx={{
                       width: "100%",
                       height: "80%",
-
                       p: 1,
                     }}
                   >
@@ -279,15 +278,15 @@ function AppointmentContainer() {
                     sx={{
                       width: "100%",
                       height: "20%",
-                      backgroundColor: "black",
+                      backgroundColor: "#ADF5F5",
                       p: 1,
                       display: "flex",
                       justifyContent: "space-around",
                       alignItems: "center",
+                      borderRadius: "0px 0px 16px 16px",
                     }}
                   >
                     <Button onClick={handleClickSave}>Save Record</Button>
-
                     <Button onClick={handleClickOpenBackdrop}>
                       Print / Download Record
                     </Button>

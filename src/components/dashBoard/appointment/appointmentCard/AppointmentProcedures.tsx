@@ -290,7 +290,7 @@ function AppointmentProcedures() {
             <Button
               sx={{
                 backgroundColor: "#ffffff",
-                color: "#94ddde",
+                color: "black",
 
                 border: "solid 1px ",
                 width: "100%",
@@ -306,7 +306,7 @@ function AppointmentProcedures() {
             <Button
               sx={{
                 backgroundColor: "#ffffff",
-                color: "#94ddde",
+                color: "black",
 
                 border: "solid 1px ",
                 width: "100%",

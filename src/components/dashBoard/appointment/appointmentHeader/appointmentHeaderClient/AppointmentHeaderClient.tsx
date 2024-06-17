@@ -156,6 +156,8 @@ function AppointmentHeaderClient({
           zIndex: "100",
           color: "black",
           backgroundColor: "white",
+          borderRadius: "16px",
+          border: "solid 10px #ADF5F5",
 
           marginLeft: "15vw",
           marginTop: "20vh",
@@ -169,7 +171,8 @@ function AppointmentHeaderClient({
           <Box sx={{ height: "80%", justifyContent: "center" }}>
             {clientSearchData &&
               clientSearchData.clients.map((client) => (
-                <Box
+                <Button
+                  onClick={() => handleClientSelection(client)}
                   key={client.id}
                   sx={{
                     backgroundColor: "#ffffff",
@@ -196,7 +199,7 @@ function AppointmentHeaderClient({
                   <Button onClick={() => handleClientSelection(client)}>
                     Select
                   </Button>
-                </Box>
+                </Button>
               ))}
           </Box>
         </Box>

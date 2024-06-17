@@ -67,6 +67,7 @@ function Features() {
               }}
               sx={{
                 color: "#f26b70",
+                backgroundColor: "#434063",
                 width: "100%",
                 height: "100%",
                 textDecoration: overviewDecoration,
@@ -98,6 +99,7 @@ function Features() {
               }}
               sx={{
                 color: "#f26b70",
+                backgroundColor: "#434063",
                 width: "100%",
                 height: "100%",
                 textDecoration: calendarDecoration,
@@ -129,6 +131,8 @@ function Features() {
                 setBillingDecoration("underline");
               }}
               sx={{
+                backgroundColor: "#434063",
+
                 color: "#f26b70",
                 width: "100%",
                 height: "100%",
@@ -161,6 +165,8 @@ function Features() {
                 setSinglePageDecoration("underline");
               }}
               sx={{
+                backgroundColor: "#434063",
+
                 color: "#f26b70",
                 width: "100%",
                 height: "100%",
@@ -192,6 +198,8 @@ function Features() {
                 setEasyEditDecoration("underline");
               }}
               sx={{
+                backgroundColor: "#434063",
+
                 color: "#f26b70",
                 width: "100%",
                 height: "100%",

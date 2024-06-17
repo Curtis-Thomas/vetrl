@@ -98,6 +98,7 @@ function Hero() {
                 borderRadius: "26px",
                 color: "#AAA9C7",
                 "&:hover": {
+                  backgroundColor: "#434063",
                   border: "solid 1px #AAA9C7",
                 },
                 p: 3,

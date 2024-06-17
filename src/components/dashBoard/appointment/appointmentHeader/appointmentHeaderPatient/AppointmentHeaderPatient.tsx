@@ -329,7 +329,6 @@ function AppointmentHeaderPatient({
                 patientsArray.map((patient, index) => (
                   <Button
                     sx={{
-                      border: "solid 1px white ",
                       height: "100%",
                       width: "20%",
                     }}
