@@ -291,7 +291,7 @@ function AppointmentProcedures() {
               sx={{
                 backgroundColor: "#ffffff",
                 color: "#94ddde",
-                borderRadius: "16px",
+
                 border: "solid 1px ",
                 width: "100%",
                 height: "30%",
@@ -307,7 +307,7 @@ function AppointmentProcedures() {
               sx={{
                 backgroundColor: "#ffffff",
                 color: "#94ddde",
-                borderRadius: "16px",
+
                 border: "solid 1px ",
                 width: "100%",
                 height: "30%",
@@ -320,14 +320,8 @@ function AppointmentProcedures() {
 
             <Button
               sx={{
-                backgroundColor: "#94ddde",
-                color: "#ffffff",
-                borderRadius: "16px",
                 width: "100%",
                 height: "30%",
-                "&:hover": {
-                  backgroundColor: "#C1EBEC",
-                },
               }}
               onClick={handleAddProceduresDone}
             >

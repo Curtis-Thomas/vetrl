@@ -63,6 +63,7 @@ function CodexContainer() {
               <Box key={location} sx={buttonStyle(location)}>
                 <Button
                   sx={{
+                    backgroundColor: activeButton === location ? "" : "#ffffff",
                     color: activeButton === location ? "#ffffff" : "#231915",
                     height: "100%",
                     width: "100%",

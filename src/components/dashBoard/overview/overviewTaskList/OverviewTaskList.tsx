@@ -163,14 +163,7 @@ function OverviewTaskList() {
                       <Typography>{task.description}</Typography>
                     </Box>
                     <Box>
-                      <Button
-                        onClick={() => handleDeleteTask(task.title)}
-                        sx={{
-                          color: "#2D2B42",
-                          backgroundColor: "#38E5E5",
-                          borderRadius: "16px",
-                        }}
-                      >
+                      <Button onClick={() => handleDeleteTask(task.title)}>
                         {" "}
                         Delete
                       </Button>
@@ -263,19 +256,7 @@ function OverviewTaskList() {
               alignItems: "center",
             }}
           >
-            <Button
-              sx={{
-                backgroundColor: "#38E5E5",
-                color: "#2D2B42",
-                borderRadius: "16px",
-                "&:hover": {
-                  backgroundColor: "#81EFEF",
-                },
-              }}
-              onClick={handleAddTask}
-            >
-              + Add Task
-            </Button>
+            <Button onClick={handleAddTask}>+ Add Task</Button>
           </Box>
         </Box>
       </Box>

@@ -203,15 +203,10 @@ function AppointmentContainer() {
                     <Button
                       onClick={() => setActiveCodexBox("procedures")}
                       sx={{
-                        backgroundColor: "#94ddde",
-                        color: "#ffffff",
                         width: "100%",
                         height: "90%",
-                        borderRadius: "0px",
+
                         border: "solid 1px white",
-                        "&:hover": {
-                          backgroundColor: "#C1EBEC",
-                        },
                       }}
                     >
                       Procedures
@@ -221,16 +216,10 @@ function AppointmentContainer() {
                     <Button
                       onClick={() => setActiveCodexBox("medicine")}
                       sx={{
-                        backgroundColor: "#94ddde",
-                        color: "#ffffff",
                         width: "100%",
                         height: "90%",
-                        borderRadius: "0px",
-                        border: "solid 1px white",
 
-                        "&:hover": {
-                          backgroundColor: "#C1EBEC",
-                        },
+                        border: "solid 1px white",
                       }}
                     >
                       Medicine
@@ -240,16 +229,10 @@ function AppointmentContainer() {
                     <Button
                       onClick={() => setActiveCodexBox("supplies")}
                       sx={{
-                        backgroundColor: "#94ddde",
-                        color: "#ffffff",
                         width: "100%",
                         height: "90%",
-                        borderRadius: "0px",
-                        border: "solid 1px white",
 
-                        "&:hover": {
-                          backgroundColor: "#C1EBEC",
-                        },
+                        border: "solid 1px white",
                       }}
                     >
                       Supplies
@@ -303,35 +286,9 @@ function AppointmentContainer() {
                       alignItems: "center",
                     }}
                   >
-                    <Button
-                      onClick={handleClickSave}
-                      sx={{
-                        backgroundColor: "black",
-                        color: "#94ddde",
-                        borderRadius: "16px",
-                        border: "solid 1px ",
-                        ":hover": {
-                          backgroundColor: "#94ddde",
-                          color: "black",
-                        },
-                      }}
-                    >
-                      Save Record
-                    </Button>
+                    <Button onClick={handleClickSave}>Save Record</Button>
 
-                    <Button
-                      onClick={handleClickOpenBackdrop}
-                      sx={{
-                        backgroundColor: "black",
-                        color: "#94ddde",
-                        borderRadius: "16px",
-                        border: "solid 1px ",
-                        ":hover": {
-                          backgroundColor: "#94ddde",
-                          color: "black",
-                        },
-                      }}
-                    >
+                    <Button onClick={handleClickOpenBackdrop}>
                       Print / Download Record
                     </Button>
                   </Box>

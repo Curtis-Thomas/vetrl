@@ -172,15 +172,7 @@ function CodexDrugs() {
               ml: 1,
             }}
           >
-            <Button
-              onClick={handleAddDrug}
-              sx={{
-                color: "#ffffff",
-                backgroundColor: "#94ddde",
-              }}
-            >
-              Add Drug
-            </Button>
+            <Button onClick={handleAddDrug}>Add Drug</Button>
           </Box>
         </Box>
 

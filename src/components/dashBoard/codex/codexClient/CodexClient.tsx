@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useCallback, useState, useEffect } from "react";
 import axios from "axios";

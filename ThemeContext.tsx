@@ -39,6 +39,20 @@ const defaultTheme = createTheme({
       fontFamily: '"Oswald", sans-serif',
     },
   },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          backgroundColor: "#38E5E5",
+          borderRadius: 0,
+          color: "#2D2B42",
+          "&:hover": {
+            backgroundColor: "#81EFEF",
+          },
+        },
+      },
+    },
+  },
 });
 const ThemeContext = createContext({
   toggleTheme: () => {},

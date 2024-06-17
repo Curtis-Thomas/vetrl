@@ -522,12 +522,6 @@ function AppointmentHeaderClient({
             >
               <Button
                 sx={{
-                  backgroundColor: "#94ddde",
-                  color: "#ffffff",
-                  borderRadius: "16px",
-                  "&:hover": {
-                    backgroundColor: "#C1EBEC",
-                  },
                   ml: 1,
                 }}
                 onClick={handleSelectClient}
@@ -543,17 +537,7 @@ function AppointmentHeaderClient({
                 alignItems: "center",
               }}
             >
-              <Button
-                onClick={() => setBackdropState(true)}
-                sx={{
-                  backgroundColor: "#94ddde",
-                  color: "#ffffff",
-                  borderRadius: "16px",
-                  "&:hover": {
-                    backgroundColor: "#C1EBEC",
-                  },
-                }}
-              >
+              <Button onClick={() => setBackdropState(true)}>
                 + New Client
               </Button>
             </Box>

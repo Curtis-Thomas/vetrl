@@ -329,15 +329,9 @@ function AppointmentHeaderPatient({
                 patientsArray.map((patient, index) => (
                   <Button
                     sx={{
-                      backgroundColor: "black",
-                      color: "#94ddde",
-                      border: "solid 1px ",
+                      border: "solid 1px white ",
                       height: "100%",
                       width: "20%",
-                      ":hover": {
-                        backgroundColor: "#94ddde",
-                        color: "black",
-                      },
                     }}
                     onClick={() => selectPatient(patient)}
                     key={index}
@@ -363,13 +357,7 @@ function AppointmentHeaderPatient({
             >
               <Button
                 sx={{
-                  backgroundColor: "#94ddde",
-                  color: "#ffffff",
-                  borderRadius: "16px",
                   width: "80%",
-                  "&:hover": {
-                    backgroundColor: "#C1EBEC",
-                  },
                 }}
                 onClick={() => setBackdropState(true)}
               >

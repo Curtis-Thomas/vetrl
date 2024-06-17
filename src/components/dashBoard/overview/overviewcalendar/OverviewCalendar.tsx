@@ -148,20 +148,7 @@ function OverviewCalender(): JSX.Element {
             backgroundColor: "#eefafa",
           }}
         >
-          <Button
-            sx={{
-              backgroundColor: "#38E5E5",
-              color: "#2D2B42",
-              borderRadius: "16px",
-
-              ":hover": {
-                backgroundColor: "#81EFEF",
-              },
-            }}
-            onClick={handleClickCloseBackdrop}
-          >
-            Close
-          </Button>
+          <Button onClick={handleClickCloseBackdrop}>Close</Button>
           <Box sx={{ p: 5 }}>
             <Typography variant="h5" gutterBottom>
               Add Event - Title and Date Required
@@ -229,19 +216,7 @@ function OverviewCalender(): JSX.Element {
               }}
             />
             <Box>
-              <Button
-                onClick={handleAddEvent}
-                sx={{
-                  backgroundColor: "#38E5E5",
-                  color: "#2D2B42",
-                  borderRadius: "16px",
-                  "&:hover": {
-                    backgroundColor: "#81EFEF",
-                  },
-                }}
-              >
-                Add Appointment
-              </Button>
+              <Button onClick={handleAddEvent}>Add Appointment</Button>
             </Box>
           </Box>
           <Snackbar
@@ -310,14 +285,8 @@ function OverviewCalender(): JSX.Element {
       >
         <Button
           sx={{
-            backgroundColor: "#38E5E5",
-            color: "#2D2B42",
-            borderRadius: "16px",
             width: "80%",
             height: "80%",
-            "&:hover": {
-              backgroundColor: "#81EFEF",
-            },
           }}
           onClick={() => setBackdropState(true)}
         >

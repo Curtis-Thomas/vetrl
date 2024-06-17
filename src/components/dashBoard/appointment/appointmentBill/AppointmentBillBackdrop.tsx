@@ -36,16 +36,7 @@ function AppointmentBillBackdrop({
           alignItems: "center",
         }}
       >
-        <Button
-          sx={{
-            backgroundColor: "white",
-            color: "black",
-            border: "solid 1px black",
-          }}
-          onClick={handleClickCloseBackdrop}
-        >
-          Close
-        </Button>
+        <Button onClick={handleClickCloseBackdrop}>Close</Button>
       </Box>
 
       <Box

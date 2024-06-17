@@ -169,15 +169,7 @@ function CodexSupplies() {
               ml: 1,
             }}
           >
-            <Button
-              onClick={handleAddSupply}
-              sx={{
-                color: "#ffffff",
-                backgroundColor: "#94ddde",
-              }}
-            >
-              Add Supply
-            </Button>
+            <Button onClick={handleAddSupply}>Add Supply</Button>
           </Box>
         </Box>
 

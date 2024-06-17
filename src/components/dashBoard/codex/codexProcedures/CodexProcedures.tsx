@@ -175,15 +175,7 @@ function CodexProcedures() {
               ml: 1,
             }}
           >
-            <Button
-              onClick={handleAddProcedure}
-              sx={{
-                color: "#ffffff",
-                backgroundColor: "#94ddde",
-              }}
-            >
-              Add Procedure
-            </Button>
+            <Button onClick={handleAddProcedure}>Add Procedure</Button>
           </Box>
         </Box>
 

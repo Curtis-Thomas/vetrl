@@ -176,19 +176,7 @@ function CalendarContainer() {
             }}
           />
           <Box>
-            <Button
-              sx={{
-                backgroundColor: "#94ddde",
-                color: "#ffffff",
-                borderRadius: "16px",
-                "&:hover": {
-                  backgroundColor: "#C1EBEC",
-                },
-              }}
-              onClick={handleAddEvent}
-            >
-              Add Appointment
-            </Button>
+            <Button onClick={handleAddEvent}>Add Appointment</Button>
           </Box>
         </Box>
       </Box>

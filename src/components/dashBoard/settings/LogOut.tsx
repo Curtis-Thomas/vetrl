@@ -6,16 +6,7 @@ function LogOut() {
     <Box>
       <Box sx={{ width: "33vw", display: "flex", justifyContent: "end" }}>
         <Link href="/api/auth/logout">
-          <Button
-            sx={{
-              backgroundColor: "black",
-              color: "#94ddde",
-              borderRadius: "16px",
-              border: "solid 1px ",
-            }}
-          >
-            Log Out
-          </Button>
+          <Button>Log Out</Button>
         </Link>
       </Box>
     </Box>

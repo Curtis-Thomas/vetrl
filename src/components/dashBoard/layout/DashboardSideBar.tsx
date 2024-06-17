@@ -28,7 +28,6 @@ function DashboardSideBar({
     height: "13vh",
     width: "100%",
     backgroundColor: activeButton === location ? "#38E5E5" : "#ffffff",
-
     "&:hover": {
       backgroundColor: "#81EFEF",
     },
@@ -78,6 +77,7 @@ function DashboardSideBar({
           <Box key={location} sx={buttonStyle(location)}>
             <Button
               sx={{
+                backgroundColor: activeButton === location ? "" : "#ffffff",
                 color: activeButton === location ? "#ffffff" : "#2D2B42",
                 height: "100%",
                 width: "100%",
@@ -100,14 +100,6 @@ function DashboardSideBar({
           sx={{
             height: "100%",
             width: "100%",
-            backgroundColor: "#38E5E5",
-            color: "#2D2B42",
-            borderRadius: "26px",
-            p: 1,
-
-            "&:hover": {
-              backgroundColor: "#81EFEF",
-            },
           }}
           onClick={() => setFeedbackBackdrop(true)}
         >
