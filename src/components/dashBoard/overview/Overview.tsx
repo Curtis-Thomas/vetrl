@@ -9,7 +9,6 @@ function Overview() {
       sx={{
         height: "100vh",
         width: { xs: "70vw", md: "85vw" },
-        backgroundColor: "#eefafa",
       }}
     >
       <Box

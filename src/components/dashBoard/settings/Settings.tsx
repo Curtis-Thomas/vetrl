@@ -15,18 +15,37 @@ function Settings() {
       sx={{
         height: "100vh",
         width: { xs: "70vw", md: "85vw" },
-        backgroundColor: "#eefafa",
       }}
     >
-      <Box sx={{ p: 1 }}>
-        <Typography variant="h5">Settings</Typography>
-      </Box>
-      <Box sx={{ display: "flex", justifyContent: "space-between", p: 5 }}>
-        <Box>
-          <AccountDetails />
-        </Box>
-        <Box>
-          <LogOut />
+      <Box
+        sx={{
+          display: { xs: "block", md: "flex" },
+          width: { xs: "70vw", md: "85vw" },
+          height: "100vh",
+          p: 1,
+        }}
+      >
+        <Box
+          sx={{
+            height: "100%",
+            width: "100%",
+            backgroundColor: "#ffffff",
+            overflow: "auto",
+            borderRadius: "10px",
+            mr: 1,
+          }}
+        >
+          <Box sx={{ p: 1 }}>
+            <Typography variant="h5">Settings</Typography>
+          </Box>
+          <Box sx={{ display: "flex", justifyContent: "space-between", p: 5 }}>
+            <Box>
+              <AccountDetails />
+            </Box>
+            <Box>
+              <LogOut />
+            </Box>
+          </Box>
         </Box>
       </Box>
     </Box>

@@ -14,7 +14,7 @@ function OverviewCalendarTimeSlot({
   return (
     <Box
       sx={{
-        backgroundColor: "#eefafa",
+        backgroundColor: "#ADF5F5",
         p: 1,
         mb: 1,
         display: "flex",

@@ -13,7 +13,6 @@ function Dashboard() {
   const domainUrl = process.env.NEXT_PUBLIC_DOMAIN_URL;
 
   const [display, setDisplay] = useState("overview");
-
   const [loading, setLoading] = useState(false); // State to control loading state
 
   const handleDisplayChange = (newDisplay: string) => {

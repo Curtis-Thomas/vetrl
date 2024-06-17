@@ -56,7 +56,6 @@ function RecordsContainer() {
       sx={{
         height: "100vh",
         width: { xs: "70vw", md: "85vw" },
-        backgroundColor: "#ffffff",
       }}
     >
       <Box
@@ -66,6 +65,7 @@ function RecordsContainer() {
           justifyContent: "center",
           alignItems: "center",
           border: "solid 1px black",
+          backgroundColor: "white",
         }}
       >
         <Typography variant="h5">Records</Typography>

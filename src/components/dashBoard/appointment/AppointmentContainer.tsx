@@ -86,7 +86,6 @@ function AppointmentContainer() {
 
       const RecordData = {
         sub: user.sub,
-
         appointmentNo: appointmentNo,
         clientId: clientId,
         patientId: patientId,
@@ -96,7 +95,6 @@ function AppointmentContainer() {
         diagnosis: diagnosis,
         additionalNotes: additionalNotes,
         dischargeNotes: dischargeNotes,
-
         procedures: procedures,
         medicine: medicine,
         supplies: supplies,
@@ -156,7 +154,6 @@ function AppointmentContainer() {
         sx={{
           height: "100vh",
           width: "85vw",
-          backgroundColor: "#eefafa",
           display: { xs: "none", md: "block" },
         }}
       >

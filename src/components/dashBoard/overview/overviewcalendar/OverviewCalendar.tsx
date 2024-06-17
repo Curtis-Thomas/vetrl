@@ -150,13 +150,12 @@ function OverviewCalender(): JSX.Element {
         >
           <Button
             sx={{
-              backgroundColor: "black",
-              color: "#94ddde",
+              backgroundColor: "#38E5E5",
+              color: "#2D2B42",
               borderRadius: "16px",
-              border: "solid 1px ",
+
               ":hover": {
-                backgroundColor: "#94ddde",
-                color: "black",
+                backgroundColor: "#81EFEF",
               },
             }}
             onClick={handleClickCloseBackdrop}
@@ -233,11 +232,11 @@ function OverviewCalender(): JSX.Element {
               <Button
                 onClick={handleAddEvent}
                 sx={{
-                  backgroundColor: "#94ddde",
-                  color: "#ffffff",
+                  backgroundColor: "#38E5E5",
+                  color: "#2D2B42",
                   borderRadius: "16px",
                   "&:hover": {
-                    backgroundColor: "#C1EBEC",
+                    backgroundColor: "#81EFEF",
                   },
                 }}
               >
@@ -311,13 +310,13 @@ function OverviewCalender(): JSX.Element {
       >
         <Button
           sx={{
-            backgroundColor: "#94ddde",
-            color: "#ffffff",
+            backgroundColor: "#38E5E5",
+            color: "#2D2B42",
             borderRadius: "16px",
             width: "80%",
             height: "80%",
             "&:hover": {
-              backgroundColor: "#C1EBEC",
+              backgroundColor: "#81EFEF",
             },
           }}
           onClick={() => setBackdropState(true)}

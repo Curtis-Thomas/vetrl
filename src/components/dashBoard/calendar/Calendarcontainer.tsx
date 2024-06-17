@@ -107,7 +107,6 @@ function CalendarContainer() {
           height: "100vh",
           width: "85vw",
           p: 2,
-          backgroundColor: "#eefafa",
           display: { xs: "none", md: "block" },
         }}
       >

@@ -137,7 +137,7 @@ function OverviewTaskList() {
               <Box
                 key={index}
                 sx={{
-                  backgroundColor: "#eefafa",
+                  backgroundColor: "#ADF5F5",
                   borderRadius: "16px",
                   p: 1,
                   mt: 1,
@@ -153,9 +153,7 @@ function OverviewTaskList() {
                       alignItems: "center",
                     }}
                   >
-                    <Typography variant="h4" sx={{ color: "#94ddde" }}>
-                      {task.deadline}
-                    </Typography>
+                    <Typography variant="h4">{task.deadline}</Typography>
                   </Box>
                   <Box sx={{ width: "80%", pl: 5 }}>
                     <Box>
@@ -168,9 +166,8 @@ function OverviewTaskList() {
                       <Button
                         onClick={() => handleDeleteTask(task.title)}
                         sx={{
-                          color: "#94ddde",
-                          backgroundColor: "#eefafa",
-                          border: "solid 1px",
+                          color: "#2D2B42",
+                          backgroundColor: "#38E5E5",
                           borderRadius: "16px",
                         }}
                       >
@@ -187,7 +184,7 @@ function OverviewTaskList() {
       <Box sx={{ height: "35%" }}>
         <Box
           sx={{
-            backgroundColor: "#eefafa",
+            backgroundColor: "#ADF5F5",
             p: 1,
             borderRadius: "16px",
             height: "100%",
@@ -268,11 +265,11 @@ function OverviewTaskList() {
           >
             <Button
               sx={{
-                backgroundColor: "#94ddde",
-                color: "#ffffff",
+                backgroundColor: "#38E5E5",
+                color: "#2D2B42",
                 borderRadius: "16px",
                 "&:hover": {
-                  backgroundColor: "#C1EBEC",
+                  backgroundColor: "#81EFEF",
                 },
               }}
               onClick={handleAddTask}
