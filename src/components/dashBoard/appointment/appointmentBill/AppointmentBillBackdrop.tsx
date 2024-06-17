@@ -19,12 +19,12 @@ function AppointmentBillBackdrop({
       sx={{
         zIndex: 100,
         ml: "15vw",
-        height: "100vh",
+        minHeight: "110vh",
         width: "85vw",
         color: "white",
         display: "block",
-        backgroundColor: "black",
-        backdropFilter: "blur(7px)",
+        backdropFilter: "blur(15px)",
+        overflowY: "auto",
       }}
     >
       <Box
@@ -32,8 +32,9 @@ function AppointmentBillBackdrop({
           height: "10vh",
           width: "85vw",
           display: "flex",
-          justifyContent: "center",
+          justifyContent: "right",
           alignItems: "center",
+          pr: "5vw",
         }}
       >
         <Button onClick={handleClickCloseBackdrop}>Close</Button>
@@ -49,6 +50,7 @@ function AppointmentBillBackdrop({
       >
         <AppointmentBillDocument />
       </Box>
+      <Box sx={{ height: "40vh", width: "100%" }}></Box>
     </Backdrop>
   );
 }
