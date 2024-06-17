@@ -27,6 +27,7 @@ function AppointmentBillBackdrop({
         overflowY: "auto",
       }}
     >
+      <Box sx={{ height: "5vh", width: "100%" }}></Box>
       <Box
         sx={{
           height: "10vh",
