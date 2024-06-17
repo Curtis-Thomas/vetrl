@@ -72,8 +72,8 @@ const Header: React.FC = () => {
               <Button
                 onClick={handleLogout}
                 sx={{
-                  color: "#16140C",
-                  border: "solid 1px #16140C",
+                  color: "#f26b70",
+                  border: "solid 1px #f26b70",
                   borderRadius: "16px",
                 }}
               >
