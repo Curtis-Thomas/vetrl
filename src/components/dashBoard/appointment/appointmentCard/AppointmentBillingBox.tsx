@@ -119,7 +119,7 @@ function AppointmentBillingBox() {
           }}
         >
           <TextField
-            sx={{ width: "70%", backgroundColor: "#ADF5F5" }}
+            sx={{ width: "70%" }}
             type="number"
             value={taxProcedures}
             onChange={(e) => setTaxProcedures(Number(e.target.value))}
@@ -200,7 +200,7 @@ function AppointmentBillingBox() {
           }}
         >
           <TextField
-            sx={{ width: "70%", backgroundColor: "#ADF5F5" }}
+            sx={{ width: "70%" }}
             type="number"
             value={taxMedicine}
             onChange={(e) => setTaxMedicine(Number(e.target.value))}
@@ -280,7 +280,7 @@ function AppointmentBillingBox() {
           }}
         >
           <TextField
-            sx={{ width: "70%", backgroundColor: "#ADF5F5" }}
+            sx={{ width: "70%" }}
             type="number"
             value={taxSupplies}
             onChange={(e) => setTaxSupplies(Number(e.target.value))}
