@@ -107,27 +107,32 @@ function AppointmentProcedures() {
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
 
-  React.useEffect(() => {
+  function btnClickAddProcedure() {
     if (
       proceduresDoneProcedure &&
       proceduresDonePrice &&
       proceduresBtnClicked
     ) {
-      const timer = setTimeout(() => {
+      setTimeout(() => {
         console.log(
           `Adding procedure: ${proceduresDoneProcedure} with price: ${proceduresDonePrice}`
         );
         handleAddProceduresDone();
         setProceduresBtnClicked(false);
-      }, 10); // Delay of 1000 milliseconds
-
-      return () => clearTimeout(timer); // Cleanup the timer
+      }, 10);
     }
-  }, [proceduresDoneProcedure, proceduresDonePrice]); // Depend on state variables
+  }
 
   return (
-    <Box sx={{ height: "100%", width: "100%" }}>
-      <Box sx={{ height: "10%", width: "100%" }}>
+    <Box sx={{ height: "90%", width: "100%" }}>
+      <Box
+        sx={{
+          height: "10%",
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
         <Box sx={{ height: "60%" }}>
           <TextField
             label="Search"
@@ -145,7 +150,7 @@ function AppointmentProcedures() {
           />
         </Box>
       </Box>
-      <Box sx={{ height: "25%" }}>
+      <Box sx={{ height: "35%", border: "solid 1px black" }}>
         <Box
           sx={{
             display: "flex",
@@ -186,11 +191,12 @@ function AppointmentProcedures() {
           >
             {filteredProcedures.map((procedure, index) => (
               <Button
-                // Adjusted onClick handler
+                key={`${procedure.name}-${index}`} // Generate a unique id by combining name and index
                 onClick={() => {
                   setProceduresBtnClicked(true);
                   setProceduresDoneProcedure(procedure.name);
                   setProceduresDonePrice(procedure.price.toString());
+                  btnClickAddProcedure();
                 }}
                 sx={{
                   width: "100%",
@@ -214,8 +220,8 @@ function AppointmentProcedures() {
           </Box>
         </Box>
       </Box>
-      <Box sx={{ height: "65%" }}>
-        <Box sx={{ border: "solid 1px #94ddde", height: "45%" }}>
+      <Box sx={{ height: "45%" }}>
+        <Box sx={{ border: "solid 1px #94ddde", height: "100%" }}>
           <Box
             sx={{
               height: "100%",
@@ -258,103 +264,41 @@ function AppointmentProcedures() {
             ))}
           </Box>
         </Box>
-        <Box sx={{ height: "10%" }}></Box>
-        <Box sx={{ height: "45%", display: "flex" }}>
-          <Box sx={{ width: "70%", height: "100%" }}>
-            <Box sx={{ height: "33.33%" }}>
-              <TextField
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                sx={{ backgroundColor: "#ffffff" }}
-                value={proceduresDoneProcedure}
-                label="Procedure"
-                size="small"
-                autoComplete="off"
-                onChange={(event) =>
-                  setProceduresDoneProcedure(event.target.value)
-                }
-                inputProps={{
-                  style: { height: "10%" },
-                }}
-              />
-            </Box>
-            <Box sx={{ height: "33.33%" }}>
-              {/* <TextField
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                sx={{ backgroundColor: "#ffffff" }}
-                value={proceduresDoneAmount}
-                label="Amount - Num"
-                size="small"
-                type="number"
-                autoComplete="off"
-                onChange={(event) =>
-                  setProceduresDoneAmount(event.target.value)
-                }
-              /> */}
-            </Box>
-            <Box sx={{ height: "33.33%" }}>
-              <TextField
-                sx={{ backgroundColor: "#ffffff" }}
-                value={proceduresDonePrice}
-                label="Price - Num"
-                type="number"
-                size="small"
-                autoComplete="off"
-                onChange={(event) => setProceduresDonePrice(event.target.value)}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                inputProps={{
-                  style: { height: "10%" },
-                }}
-              />
-            </Box>
-          </Box>
-          <Box sx={{ width: "30%" }}>
-            <Button
-              sx={{
-                backgroundColor: "#ffffff",
-                color: "black",
+      </Box>
+      <Box
+        sx={{
+          height: "10%",
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
+        <Button
+          sx={{
+            backgroundColor: "#ffffff",
+            color: "black",
 
-                border: "solid 1px ",
-                width: "100%",
-                height: "30%",
-                mb: 1,
-                fontSize: 10,
-              }}
-              onClick={handleRemoveLastProcedure}
-            >
-              Remove Last
-            </Button>
+            border: "solid 1px ",
+            width: "45%",
+            height: "100%",
+          }}
+          onClick={handleRemoveLastProcedure}
+        >
+          Remove Last
+        </Button>
 
-            <Button
-              sx={{
-                backgroundColor: "#ffffff",
-                color: "black",
-                border: "solid 1px ",
-                width: "100%",
-                height: "30%",
-                mb: 1,
-              }}
-              onClick={handleClearProceduresDone}
-            >
-              Clear
-            </Button>
-
-            <Button
-              sx={{
-                width: "100%",
-                height: "30%",
-              }}
-              onClick={handleAddProceduresDone}
-            >
-              Add
-            </Button>
-          </Box>
-        </Box>
+        <Button
+          sx={{
+            backgroundColor: "#ffffff",
+            color: "black",
+            border: "solid 1px ",
+            width: "45%",
+            height: "100%",
+            mb: 1,
+          }}
+          onClick={handleClearProceduresDone}
+        >
+          Clear
+        </Button>
       </Box>
     </Box>
   );

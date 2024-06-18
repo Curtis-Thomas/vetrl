@@ -139,10 +139,14 @@ function AppointmentContainer() {
           <Typography variant="h4">Record Saved </Typography>
         </Box>
       </Backdrop>
+      <AppointmentBillBackdrop
+        backdropState={backdropState}
+        setBackdropState={setBackdropState}
+      />
       <Box
         sx={{
-          height: "100vh",
-          width: "70vw",
+          height: "100%",
+          width: "100%",
           backgroundColor: "#eefafa",
           display: { xs: "block", md: "none" },
           p: 5,
@@ -150,39 +154,42 @@ function AppointmentContainer() {
       >
         <Typography>Please use desktop to access appointment screen</Typography>
       </Box>
+
       <Box
         sx={{
-          height: "100vh",
-          width: "85vw",
+          height: "100%",
+          width: "100%",
           display: { xs: "none", md: "block" },
         }}
       >
-        <AppointmentBillBackdrop
-          backdropState={backdropState}
-          setBackdropState={setBackdropState}
-        />
         <Box
           sx={{
-            height: "20vh",
-            width: "85vw",
-
-            display: "flex",
+            height: "20%",
+            width: "100%",
           }}
         >
           <AppointmentHeaderClientPatient />
         </Box>
-        <Box sx={{ height: "80vh", width: "85vw", pb: 1, pl: 1, pr: 1 }}>
+        <Box
+          sx={{
+            height: "80%",
+            width: "100%",
+            pb: 1,
+            pl: 1,
+            pr: 1,
+          }}
+        >
           <Box
             sx={{
               backgroundColor: "#ffffff",
               borderRadius: "16px",
-              pt: 1,
-
               height: "100%",
               width: "100%",
             }}
           >
-            <AppointmentCardHeader />
+            <Box sx={{ height: "10%", width: "100%" }}>
+              <AppointmentCardHeader />
+            </Box>
 
             <Box
               sx={{
@@ -194,11 +201,18 @@ function AppointmentContainer() {
             >
               <Box
                 sx={{
-                  width: "45%",
-                  height: "90%",
+                  width: "35%",
+                  height: "100%",
+                  border: "solid 1px black",
                 }}
               >
-                <Box sx={{ height: "10%", width: "100%", display: "flex" }}>
+                <Box
+                  sx={{
+                    height: "10%",
+                    width: "100%",
+                    display: "flex",
+                  }}
+                >
                   <Box sx={{ width: "33.33%", height: "100%" }}>
                     <Button
                       onClick={() => setActiveCodexBox("procedures")}
@@ -239,14 +253,14 @@ function AppointmentContainer() {
                     </Button>
                   </Box>
                 </Box>
-                <Box sx={{ height: "100%" }}>
+                <Box sx={{ height: "90%" }}>
                   {activeCodexBox === "procedures" && <AppointmentProcedures />}
                   {activeCodexBox === "medicine" && <AppointmentMedicine />}
                   {activeCodexBox === "supplies" && <AppointmentSupplies />}
                 </Box>
               </Box>
 
-              <Box sx={{ width: "55%", p: 1 }}>
+              <Box sx={{ width: "65%", height: "100%", p: 1 }}>
                 <Box
                   sx={{
                     height: "55%",
@@ -284,7 +298,6 @@ function AppointmentContainer() {
                       justifyContent: "space-around",
                       alignItems: "center",
                       borderRadius: "0px 0px 16px 16px",
-                      // border: "solid 1px black",
                     }}
                   >
                     <Button onClick={handleClickSave}>Save Record</Button>

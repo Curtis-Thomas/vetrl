@@ -112,162 +112,156 @@ function AppointmentCardHeader() {
   }, [getNextId]);
 
   return (
-    <Box sx={{ height: "10%" }}>
-      <Box sx={{ display: "flex", height: "100%" }}>
-        <Box whiteSpace={{ width: "5%" }}></Box>
-
-        <Box
-          sx={{
-            width: "15%",
-
-            display: "flex",
-            height: "100%",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Box>
-            <TextField
-              autoComplete="off"
-              label="Appointment No."
-              value={appointmentNo}
-              onChange={handleAppointmentNoChange}
-              size="small"
-              disabled
-              sx={{ width: "100%", height: "150%" }}
-              inputProps={{
-                style: { height: "10%" },
-              }}
-            />
-          </Box>
+    <Box
+      sx={{
+        height: "100%",
+        width: "100%",
+        display: "flex",
+        justifyContent: "space-evenly",
+      }}
+    >
+      <Box
+        sx={{
+          width: "15%",
+          display: "flex",
+          height: "100%",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Box>
+          <TextField
+            autoComplete="off"
+            label="Appointment No."
+            value={appointmentNo}
+            onChange={handleAppointmentNoChange}
+            size="small"
+            disabled
+            sx={{ width: "100%", height: "150%" }}
+            inputProps={{
+              style: { height: "10%" },
+            }}
+          />
         </Box>
-        <Box whiteSpace={{ width: "5%" }}></Box>
+      </Box>
 
-        <Box
-          sx={{
-            width: "15%",
+      <Box
+        sx={{
+          width: "15%",
 
-            display: "flex",
-            height: "100%",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Box>
-            <TextField
-              autoComplete="off"
-              size="small"
-              label="Date"
-              InputLabelProps={{
-                shrink: true,
-              }}
-              value={appointmentCardDate}
-              onChange={handleAppointmentDateChange}
-              sx={{ width: "100%", height: "50%" }}
-              inputProps={{
-                style: { height: "10%" },
-              }}
-            />
-          </Box>
-          <Box sx={{ ml: 1 }}>
-            <TextField
-              autoComplete="off"
-              size="small"
-              label="Time"
-              InputLabelProps={{
-                shrink: true,
-              }}
-              value={appointmentCardTime}
-              onChange={handleAppointmentTimeChange}
-              sx={{ width: "100%", height: "50%" }}
-              inputProps={{
-                style: { height: "10%" },
-              }}
-            />
-          </Box>
-        </Box>
-        <Box whiteSpace={{ width: "5%" }}></Box>
-
-        <Box
-          sx={{
-            width: "15%",
-
-            display: "flex",
-            height: "100%",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
+          display: "flex",
+          height: "100%",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Box>
           <TextField
             autoComplete="off"
             size="small"
-            label="Anamnesis"
-            value={appointmentCardAnamnesis}
+            label="Date"
             InputLabelProps={{
               shrink: true,
             }}
-            onChange={handleAnamnesisChange}
+            value={appointmentCardDate}
+            onChange={handleAppointmentDateChange}
             sx={{ width: "100%", height: "50%" }}
             inputProps={{
               style: { height: "10%" },
             }}
           />
         </Box>
-        <Box whiteSpace={{ width: "5%" }}></Box>
-
-        <Box
-          sx={{
-            width: "15%",
-
-            display: "flex",
-            height: "100%",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
+        <Box>
           <TextField
             autoComplete="off"
             size="small"
-            label="Diagnosis"
-            value={appointmentCardDiagnosis}
+            label="Time"
             InputLabelProps={{
               shrink: true,
             }}
-            onChange={handleDiagnosisChange}
+            value={appointmentCardTime}
+            onChange={handleAppointmentTimeChange}
             sx={{ width: "100%", height: "50%" }}
             inputProps={{
               style: { height: "10%" },
             }}
           />
         </Box>
-        <Box whiteSpace={{ width: "5%" }}></Box>
+      </Box>
 
-        <Box
-          sx={{
-            width: "25%",
-
-            display: "flex",
-            height: "100%",
-            justifyContent: "center",
-            alignItems: "center",
+      <Box
+        sx={{
+          width: "15%",
+          display: "flex",
+          height: "100%",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <TextField
+          autoComplete="off"
+          size="small"
+          label="Anamnesis"
+          value={appointmentCardAnamnesis}
+          InputLabelProps={{
+            shrink: true,
           }}
-        >
-          <TextField
-            autoComplete="off"
-            size="small"
-            label="Additional Notes"
-            value={appointmentCardAdditionalNotes}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            onChange={handleAdditionalNotesChange}
-            sx={{ width: "100%", height: "50%" }}
-            inputProps={{
-              style: { height: "10%" },
-            }}
-          />
-        </Box>
-        <Box whiteSpace={{ width: "5%" }}></Box>
+          onChange={handleAnamnesisChange}
+          sx={{ width: "100%", height: "50%" }}
+          inputProps={{
+            style: { height: "10%" },
+          }}
+        />
+      </Box>
+
+      <Box
+        sx={{
+          width: "15%",
+          display: "flex",
+          height: "100%",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <TextField
+          autoComplete="off"
+          size="small"
+          label="Diagnosis"
+          value={appointmentCardDiagnosis}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleDiagnosisChange}
+          sx={{ width: "100%", height: "50%" }}
+          inputProps={{
+            style: { height: "10%" },
+          }}
+        />
+      </Box>
+
+      <Box
+        sx={{
+          width: "15%",
+          display: "flex",
+          height: "100%",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <TextField
+          autoComplete="off"
+          size="small"
+          label="Additional Notes"
+          value={appointmentCardAdditionalNotes}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleAdditionalNotesChange}
+          sx={{ width: "100%", height: "50%" }}
+          inputProps={{
+            style: { height: "10%" },
+          }}
+        />
       </Box>
     </Box>
   );

@@ -26,11 +26,11 @@ function Dashboard() {
       <Box>
         <CssBaseline />
 
-        <Box sx={{ height: "100vh", width: "100%", display: "flex" }}>
+        <Box sx={{ height: "100vh", width: "100vw", display: "flex" }}>
           <Box sx={{ width: { xs: "30vw", md: "15vw" } }}>
             <DashboardSideBar onDisplayChange={handleDisplayChange} />
           </Box>
-          <Box sx={{ width: "70vw", height: "95vh" }}>
+          <Box sx={{ width: "85vw", height: "100%" }}>
             {display === "overview" && <Overview />}
             {display === "calendar" && <CalendarContainer />}
             {display === "records" && <RecordsContainer />}

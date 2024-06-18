@@ -30,7 +30,7 @@ function AppointmentHeaderClientPatient({}: {}) {
   const { user, error, isLoading } = useUser();
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", width: "100%", height: "100%" }}>
       <AppointmentHeaderClient
         onClientNameChange={handleClientNameChange}
         onClientIdChange={handleClientIdChange}
