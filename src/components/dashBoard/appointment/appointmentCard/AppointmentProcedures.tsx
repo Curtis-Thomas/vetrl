@@ -33,6 +33,7 @@ function AppointmentProcedures() {
   const [proceduresDoneProcedure, setProceduresDoneProcedure] = useState("");
   const [proceduresDoneAmount, setProceduresDoneAmount] = useState("");
   const [proceduresDonePrice, setProceduresDonePrice] = useState("");
+  const [proceduresBtnClicked, setProceduresBtnClicked] = useState(false);
 
   const appointmentCardProceduresPrice = useSelector(
     (state: RootState) => state.appointment.appointmentCardProceduresPrice
@@ -106,6 +107,24 @@ function AppointmentProcedures() {
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
 
+  React.useEffect(() => {
+    if (
+      proceduresDoneProcedure &&
+      proceduresDonePrice &&
+      proceduresBtnClicked
+    ) {
+      const timer = setTimeout(() => {
+        console.log(
+          `Adding procedure: ${proceduresDoneProcedure} with price: ${proceduresDonePrice}`
+        );
+        handleAddProceduresDone();
+        setProceduresBtnClicked(false);
+      }, 10); // Delay of 1000 milliseconds
+
+      return () => clearTimeout(timer); // Cleanup the timer
+    }
+  }, [proceduresDoneProcedure, proceduresDonePrice]); // Depend on state variables
+
   return (
     <Box sx={{ height: "100%", width: "100%" }}>
       <Box sx={{ height: "10%", width: "100%" }}>
@@ -166,10 +185,18 @@ function AppointmentProcedures() {
             }}
           >
             {filteredProcedures.map((procedure, index) => (
-              <Box
-                key={index}
+              <Button
+                // Adjusted onClick handler
+                onClick={() => {
+                  setProceduresBtnClicked(true);
+                  setProceduresDoneProcedure(procedure.name);
+                  setProceduresDonePrice(procedure.price.toString());
+                }}
                 sx={{
+                  width: "100%",
+                  borderRadius: 0,
                   backgroundColor: "#ffffff",
+                  border: "none",
                   borderBottom: "1px solid grey",
                   display: "flex",
                   justifyContent: "space-between",
@@ -182,7 +209,7 @@ function AppointmentProcedures() {
                 <Box>
                   <Typography>{procedure.price}</Typography>
                 </Box>
-              </Box>
+              </Button>
             ))}
           </Box>
         </Box>
@@ -307,7 +334,6 @@ function AppointmentProcedures() {
               sx={{
                 backgroundColor: "#ffffff",
                 color: "black",
-
                 border: "solid 1px ",
                 width: "100%",
                 height: "30%",
