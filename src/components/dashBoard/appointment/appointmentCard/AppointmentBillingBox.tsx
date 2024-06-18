@@ -27,7 +27,7 @@ function AppointmentBillingBox() {
   const formatNumber = (num: number) => num.toFixed(2);
 
   return (
-    <Box sx={{ width: "100%", height: "100%", p: 1 }}>
+    <Box sx={{ width: "100%", height: "100%" }}>
       <Box
         sx={{
           display: "flex",
@@ -121,6 +121,7 @@ function AppointmentBillingBox() {
           <TextField
             sx={{ width: "70%" }}
             type="number"
+            size="small"
             value={taxProcedures}
             onChange={(e) => setTaxProcedures(Number(e.target.value))}
           />
@@ -202,6 +203,7 @@ function AppointmentBillingBox() {
           <TextField
             sx={{ width: "70%" }}
             type="number"
+            size="small"
             value={taxMedicine}
             onChange={(e) => setTaxMedicine(Number(e.target.value))}
           />
@@ -282,6 +284,7 @@ function AppointmentBillingBox() {
           <TextField
             sx={{ width: "70%" }}
             type="number"
+            size="small"
             value={taxSupplies}
             onChange={(e) => setTaxSupplies(Number(e.target.value))}
           />
