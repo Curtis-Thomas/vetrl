@@ -12,7 +12,6 @@ type Appointment = {
   appointmentCardDiagnosis: string;
   appointmentCardAdditionalNotes: string;
   appointmentCardDischargeNotes: string;
-
   appointmentCardProceduresPrice: number;
   appointmentCardMedicinePrice: number;
   appointmentCardSuppliesPrice: number;
@@ -31,7 +30,6 @@ const initialState: Appointment = {
   appointmentCardDiagnosis: "",
   appointmentCardAdditionalNotes: "",
   appointmentCardDischargeNotes: "",
-
   appointmentCardProceduresPrice: 0,
   appointmentCardMedicinePrice: 0,
   appointmentCardSuppliesPrice: 0,
@@ -40,11 +38,13 @@ const initialState: Appointment = {
 
 const appointmentReducer = (
   state = initialState,
-  action: { type: string; payload: Appointment }
+  action: { type: string; payload?: Appointment }
 ) => {
   switch (action.type) {
     case "SET_APPOINTMENT":
       return { ...state, ...action.payload };
+    case "RESET_APPOINTMENT_DATA":
+      return initialState; // Reset state to initial values
     default:
       return state;
   }

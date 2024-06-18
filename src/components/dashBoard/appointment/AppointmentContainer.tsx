@@ -2,6 +2,7 @@ import { Backdrop, Box, Button, Typography } from "@mui/material";
 import React, { useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
+import { resetAppointmentData } from "../../../redux/actions/appointmentActions";
 
 import { useUser } from "@auth0/nextjs-auth0/client";
 import AppointmentProcedures from "./appointmentCard/AppointmentProcedures";
@@ -14,6 +15,9 @@ import AppointmentMedicine from "./appointmentCard/AppointmentMedicine";
 import AppointmentSupplies from "./appointmentCard/AppointmentSupplies";
 import AppointmentBillBackdrop from "./appointmentBill/AppointmentBillBackdrop";
 
+import axios from "axios";
+import { get } from "http";
+
 function AppointmentContainer() {
   const domainUrl = process.env.NEXT_PUBLIC_DOMAIN_URL;
   const { user, error, isLoading } = useUser();
@@ -21,6 +25,43 @@ function AppointmentContainer() {
   const [backdropState, setBackdropState] = useState(false);
 
   const [activeCodexBox, setActiveCodexBox] = useState("procedures");
+
+  const getNextId = useCallback(async () => {
+    if (!user) return;
+    try {
+      const url = domainUrl + `/record/record/getNextId`;
+
+      const headers = {
+        sub: user.sub,
+      };
+
+      const response = await axios.get(url, { headers });
+      dispatch({
+        type: "SET_APPOINTMENT",
+        payload: { appointmentCardAppointmentNo: response.data.nextId },
+      });
+      console.log(appointmentNo);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  }, [user, domainUrl]);
+
+  const dispatch = useDispatch();
+
+  const handleReset = () => {
+    if (
+      window.confirm(
+        "Are you sure you want to clear all data? Everything will be reset."
+      )
+    ) {
+      dispatch(resetAppointmentData());
+      getNextId();
+      setActiveCodexBox("medicine");
+      setTimeout(() => {
+        setActiveCodexBox("procedures");
+      }, 1);
+    }
+  };
 
   const appointmentNo = useSelector(
     (state: RootState) => state.appointment.appointmentCardAppointmentNo
@@ -303,6 +344,18 @@ function AppointmentContainer() {
                     <Button onClick={handleClickSave}>Save Record</Button>
                     <Button onClick={handleClickOpenBackdrop}>
                       Print / Download Record
+                    </Button>
+                    <Button
+                      sx={{
+                        backgroundColor: "#F0544F",
+                        "&:hover": {
+                          backgroundColor: "red",
+                          color: "white",
+                        },
+                      }}
+                      onClick={handleReset}
+                    >
+                      Clear Appointment Card
                     </Button>
                   </Box>
                 </Box>

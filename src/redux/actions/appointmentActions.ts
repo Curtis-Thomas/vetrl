@@ -20,3 +20,7 @@ export const setAppointment = (appointment: Appointment) => ({
   type: "SET_APPOINTMENT",
   payload: appointment,
 });
+
+export const resetAppointmentData = () => ({
+  type: "RESET_APPOINTMENT_DATA",
+});
