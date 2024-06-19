@@ -9,6 +9,7 @@ import axios from "axios";
 
 function AppointmentCardHeader() {
   const dispatch = useDispatch();
+
   const domainUrl = process.env.NEXT_PUBLIC_DOMAIN_URL;
 
   const { user } = useUser();
@@ -160,6 +161,7 @@ function AppointmentCardHeader() {
             autoComplete="off"
             size="small"
             label="Date"
+            type="date"
             InputLabelProps={{
               shrink: true,
             }}
@@ -176,6 +178,7 @@ function AppointmentCardHeader() {
             autoComplete="off"
             size="small"
             label="Time"
+            type="time"
             InputLabelProps={{
               shrink: true,
             }}

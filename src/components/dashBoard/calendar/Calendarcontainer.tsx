@@ -110,73 +110,145 @@ function CalendarContainer() {
           display: { xs: "none", md: "block" },
         }}
       >
-        <CalendarMainCalendar events={events} />
+        <Box sx={{ width: "100%", height: "85%" }}>
+          <CalendarMainCalendar events={events} />
+        </Box>
 
-        <Box>
-          <Typography variant="h5" gutterBottom>
-            Add Event
-          </Typography>
-
-          <TextField
-            autoComplete="off"
-            label="Title"
-            required
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            margin="normal"
-            InputLabelProps={{
-              shrink: true,
+        <Box sx={{ borderRadius: "16px", p: 1, width: "100%", height: "15%" }}>
+          <Box
+            sx={{
+              backgroundColor: "white",
+              borderRadius: "16px",
+              p: 1,
+              display: "flex",
+              height: "100%",
             }}
-            sx={{ backgroundColor: "#ffffff" }}
-          />
-          <TextField
-            autoComplete="off"
-            label="Date"
-            type="date"
-            required
-            value={date}
-            sx={{ backgroundColor: "#ffffff" }}
-            onChange={handleDateChange}
-            margin="normal"
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-
-          <TextField
-            autoComplete="off"
-            label="Description"
-            value={description}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            onChange={(e) => setDescription(e.target.value)}
-            margin="normal"
-          />
-          <TextField
-            autoComplete="off"
-            label="Start Time"
-            type="time"
-            value={start}
-            onChange={(e) => setStart(e.target.value)}
-            margin="normal"
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-          <TextField
-            autoComplete="off"
-            label="End Time"
-            type="time"
-            value={end}
-            onChange={(e) => setEnd(e.target.value)}
-            margin="normal"
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-          <Box>
-            <Button onClick={handleAddEvent}>Add Appointment</Button>
+          >
+            <Box
+              sx={{
+                width: "20%",
+                height: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Typography variant="h5" gutterBottom>
+                Add Event
+              </Typography>
+            </Box>
+            <Box sx={{ width: "60%", height: "100%", display: "flex" }}>
+              <Box
+                sx={{
+                  height: "100%",
+                  width: "25%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <TextField
+                  autoComplete="off"
+                  label="Title"
+                  required
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  margin="normal"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  sx={{ backgroundColor: "#ffffff" }}
+                />
+              </Box>
+              <Box
+                sx={{
+                  height: "100%",
+                  width: "25%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <TextField
+                  autoComplete="off"
+                  label="Date"
+                  type="date"
+                  required
+                  value={date}
+                  sx={{ backgroundColor: "#ffffff" }}
+                  onChange={handleDateChange}
+                  margin="normal"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+              </Box>
+              <Box
+                sx={{
+                  height: "100%",
+                  width: "25%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <TextField
+                  autoComplete="off"
+                  label="Description"
+                  value={description}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  onChange={(e) => setDescription(e.target.value)}
+                  margin="normal"
+                />
+              </Box>
+              <Box
+                sx={{
+                  height: "100%",
+                  width: "25%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <TextField
+                  autoComplete="off"
+                  label="Start Time"
+                  type="time"
+                  value={start}
+                  onChange={(e) => setStart(e.target.value)}
+                  margin="normal"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+                <TextField
+                  autoComplete="off"
+                  label="End Time"
+                  type="time"
+                  value={end}
+                  onChange={(e) => setEnd(e.target.value)}
+                  margin="normal"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+              </Box>
+            </Box>
+            <Box
+              sx={{
+                width: "20%",
+                height: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Box>
+                <Button onClick={handleAddEvent}>Add Appointment</Button>
+              </Box>
+            </Box>
           </Box>
         </Box>
       </Box>

@@ -56,6 +56,8 @@ function AppointmentContainer() {
     ) {
       dispatch(resetAppointmentData());
       getNextId();
+      // Reset active codex box
+
       setActiveCodexBox("medicine");
       setTimeout(() => {
         setActiveCodexBox("procedures");

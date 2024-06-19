@@ -29,6 +29,16 @@ function AppointmentHeaderClientPatient({}: {}) {
 
   const { user, error, isLoading } = useUser();
 
+  function clearClientData() {
+    setClientName("");
+    setClientId("");
+    setClientPatients([]);
+  }
+
+  function clearPatientData() {
+    setClientPatients([]);
+  }
+
   return (
     <Box sx={{ display: "flex", width: "100%", height: "100%" }}>
       <AppointmentHeaderClient
