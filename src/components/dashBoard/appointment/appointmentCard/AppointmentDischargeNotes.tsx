@@ -20,12 +20,14 @@ function AppointmentDischargeNotes() {
   return (
     <Box sx={{ height: "100%", width: "100%", p: 1 }}>
       <Box sx={{ height: "15%", p: 1, display: "flex", alignItems: "center" }}>
-        <Typography>Discharge notes</Typography>
+        <Typography variant="body2">Discharge notes</Typography>
       </Box>
       <Box
         sx={{
           height: "85%",
+          backgroundColor: "white",
           p: 1,
+          borderRadius: "16px",
 
           display: "flex",
           flexDirection: "column",
