@@ -17,6 +17,7 @@ import AppointmentBillBackdrop from "./appointmentBill/AppointmentBillBackdrop";
 
 import axios from "axios";
 import { get } from "http";
+import CodexClient from "../codex/codexClient/CodexClient";
 
 function AppointmentContainer() {
   const domainUrl = process.env.NEXT_PUBLIC_DOMAIN_URL;
@@ -25,6 +26,12 @@ function AppointmentContainer() {
   const [backdropState, setBackdropState] = useState(false);
 
   const [activeCodexBox, setActiveCodexBox] = useState("procedures");
+  const [codexBoxBackgroundProcedures, setCodexBoxBackgroundProcedures] =
+    useState("#81EFEF");
+  const [codexBoxBackgroundMedicine, setCodexBoxBackgroundMedicine] =
+    useState("#ADF5F5");
+  const [codexBoxBackgroundSupplies, setCodexBoxBackgroundSupplies] =
+    useState("#ADF5F5");
 
   const getNextId = useCallback(async () => {
     if (!user) return;
@@ -246,7 +253,7 @@ function AppointmentContainer() {
                 sx={{
                   width: "35%",
                   height: "100%",
-                  border: "solid 1px black",
+                  p: 1,
                 }}
               >
                 <Box
@@ -258,12 +265,18 @@ function AppointmentContainer() {
                 >
                   <Box sx={{ width: "33.33%", height: "100%" }}>
                     <Button
-                      onClick={() => setActiveCodexBox("procedures")}
+                      onClick={() => {
+                        setActiveCodexBox("procedures");
+                        setCodexBoxBackgroundProcedures("#81EFEF");
+                        setCodexBoxBackgroundMedicine("#ADF5F5");
+                        setCodexBoxBackgroundSupplies("#ADF5F5");
+                      }}
                       sx={{
                         width: "100%",
                         height: "90%",
-                        borderRadius: 0,
                         border: "solid 1px white",
+                        borderRadius: "16px 0px 0px 0px",
+                        backgroundColor: codexBoxBackgroundProcedures,
                       }}
                     >
                       Procedures
@@ -271,12 +284,18 @@ function AppointmentContainer() {
                   </Box>
                   <Box sx={{ width: "33.33%", height: "100%" }}>
                     <Button
-                      onClick={() => setActiveCodexBox("medicine")}
+                      onClick={() => {
+                        setActiveCodexBox("medicine");
+                        setCodexBoxBackgroundMedicine("#81EFEF");
+                        setCodexBoxBackgroundProcedures("#ADF5F5");
+                        setCodexBoxBackgroundSupplies("#ADF5F5");
+                      }}
                       sx={{
                         width: "100%",
                         height: "90%",
                         borderRadius: 0,
                         border: "solid 1px white",
+                        backgroundColor: codexBoxBackgroundMedicine,
                       }}
                     >
                       Medicine
@@ -284,11 +303,18 @@ function AppointmentContainer() {
                   </Box>
                   <Box sx={{ width: "33.33%", height: "100%" }}>
                     <Button
-                      onClick={() => setActiveCodexBox("supplies")}
+                      onClick={() => {
+                        setActiveCodexBox("supplies");
+                        setCodexBoxBackgroundSupplies("#81EFEF");
+                        setCodexBoxBackgroundProcedures("#ADF5F5");
+                        setCodexBoxBackgroundMedicine("#ADF5F5");
+                      }}
                       sx={{
                         width: "100%",
                         height: "90%",
-                        borderRadius: 0,
+                        borderRadius: "0px 16px  0px 0px",
+                        backgroundColor: codexBoxBackgroundSupplies,
+
                         border: "solid 1px white",
                       }}
                     >
@@ -296,7 +322,7 @@ function AppointmentContainer() {
                     </Button>
                   </Box>
                 </Box>
-                <Box sx={{ height: "90%" }}>
+                <Box sx={{ height: "90%", p: 1 }}>
                   {activeCodexBox === "procedures" && <AppointmentProcedures />}
                   {activeCodexBox === "medicine" && <AppointmentMedicine />}
                   {activeCodexBox === "supplies" && <AppointmentSupplies />}
