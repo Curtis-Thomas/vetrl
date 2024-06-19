@@ -7,7 +7,7 @@ import { resetAppointmentData } from "../../../redux/actions/appointmentActions"
 import { useUser } from "@auth0/nextjs-auth0/client";
 import AppointmentProcedures from "./appointmentCard/AppointmentProcedures";
 import AppointmentDischargeNotes from "./appointmentCard/AppointmentDischargeNotes";
-import AppointmentBillingBox from "./appointmentCard/AppointmentBillingBox";
+import AppointmentBillingBox from "./appointmentCard/billingBox/AppointmentBillingBox";
 import AppointmentCardHeader from "./appointmentCard/AppointmentCardHeader";
 
 import AppointmentHeaderClientPatient from "./appointmentHeader/AppointmentHeaderClientPatient";
