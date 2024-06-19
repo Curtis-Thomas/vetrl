@@ -77,7 +77,7 @@ function CalendarMainCalendar({ events }: { events: any[] }): JSX.Element {
 
   if (weekView === true) {
     return (
-      <Box sx={{ display: `${weekView}` }}>
+      <Box sx={{ display: `${weekView}`, height: "100%", width: "100%" }}>
         <CalendarMainCalendarWeek
           handleMonthClick={handleMonthClick}
           events={events}
@@ -98,53 +98,59 @@ function CalendarMainCalendar({ events }: { events: any[] }): JSX.Element {
     }
 
     return (
-      <Box sx={{ display: `${monthView}` }}>
+      <Box sx={{ display: `${monthView}`, height: "100%", width: "100%" }}>
         <Box
           sx={{
             backgroundColor: "#ffffff",
-            height: "100%",
+            height: "10%",
             width: "100%",
             p: 1,
             borderTopLeftRadius: "16px",
             borderTopRightRadius: "16px",
           }}
         >
-          <Box sx={{ display: "flex", height: "10%" }}>
-            <Button
+          <Box sx={{ display: "flex", height: "100%" }}>
+            <Box
               sx={{
-                backgroundColor: "#ffffff",
-                color: "#94ddde",
-                borderRadius: "16px",
-                border: "solid 1px ",
+                height: "100%",
+                width: "25%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
               }}
-              onClick={handleWeekClick}
             >
-              Week
-            </Button>
-            <Button
+              <Button onClick={handleWeekClick}>Week</Button>
+              <Button
+                sx={{
+                  backgroundColor: "#81EFEF",
+
+                  ml: 1,
+                  mr: 1,
+                }}
+                onClick={handleMonthClick}
+              >
+                Month
+              </Button>
+            </Box>
+
+            <Box
               sx={{
-                backgroundColor: "#94ddde",
-                color: "#ffffff",
-                borderRadius: "16px",
-                "&:hover": {
-                  backgroundColor: "#C1EBEC",
-                },
-                ml: 1,
-                mr: 1,
+                height: "100%",
+                width: "75%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
               }}
-              onClick={handleMonthClick}
             >
-              Month
-            </Button>
-            <Box>
               <Typography variant="h5">{currentMonth}</Typography>
             </Box>
           </Box>
         </Box>
         <Box
           sx={{
-            height: "75vh",
+            height: "90%",
             backgroundColor: "#ffffff",
+            pt: 1,
             pl: 2,
             pr: 2,
             borderBottomLeftRadius: "16px",
@@ -179,7 +185,7 @@ function CalendarMainCalendar({ events }: { events: any[] }): JSX.Element {
                       }}
                     >
                       <Box sx={{ height: "10%" }}>
-                        <Typography>{format(day, "dd")}</Typography>
+                        <Typography>{format(day, "EEE  dd")}</Typography>
                       </Box>
                     </Box>
                     <Box
@@ -211,9 +217,18 @@ function CalendarMainCalendar({ events }: { events: any[] }): JSX.Element {
                             parseInt(b.start.slice(0, 2))
                         )
                         .map((event, index) => (
-                          <Typography key={index}>
-                            {event.title}: {event.start}-{event.end}
-                          </Typography>
+                          <Box
+                            key={event.id || index}
+                            sx={{
+                              borderBottom: "solid 1px black",
+                              backgroundColor: "#EEFAFA",
+                            }}
+                          >
+                            <Typography>{event.title}</Typography>
+                            <Typography>
+                              {event.start}-{event.end}
+                            </Typography>
+                          </Box>
                         ))}
                     </Box>
                   </Box>

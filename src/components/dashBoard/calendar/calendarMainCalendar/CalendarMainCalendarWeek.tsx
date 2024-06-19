@@ -79,86 +79,87 @@ function CalendarMainCalendarWeek({
   return (
     <Box
       sx={{
-        backgroundColor: "#ffffff",
         height: "100%",
         width: "100%",
-        p: 1,
-        borderRadius: "16px",
       }}
     >
-      <Box sx={{ display: "flex", height: "10%" }}>
-        <Box sx={{ width: "25%" }}>
-          <Button
+      <Box
+        sx={{
+          backgroundColor: "#ffffff",
+          height: "10%",
+          width: "100%",
+          p: 1,
+          borderTopLeftRadius: "16px",
+          borderTopRightRadius: "16px",
+        }}
+      >
+        <Box sx={{ display: "flex", height: "100%" }}>
+          <Box
             sx={{
-              backgroundColor: "#ffffff",
-              color: "#94ddde",
-              borderRadius: "16px",
-              border: "solid 1px ",
+              width: "25%",
+              height: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
-            Week
-          </Button>
-          <Button
-            sx={{
-              backgroundColor: "#94ddde",
-              color: "#ffffff",
-              borderRadius: "16px",
-              "&:hover": {
-                backgroundColor: "#C1EBEC",
-              },
-              ml: 1,
-              mr: 1,
-            }}
-            onClick={handleMonthClick}
-          >
-            Month
-          </Button>
-        </Box>
-        <Box sx={{ width: "50%" }}>
-          <Typography variant="h5">{weekDate}</Typography>
-        </Box>
-        <Box sx={{ width: "25%", display: "flex" }}>
+            <Button sx={{ backgroundColor: "#81EFEF" }}>Week</Button>
+            <Button
+              sx={{
+                ml: 1,
+                mr: 1,
+              }}
+              onClick={handleMonthClick}
+            >
+              Month
+            </Button>
+          </Box>
           <Box
             sx={{
               width: "50%",
               display: "flex",
-              justifyContent: "right",
-              pr: 1,
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
-            <Button
-              sx={{
-                backgroundColor: "#ffffff",
-                color: "#94ddde",
-                borderRadius: "16px",
-                border: "solid 1px ",
-              }}
-              onClick={handleClickPreviousWeek}
-            >
-              Previous Week
-            </Button>
+            <Typography variant="h5">{weekDate}</Typography>
           </Box>
-          <Box sx={{ width: "50%" }}>
-            <Button
+          <Box sx={{ width: "25%", display: "flex", height: "100%" }}>
+            <Box
               sx={{
-                backgroundColor: "black",
-                color: "#94ddde",
-                borderRadius: "16px",
-                border: "solid 1px ",
+                width: "50%",
+                height: "100%",
+                display: "flex",
+                justifyContent: "right",
+                alignItems: "center",
+                pr: 1,
               }}
-              onClick={handleClickNextWeek}
             >
-              Next Week
-            </Button>
+              <Button onClick={handleClickPreviousWeek}>Previous Week</Button>
+            </Box>
+            <Box
+              sx={{
+                width: "50%",
+                height: "100%",
+                display: "flex",
+                justifyContent: "left",
+                alignItems: "center",
+              }}
+            >
+              <Button onClick={handleClickNextWeek}>Next Week</Button>
+            </Box>
           </Box>
         </Box>
       </Box>
       <Box
         sx={{
-          height: "75vh",
+          height: "90%",
+          width: "100%",
           backgroundColor: "#ffffff",
           display: "flex",
           p: 1,
+          borderBottomLeftRadius: "16px",
+          borderBottomRightRadius: "16px",
         }}
       >
         {days.map((day, index) => {
@@ -167,7 +168,7 @@ function CalendarMainCalendarWeek({
             <Box
               sx={{
                 width: "12.14vw",
-                height: "73vh",
+                height: "100%",
                 border: "solid 1px #2F2621",
                 overflowX: "hidden",
                 overflowY: "auto",
@@ -210,14 +211,13 @@ function CalendarMainCalendarWeek({
                   )
                   .sort((a, b) => parseInt(a.start) - parseInt(b.start))
                   .map((event, index) => (
-                    <Grid item key={index + 1} sx={{ width: "100%", p: 1 }}>
+                    <Grid item key={index + 1} sx={{ width: "100%" }}>
                       <Box
                         sx={{
-                          border: "solid 1px black",
+                          borderBottom: "solid 1px black",
                           width: "100%",
                           height: "100%",
                           backgroundColor: "#eefafa",
-                          borderRadius: "16px",
                           color: "black",
                           p: 1,
                         }}

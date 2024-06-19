@@ -104,8 +104,8 @@ function CalendarContainer() {
       </Box>
       <Box
         sx={{
-          height: "100vh",
-          width: "85vw",
+          height: "100%",
+          width: "100%",
           p: 2,
           display: { xs: "none", md: "block" },
         }}
