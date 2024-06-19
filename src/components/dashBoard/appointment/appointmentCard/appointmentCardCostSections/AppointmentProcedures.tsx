@@ -130,7 +130,7 @@ function AppointmentProcedures() {
   }
 
   return (
-    <Box sx={{ height: "90%", width: "100%" }}>
+    <Box sx={{ height: "100%", width: "100%" }}>
       <Box
         sx={{
           height: "10%",
@@ -156,7 +156,7 @@ function AppointmentProcedures() {
           />
         </Box>
       </Box>
-      <Box sx={{ height: "35%", border: "solid 1px black" }}>
+      <Box sx={{ height: "35%" }}>
         <Box
           sx={{
             display: "flex",
@@ -226,7 +226,7 @@ function AppointmentProcedures() {
           </Box>
         </Box>
       </Box>
-      <Box sx={{ height: "45%" }}>
+      <Box sx={{ height: "40%" }}>
         <Box sx={{ border: "solid 1px #94ddde", height: "100%" }}>
           <Box
             sx={{
@@ -273,38 +273,55 @@ function AppointmentProcedures() {
       </Box>
       <Box
         sx={{
-          height: "10%",
+          height: "15%",
           display: "flex",
           justifyContent: "space-between",
         }}
       >
-        <Button
+        <Box
           sx={{
-            backgroundColor: "#ffffff",
-            color: "black",
-
-            border: "solid 1px ",
-            width: "45%",
             height: "100%",
+            width: "50%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
-          onClick={handleRemoveLastProcedure}
         >
-          Remove Last
-        </Button>
-
-        <Button
+          <Button
+            sx={{
+              backgroundColor: "#ffffff",
+              color: "black",
+              border: "solid 1px ",
+              width: "45%",
+              height: "50%",
+            }}
+            onClick={handleRemoveLastProcedure}
+          >
+            Remove Last
+          </Button>
+        </Box>
+        <Box
           sx={{
-            backgroundColor: "#ffffff",
-            color: "black",
-            border: "solid 1px ",
-            width: "45%",
             height: "100%",
-            mb: 1,
+            width: "50%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
-          onClick={handleClearProceduresDone}
         >
-          Clear
-        </Button>
+          <Button
+            sx={{
+              backgroundColor: "#ffffff",
+              color: "black",
+              border: "solid 1px ",
+              width: "45%",
+              height: "50%",
+            }}
+            onClick={handleClearProceduresDone}
+          >
+            Clear
+          </Button>
+        </Box>
       </Box>
     </Box>
   );

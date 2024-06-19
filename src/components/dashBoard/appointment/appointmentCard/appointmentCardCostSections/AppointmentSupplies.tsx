@@ -127,7 +127,7 @@ function AppointmentSupplies() {
   }
 
   return (
-    <Box sx={{ height: "90%", width: "100%" }}>
+    <Box sx={{ height: "100%", width: "100%" }}>
       <Box
         sx={{
           height: "10%",
@@ -154,7 +154,7 @@ function AppointmentSupplies() {
         </Box>
       </Box>
 
-      <Box sx={{ height: "35%", border: "solid 1px black" }}>
+      <Box sx={{ height: "35%" }}>
         <Box
           sx={{
             display: "flex",
@@ -224,7 +224,7 @@ function AppointmentSupplies() {
           </Box>
         </Box>
       </Box>
-      <Box sx={{ height: "45%" }}>
+      <Box sx={{ height: "40%" }}>
         <Box sx={{ border: "solid 1px #94ddde", height: "100%" }}>
           <Box
             sx={{
@@ -272,38 +272,55 @@ function AppointmentSupplies() {
 
       <Box
         sx={{
-          height: "10%",
+          height: "15%",
           display: "flex",
           justifyContent: "space-between",
         }}
       >
-        <Button
+        <Box
           sx={{
-            backgroundColor: "#ffffff",
-            color: "black",
-
-            border: "solid 1px ",
-            width: "45%",
             height: "100%",
+            width: "50%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
-          onClick={handleRemoveLastSupply}
         >
-          Remove Last
-        </Button>
-
-        <Button
+          <Button
+            sx={{
+              backgroundColor: "#ffffff",
+              color: "black",
+              border: "solid 1px ",
+              width: "45%",
+              height: "50%",
+            }}
+            onClick={handleRemoveLastSupply}
+          >
+            Remove Last
+          </Button>
+        </Box>
+        <Box
           sx={{
-            backgroundColor: "#ffffff",
-            color: "black",
-            border: "solid 1px ",
-            width: "45%",
             height: "100%",
-            mb: 1,
+            width: "50%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
-          onClick={handleClearSuppliesUsed}
         >
-          Clear
-        </Button>
+          <Button
+            sx={{
+              backgroundColor: "#ffffff",
+              color: "black",
+              border: "solid 1px ",
+              width: "45%",
+              height: "50%",
+            }}
+            onClick={handleClearSuppliesUsed}
+          >
+            Clear
+          </Button>
+        </Box>
       </Box>
     </Box>
   );
