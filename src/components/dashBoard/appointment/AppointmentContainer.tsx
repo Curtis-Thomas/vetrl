@@ -5,14 +5,14 @@ import { RootState } from "../../../redux/store";
 import { resetAppointmentData } from "../../../redux/actions/appointmentActions";
 
 import { useUser } from "@auth0/nextjs-auth0/client";
-import AppointmentProcedures from "./appointmentCard/AppointmentProcedures";
+import AppointmentProcedures from "./appointmentCard/appointmentCardCostSections/AppointmentProcedures";
 import AppointmentDischargeNotes from "./appointmentCard/AppointmentDischargeNotes";
 import AppointmentBillingBox from "./appointmentCard/billingBox/AppointmentBillingBox";
 import AppointmentCardHeader from "./appointmentCard/AppointmentCardHeader";
 
 import AppointmentHeaderClientPatient from "./appointmentHeader/AppointmentHeaderClientPatient";
-import AppointmentMedicine from "./appointmentCard/AppointmentMedicine";
-import AppointmentSupplies from "./appointmentCard/AppointmentSupplies";
+import AppointmentMedicine from "./appointmentCard/appointmentCardCostSections/AppointmentMedicine";
+import AppointmentSupplies from "./appointmentCard/appointmentCardCostSections/AppointmentSupplies";
 import AppointmentBillBackdrop from "./appointmentBill/AppointmentBillBackdrop";
 
 import axios from "axios";

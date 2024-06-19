@@ -4,121 +4,124 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import axios from "axios";
 
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../../../redux/store"; // import your store type
+import { RootState } from "../../../../../redux/store"; // import your store type
 
-interface Procedure {
+interface Medicine {
   name: string;
   price: number;
   description: string;
   sub: string;
 }
 
-interface ProceduresDone {
+interface MedicineUsed {
   name: string;
   price: number;
   amount: string;
 }
 
-function AppointmentProcedures() {
+function AppointmentMedicine() {
   const dispatch = useDispatch();
 
   const domainUrl = process.env.NEXT_PUBLIC_DOMAIN_URL;
 
   const { user, error, isLoading } = useUser();
 
-  const [procedures, setProcedures] = useState<Procedure[]>([]);
+  const [medicine, setMedicine] = useState<Medicine[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [proceduresDone, setProceduresDone] = useState<ProceduresDone[]>([]);
+  const [medicineUsed, setMedicineUsed] = useState<MedicineUsed[]>([]);
 
-  const [proceduresDoneProcedure, setProceduresDoneProcedure] = useState("");
-  const [proceduresDoneAmount, setProceduresDoneAmount] = useState("");
-  const [proceduresDonePrice, setProceduresDonePrice] = useState("");
-  const [proceduresBtnClicked, setProceduresBtnClicked] = useState(false);
+  const [medicineUsedMedicine, setMedicineUsedMedicine] = useState("");
+  const [medicineUsedAmount, setMedicineUsedAmount] = useState("");
+  const [medicineUsedPrice, setMedicineUsedPrice] = useState("");
+  const [medicineBtnClicked, setMedicineBtnClicked] = useState(false);
 
-  const appointmentCardProceduresPrice = useSelector(
-    (state: RootState) => state.appointment.appointmentCardProceduresPrice
+  const appointmentCardMedicinePrice = useSelector(
+    (state: RootState) => state.appointment.appointmentCardMedicinePrice
   );
 
   const formatNumber = (num: number) => num.toFixed(2);
 
-  const getProceduresData = useCallback(async () => {
+  const getMedicineData = useCallback(async () => {
     if (!user) return;
     try {
-      const url = domainUrl + `/procedure/procedures/get`;
+      const url = domainUrl + `/drugs/drugs/get`;
 
       const headers = {
         sub: user.sub,
       };
 
       const response = await axios.get(url, { headers });
-      setProcedures(response.data);
+      setMedicine(response.data);
     } catch (error) {
       console.error("Error:", error);
     }
   }, [user, domainUrl]);
 
   useEffect(() => {
-    getProceduresData();
-  }, [getProceduresData]);
+    getMedicineData();
+  }, [getMedicineData]);
 
-  const filteredProcedures = procedures.filter((procedure) =>
-    procedure.name.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredMedicine = medicine.filter((medicine) =>
+    medicine.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handleAddProceduresDone = () => {
+  const handleAddMedicineUsed = () => {
     if (!user) return;
-    const newProcedure = {
-      name: proceduresDoneProcedure,
-      price: parseInt(proceduresDonePrice),
-      amount: proceduresDoneAmount,
+    const newMedicine = {
+      name: medicineUsedMedicine,
+      price: parseInt(medicineUsedPrice),
+      amount: medicineUsedAmount,
     };
-    setProceduresDone([...proceduresDone, newProcedure]);
-    setProceduresDoneProcedure("");
-    setProceduresDoneAmount("");
-    setProceduresDonePrice("");
+    setMedicineUsed([...medicineUsed, newMedicine]);
+    setMedicineUsedMedicine("");
+    setMedicineUsedAmount("");
+    setMedicineUsedPrice("");
     dispatch({
       type: "SET_APPOINTMENT",
       payload: {
-        appointmentCardProceduresPrice:
-          appointmentCardProceduresPrice + newProcedure.price,
+        appointmentCardMedicinePrice:
+          appointmentCardMedicinePrice + newMedicine.price,
       },
     });
   };
 
-  const handleRemoveLastProcedure = () => {
-    const lastProcedure = proceduresDone[proceduresDone.length - 1];
-    setProceduresDone(proceduresDone.slice(0, -1));
+  const handleRemoveLastMedicine = () => {
+    if (medicineUsed.length > 0) {
+      // Ensure there is at least one medicine to remove
+      const lastMedicine = medicineUsed[medicineUsed.length - 1];
+      if (lastMedicine && typeof lastMedicine.price === "number") {
+        // Check if lastMedicine is defined and has a numeric price
+        setMedicineUsed(medicineUsed.slice(0, -1));
+        dispatch({
+          type: "SET_APPOINTMENT",
+          payload: {
+            appointmentCardMedicinePrice:
+              appointmentCardMedicinePrice - lastMedicine.price,
+          },
+        });
+      }
+    }
+  };
+
+  const handleClearMedicineUsed = () => {
+    setMedicineUsed([]);
     dispatch({
       type: "SET_APPOINTMENT",
-      payload: {
-        appointmentCardProceduresPrice:
-          appointmentCardProceduresPrice - lastProcedure.price,
-      },
+      payload: { appointmentCardMedicinePrice: 0 },
     });
   };
 
-  const handleClearProceduresDone = () => {
-    setProceduresDone([]);
-    dispatch({
-      type: "SET_APPOINTMENT",
-      payload: { appointmentCardProceduresPrice: 0 },
-    });
-  };
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
 
-  function btnClickAddProcedure() {
-    if (
-      proceduresDoneProcedure &&
-      proceduresDonePrice &&
-      proceduresBtnClicked
-    ) {
+  function btnClickAddMedicine() {
+    if (medicineUsedMedicine && medicineUsedPrice && medicineBtnClicked) {
       setTimeout(() => {
         console.log(
-          `Adding procedure: ${proceduresDoneProcedure} with price: ${proceduresDonePrice}`
+          `Adding medicine: ${medicineUsedMedicine} with price: ${medicineUsedPrice}`
         );
-        handleAddProceduresDone();
-        setProceduresBtnClicked(false);
+        handleAddMedicineUsed();
+        setMedicineBtnClicked(false);
       }, 10);
     }
   }
@@ -135,11 +138,11 @@ function AppointmentProcedures() {
       >
         <Box sx={{ height: "60%" }}>
           <TextField
+            autoComplete="off"
             label="Search"
             value={searchTerm}
             onChange={(event) => setSearchTerm(event.target.value)}
             size="small"
-            autoComplete="off"
             InputLabelProps={{
               shrink: true,
             }}
@@ -159,7 +162,7 @@ function AppointmentProcedures() {
           }}
         >
           <Box>
-            <Typography>Procedures</Typography>
+            <Typography>Medicine</Typography>
           </Box>
           <Box>
             <Typography>Price</Typography>
@@ -169,6 +172,7 @@ function AppointmentProcedures() {
           sx={{
             height: "80%",
             overflowX: "hidden",
+
             overflowY: "auto",
             "&::-webkit-scrollbar": {
               width: "0.4em",
@@ -189,14 +193,14 @@ function AppointmentProcedures() {
               borderRadius: "16px",
             }}
           >
-            {filteredProcedures.map((procedure, index) => (
+            {filteredMedicine.map((medicine, index) => (
               <Button
-                key={`${procedure.name}-${index}`} // Generate a unique id by combining name and index
+                key={`${medicine.name}-${index}`} // Generate a unique id by combining name and index
                 onClick={() => {
-                  setProceduresBtnClicked(true);
-                  setProceduresDoneProcedure(procedure.name);
-                  setProceduresDonePrice(procedure.price.toString());
-                  btnClickAddProcedure();
+                  setMedicineBtnClicked(true);
+                  setMedicineUsedMedicine(medicine.name);
+                  setMedicineUsedPrice(medicine.price.toString());
+                  btnClickAddMedicine();
                 }}
                 sx={{
                   width: "100%",
@@ -210,10 +214,10 @@ function AppointmentProcedures() {
                 }}
               >
                 <Box>
-                  <Typography>{procedure.name}</Typography>
+                  <Typography>{medicine.name}</Typography>
                 </Box>
                 <Box>
-                  <Typography>{procedure.price}</Typography>
+                  <Typography>{medicine.price}</Typography>
                 </Box>
               </Button>
             ))}
@@ -241,7 +245,7 @@ function AppointmentProcedures() {
               },
             }}
           >
-            {proceduresDone.map((procedure, index) => (
+            {medicineUsed.map((medicine, index) => (
               <Box
                 key={index}
                 sx={{
@@ -252,13 +256,13 @@ function AppointmentProcedures() {
                 }}
               >
                 <Box>
-                  <Typography>{procedure.name}</Typography>
+                  <Typography>{medicine.name}</Typography>
                 </Box>
                 <Box>
-                  <Typography>{procedure.amount}</Typography>
+                  <Typography>{medicine.amount}</Typography>
                 </Box>
                 <Box>
-                  <Typography>{procedure.price}</Typography>
+                  <Typography>{medicine.price}</Typography>
                 </Box>
               </Box>
             ))}
@@ -281,7 +285,7 @@ function AppointmentProcedures() {
             width: "45%",
             height: "100%",
           }}
-          onClick={handleRemoveLastProcedure}
+          onClick={handleRemoveLastMedicine}
         >
           Remove Last
         </Button>
@@ -295,7 +299,7 @@ function AppointmentProcedures() {
             height: "100%",
             mb: 1,
           }}
-          onClick={handleClearProceduresDone}
+          onClick={handleClearMedicineUsed}
         >
           Clear
         </Button>
@@ -304,4 +308,4 @@ function AppointmentProcedures() {
   );
 }
 
-export default AppointmentProcedures;
+export default AppointmentMedicine;

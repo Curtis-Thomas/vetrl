@@ -4,7 +4,7 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import axios from "axios";
 
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../../../redux/store"; // import your store type
+import { RootState } from "../../../../../redux/store"; // import your store type
 
 interface Supplies {
   name: string;
@@ -33,6 +33,7 @@ function AppointmentSupplies() {
   const [suppliesUsedSupplies, setSuppliesUsedSupplies] = useState("");
   const [suppliesUsedAmount, setSuppliesUsedAmount] = useState("");
   const [suppliesUsedPrice, setSuppliesUsedPrice] = useState("");
+  const [suppliesBtnClicked, setSuppliesBtnClicked] = useState(false);
 
   const appointmentCardSuppliesPrice = useSelector(
     (state: RootState) => state.appointment.appointmentCardSuppliesPrice
@@ -85,15 +86,21 @@ function AppointmentSupplies() {
   };
 
   const handleRemoveLastSupply = () => {
-    const lastSupply = suppliesUsed[suppliesUsed.length - 1];
-    setSuppliesUsed(suppliesUsed.slice(0, -1));
-    dispatch({
-      type: "SET_APPOINTMENT",
-      payload: {
-        appointmentCardSuppliesPrice:
-          appointmentCardSuppliesPrice - lastSupply.price,
-      },
-    });
+    if (suppliesUsed.length > 0) {
+      // Ensure there is at least one supply to remove
+      const lastSupply = suppliesUsed[suppliesUsed.length - 1];
+      if (lastSupply && typeof lastSupply.price === "number") {
+        // Check if lastSupply is defined and has a numeric price
+        setSuppliesUsed(suppliesUsed.slice(0, -1));
+        dispatch({
+          type: "SET_APPOINTMENT",
+          payload: {
+            appointmentCardSuppliesPrice:
+              appointmentCardSuppliesPrice - lastSupply.price,
+          },
+        });
+      }
+    }
   };
 
   const handleClearSuppliesUsed = () => {
@@ -107,26 +114,47 @@ function AppointmentSupplies() {
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
 
+  function btnClickAddSupplies() {
+    if (suppliesUsedSupplies && suppliesUsedPrice && suppliesBtnClicked) {
+      setTimeout(() => {
+        console.log(
+          `Adding Supplies: ${suppliesUsedSupplies} with price: ${suppliesUsedPrice}`
+        );
+        handleAddSuppliesUsed();
+        setSuppliesBtnClicked(false);
+      }, 10);
+    }
+  }
+
   return (
-    <Box sx={{ height: "100%", width: "100%" }}>
-      <Box sx={{ height: "10%", width: "100%" }}>
-        <TextField
-          label="Search"
-          value={searchTerm}
-          autoComplete="off"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          onChange={(event) => setSearchTerm(event.target.value)}
-          size="small"
-          sx={{ width: 200, backgroundColor: "#ffffff" }}
-          inputProps={{
-            style: { height: "10%" },
-          }}
-        />
+    <Box sx={{ height: "90%", width: "100%" }}>
+      <Box
+        sx={{
+          height: "10%",
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <Box sx={{ height: "60%" }}>
+          <TextField
+            label="Search"
+            value={searchTerm}
+            autoComplete="off"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={(event) => setSearchTerm(event.target.value)}
+            size="small"
+            sx={{ width: 200, backgroundColor: "#ffffff" }}
+            inputProps={{
+              style: { height: "10%" },
+            }}
+          />
+        </Box>
       </Box>
 
-      <Box sx={{ height: "25%" }}>
+      <Box sx={{ height: "35%", border: "solid 1px black" }}>
         <Box
           sx={{
             display: "flex",
@@ -166,10 +194,19 @@ function AppointmentSupplies() {
             }}
           >
             {filteredSupplies.map((supplies, index) => (
-              <Box
-                key={index}
+              <Button
+                key={`${supplies.name}-${index}`} // Generate a unique id by combining name and index
+                onClick={() => {
+                  setSuppliesBtnClicked(true);
+                  setSuppliesUsedSupplies(supplies.name);
+                  setSuppliesUsedPrice(supplies.price.toString());
+                  btnClickAddSupplies();
+                }}
                 sx={{
+                  width: "100%",
+                  borderRadius: 0,
                   backgroundColor: "#ffffff",
+                  border: "none",
                   borderBottom: "1px solid grey",
                   display: "flex",
                   justifyContent: "space-between",
@@ -182,13 +219,13 @@ function AppointmentSupplies() {
                 <Box>
                   <Typography>{supplies.price}</Typography>
                 </Box>
-              </Box>
+              </Button>
             ))}
           </Box>
         </Box>
       </Box>
-      <Box sx={{ height: "65%" }}>
-        <Box sx={{ border: "solid 1px #94ddde", height: "45%" }}>
+      <Box sx={{ height: "45%" }}>
+        <Box sx={{ border: "solid 1px #94ddde", height: "100%" }}>
           <Box
             sx={{
               height: "100%",
@@ -231,102 +268,42 @@ function AppointmentSupplies() {
             ))}
           </Box>
         </Box>
-        <Box sx={{ height: "10%" }}></Box>
-        <Box sx={{ height: "45%", display: "flex" }}>
-          <Box sx={{ width: "70%", height: "100%" }}>
-            <Box sx={{ height: "33.33%" }}>
-              <TextField
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                sx={{ backgroundColor: "#ffffff" }}
-                value={suppliesUsedSupplies}
-                label="Supplies"
-                size="small"
-                autoComplete="off"
-                onChange={(event) =>
-                  setSuppliesUsedSupplies(event.target.value)
-                }
-                inputProps={{
-                  style: { height: "10%" },
-                }}
-              />
-            </Box>
-            <Box sx={{ height: "33.33%" }}>
-              {/* <TextField
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                sx={{ backgroundColor: "#ffffff" }}
-                value={suppliesUsedAmount}
-                label="Amount - Num"
-                size="small"
-                type="number"
-                autoComplete="off"
-                onChange={(event) => setSuppliesUsedAmount(event.target.value)}
-              /> */}
-            </Box>
-            <Box sx={{ height: "33.33%" }}>
-              <TextField
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                sx={{ backgroundColor: "#ffffff" }}
-                value={suppliesUsedPrice}
-                label="Price - Num"
-                type="number"
-                size="small"
-                autoComplete="off"
-                onChange={(event) => setSuppliesUsedPrice(event.target.value)}
-                inputProps={{
-                  style: { height: "10%" },
-                }}
-              />
-            </Box>
-          </Box>
-          <Box sx={{ width: "30%" }}>
-            <Button
-              sx={{
-                backgroundColor: "#ffffff",
-                color: "black",
+      </Box>
 
-                border: "solid 1px ",
-                width: "100%",
-                height: "30%",
-                mb: 1,
-                fontSize: 10,
-              }}
-              onClick={handleRemoveLastSupply}
-            >
-              Remove Last
-            </Button>
+      <Box
+        sx={{
+          height: "10%",
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
+        <Button
+          sx={{
+            backgroundColor: "#ffffff",
+            color: "black",
 
-            <Button
-              sx={{
-                backgroundColor: "#ffffff",
-                color: "black",
+            border: "solid 1px ",
+            width: "45%",
+            height: "100%",
+          }}
+          onClick={handleRemoveLastSupply}
+        >
+          Remove Last
+        </Button>
 
-                border: "solid 1px ",
-                width: "100%",
-                height: "30%",
-                mb: 1,
-              }}
-              onClick={handleClearSuppliesUsed}
-            >
-              Clear
-            </Button>
-
-            <Button
-              sx={{
-                width: "100%",
-                height: "30%",
-              }}
-              onClick={handleAddSuppliesUsed}
-            >
-              Add
-            </Button>
-          </Box>
-        </Box>
+        <Button
+          sx={{
+            backgroundColor: "#ffffff",
+            color: "black",
+            border: "solid 1px ",
+            width: "45%",
+            height: "100%",
+            mb: 1,
+          }}
+          onClick={handleClearSuppliesUsed}
+        >
+          Clear
+        </Button>
       </Box>
     </Box>
   );
