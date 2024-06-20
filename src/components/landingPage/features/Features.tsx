@@ -9,24 +9,28 @@ import Image from "next/image";
 
 import { useState } from "react";
 
-import imgOverview from "./assets/overview picture.png";
-import imgCalendar from "./assets/calendar picture.png";
+import imgOverview from "./assets/Overview.jpg";
+import imgCalendar from "./assets/Calendar.jpg";
+import imgRecords from "./assets/Records.jpg";
+import imgAppointmentCard from "./assets/AppointmentCard.jpg";
+import imgInvoice from "./assets/Invoice.jpg";
 import { set } from "date-fns";
 
 function Features() {
   const [activeImg, setActiveImg] = useState(imgOverview);
   const [overviewDecoration, setOverviewDecoration] = useState("underline");
   const [calendarDecoration, setCalendarDecoration] = useState("none");
-  const [billingDecoration, setBillingDecoration] = useState("none");
-  const [singlePageDecoration, setSinglePageDecoration] = useState("none");
-  const [easyEditDecoration, setEasyEditDecoration] = useState("none");
+  const [recordsDecoration, setRecordsDecoration] = useState("none");
+  const [appointmentCardDecoration, setAppointmentCardDecoration] =
+    useState("none");
+  const [invoiceDecoration, setInvoiceDecoration] = useState("none");
 
   function resetDecorations() {
     setOverviewDecoration("none");
     setCalendarDecoration("none");
-    setBillingDecoration("none");
-    setSinglePageDecoration("none");
-    setEasyEditDecoration("none");
+    setRecordsDecoration("none");
+    setAppointmentCardDecoration("none");
+    setInvoiceDecoration("none");
   }
 
   return (
@@ -126,9 +130,8 @@ function Features() {
             <Button
               disableRipple
               onClick={() => {
-                setActiveImg(imgOverview);
+                setActiveImg(imgRecords);
                 resetDecorations();
-                setBillingDecoration("underline");
               }}
               sx={{
                 backgroundColor: "#434063",
@@ -136,14 +139,14 @@ function Features() {
                 color: "#f26b70",
                 width: "100%",
                 height: "100%",
-                textDecoration: billingDecoration,
+                textDecoration: recordsDecoration,
                 ":hover": {
                   textDecoration: "underline dotted",
                   backgroundColor: "#2D2B42",
                 },
               }}
             >
-              <Typography variant="h5">Billing</Typography>
+              <Typography variant="h5">Records</Typography>
             </Button>
           </Box>
           <Box
@@ -160,9 +163,9 @@ function Features() {
             <Button
               disableRipple
               onClick={() => {
-                setActiveImg(imgOverview);
+                setActiveImg(imgAppointmentCard);
                 resetDecorations();
-                setSinglePageDecoration("underline");
+                setAppointmentCardDecoration("underline");
               }}
               sx={{
                 backgroundColor: "#434063",
@@ -170,14 +173,14 @@ function Features() {
                 color: "#f26b70",
                 width: "100%",
                 height: "100%",
-                textDecoration: singlePageDecoration,
+                textDecoration: appointmentCardDecoration,
                 ":hover": {
                   textDecoration: "underline dotted",
                   backgroundColor: "#2D2B42",
                 },
               }}
             >
-              <Typography variant="h5">Single-page layout</Typography>
+              <Typography variant="h5">Easy Invoice</Typography>
             </Button>
           </Box>
           <Box
@@ -193,9 +196,9 @@ function Features() {
             <Button
               disableRipple
               onClick={() => {
-                setActiveImg(imgOverview);
+                setActiveImg(imgInvoice);
                 resetDecorations();
-                setEasyEditDecoration("underline");
+                setInvoiceDecoration("underline");
               }}
               sx={{
                 backgroundColor: "#434063",
@@ -203,14 +206,14 @@ function Features() {
                 color: "#f26b70",
                 width: "100%",
                 height: "100%",
-                textDecoration: easyEditDecoration,
+                textDecoration: invoiceDecoration,
                 ":hover": {
                   textDecoration: "underline dotted",
                   backgroundColor: "#2D2B42",
                 },
               }}
             >
-              <Typography variant="h5">Easy-edit codex</Typography>
+              <Typography variant="h5">Easy Invoice</Typography>
             </Button>
           </Box>
         </Box>
