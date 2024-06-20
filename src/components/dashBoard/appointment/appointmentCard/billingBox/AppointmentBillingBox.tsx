@@ -211,20 +211,17 @@ function AppointmentBillingBox() {
             1
           ).toFixed(2)}
         />
-        <Box sx={{ width: "20%", height: "100%" }}>
-          <Typography>
-            {/* {appointmentCardProceduresPrice -
-              (appointmentCardProceduresPrice * taxProcedures) / 100 +
-              +(
-                appointmentCardMedicinePrice -
-                (appointmentCardMedicinePrice * taxMedicine) / 100
-              ) +
-              +(
-                appointmentCardSuppliesPrice -
-                (appointmentCardSuppliesPrice * taxSupplies) / 100
-              )} */}
-          </Typography>
-        </Box>
+        <AppointmentBillingBoxCell
+          justifyContent="center"
+          text={(
+            appointmentCardProceduresPrice -
+            (appointmentCardProceduresPrice * taxProcedures) / 100 +
+            appointmentCardMedicinePrice -
+            (appointmentCardMedicinePrice * taxMedicine) / 100 +
+            appointmentCardSuppliesPrice -
+            (appointmentCardSuppliesPrice * taxSupplies) / 100
+          ).toFixed(2)}
+        />
         <AppointmentBillingBoxCell
           justifyContent="center"
           text={(
