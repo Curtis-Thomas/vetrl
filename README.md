@@ -28,22 +28,31 @@ Overview Page -
 - Daily schedule
 - Task list
 
-![Overview Picture](https://github.com/Curtis-Thomas/vetrl/raw/main/src/components/landingPage/features/assets/overview%20picture.png)
+![Overview Picture](https://github.com/Curtis-Thomas/vetrl/blob/main/src/components/landingPage/features/assets/Overview.jpg)
 
 Appointment Page -
 - Client creation
 - Patient creation
 - Appointment card creation
-- Invoice creation with PDF download (work in progress)
+  
+![AppointmentCard Picture](https://github.com/Curtis-Thomas/vetrl/blob/main/src/components/landingPage/features/assets/AppointmentCard.jpg)
+
+- Invoice creation with PDF download
+  
+![AppointmentCard Picture](https://github.com/Curtis-Thomas/vetrl/blob/main/src/components/landingPage/features/assets/Invoice.jpg)
+  
 
 Calendar Page -
 - Weekly view
 - Monthly view
 
-![Calendar Picture](https://github.com/Curtis-Thomas/vetrl/raw/main/src/components/landingPage/features/assets/calendar%20picture.png)
+![Calendar Picture](https://github.com/Curtis-Thomas/vetrl/blob/main/src/components/landingPage/features/assets/Calendar.jpg)
 
 Records page - 
 - Appointment record storage
+  
+![Calendar Picture](https://github.com/Curtis-Thomas/vetrl/blob/main/src/components/landingPage/features/assets/Records.jpg)
+  
 
 Codex page -
 - Drugs list, name, price, description
