@@ -180,7 +180,7 @@ function Features() {
                 },
               }}
             >
-              <Typography variant="h5">Easy Invoice</Typography>
+              <Typography variant="h5">Appointment Card</Typography>
             </Button>
           </Box>
           <Box
