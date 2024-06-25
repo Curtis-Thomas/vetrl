@@ -89,6 +89,17 @@ function Main() {
         </Box>
         <Box sx={{ width: "100%", height: "50vh" }}>
           <>
+            <Box sx={{ width: "100%", pl: "33%", pr: "33%" }}>
+              <Typography color="white">
+                <strong> Cookie Disclaimer</strong>
+                This website uses cookies to enhance your browsing experience by
+                storing information on your computer. These cookies are utilized
+                to save your user settings and other relevant information such
+                as: Surgery Name Surgery Address (No Street, Area, Post Code,
+                Country) Surgery Phone Number Business ID Currency By continuing
+                to use this website, you consent to our use of cookies.
+              </Typography>
+            </Box>
             <Box
               sx={{
                 p: 1,
