@@ -12,13 +12,13 @@ type UserSettings = {
 };
 
 const initialState: UserSettings = {
-  surgeryName: "--Visit settings to set your surgery name--",
-  surgeryAddressNoStreet: "--Visit settings to set your surgery address--",
-  surgeryAddressArea: "--Visit settings to set your surgery area--",
-  surgeryAddressPostCode: "--Visit settings to set your surgery post code--",
-  surgeryAddressCountry: "--Visit settings to set your surgery country--",
-  surgeryAddressPhoneNo: "--Visit settings to set your surgery phone number--",
-  businessId: "--Visit settings to set your business ID--",
+  surgeryName: "_____",
+  surgeryAddressNoStreet: "_____",
+  surgeryAddressArea: "_____",
+  surgeryAddressPostCode: "_____",
+  surgeryAddressCountry: "_____",
+  surgeryAddressPhoneNo: "_____",
+  businessId: "_____",
   currency: "€",
 };
 

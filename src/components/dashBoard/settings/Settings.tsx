@@ -30,6 +30,16 @@ function Settings() {
   const [businessId, setBusinessId] = useState("");
   const [currency, setCurrency] = useState("");
 
+  // Function to update both Redux store and localStorage
+  function updateSettings(settings: RootState["settings"]) {
+    dispatch({
+      type: "SET_USER_SETTINGS",
+      payload: settings,
+    });
+
+    localStorage.setItem("userSettings", JSON.stringify(settings));
+  }
+
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
 
@@ -145,19 +155,6 @@ function Settings() {
             borderTop: "dotted 1px grey",
           }}
         >
-          <Box
-            sx={{
-              height: "10%",
-              width: "100%",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Typography color={"red"}>
-              Area Currently Under Development
-            </Typography>
-          </Box>
           <Box sx={{ height: "70%", width: "100%" }}>
             <Box sx={{ height: "10%", width: "100%" }}>
               <Typography>Surgery Details: </Typography>
@@ -235,58 +232,63 @@ function Settings() {
             <Box sx={{ height: "20%", width: "100%" }}>
               <Button
                 onClick={() => {
-                  dispatch({
-                    type: "SET_USER_SETTINGS",
-                    payload: {
-                      surgeryName,
-                      surgeryAddressNoStreet,
-                      surgeryAddressArea,
-                      surgeryAddressPostCode,
-                      surgeryAddressCountry,
-                      surgeryAddressPhoneNo,
-                      businessId,
-                    },
-                  });
+                  const settings = {
+                    ...JSON.parse(localStorage.getItem("userSettings") || "{}"), // Load existing settings and spread them
+                    surgeryName,
+                    surgeryAddressNoStreet,
+                    surgeryAddressArea,
+                    surgeryAddressPostCode,
+                    surgeryAddressCountry,
+                    surgeryAddressPhoneNo,
+                    businessId,
+                  };
+
+                  // Function to update both Redux store and localStorage
+                  updateSettings(settings);
                 }}
               >
                 Save User Settings
               </Button>
             </Box>
-          </Box>
-          <Box
-            sx={{ height: "20%", width: "100%", borderTop: "dotted 1px grey" }}
-          >
-            <Box sx={{ height: "70%", width: "100%" }}>
-              <Typography>Currency:</Typography>
-              <Select
-                value={currency}
-                onChange={(e) => setCurrency(e.target.value)}
-                style={{ width: 120 }}
-              >
-                <MenuItem value="€">EUR - €</MenuItem>
-                <MenuItem value="$">USD - $</MenuItem>
-                <MenuItem value="£">GBP - £</MenuItem>
-                <MenuItem value="¥">JPY - ¥</MenuItem>
-                <MenuItem value="₹">IND - ₹</MenuItem>
-                <MenuItem value="₩">KOR - ₩</MenuItem>
-              </Select>
-            </Box>
             <Box
               sx={{
                 height: "30%",
                 width: "100%",
+                borderTop: "dotted 1px grey",
               }}
             >
-              <Button
-                onClick={() => {
-                  dispatch({
-                    type: "SET_USER_SETTINGS",
-                    payload: { currency },
-                  });
-                }}
-              >
-                Save Currency
-              </Button>
+              <Box sx={{ height: "70%", width: "100%" }}>
+                <Typography>Currency:</Typography>
+                <Select
+                  value={currency}
+                  onChange={(e) => setCurrency(e.target.value)}
+                  style={{ width: 120 }}
+                >
+                  <MenuItem value="€">EUR - €</MenuItem>
+                  <MenuItem value="$">USD - $</MenuItem>
+                  <MenuItem value="£">GBP - £</MenuItem>
+                  <MenuItem value="¥">JPY - ¥</MenuItem>
+                  <MenuItem value="₹">IND - ₹</MenuItem>
+                  <MenuItem value="₩">KOR - ₩</MenuItem>
+                </Select>
+              </Box>
+              <Box sx={{ height: "30%", width: "100%" }}>
+                <Button
+                  onClick={() => {
+                    const settings = {
+                      ...JSON.parse(
+                        localStorage.getItem("userSettings") || "{}"
+                      ), // Load existing settings and spread them
+                      currency,
+                    };
+
+                    // Function to update both Redux store and localStorage
+                    updateSettings(settings);
+                  }}
+                >
+                  Save Currency
+                </Button>
+              </Box>
             </Box>
           </Box>
         </Box>

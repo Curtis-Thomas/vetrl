@@ -9,7 +9,22 @@ import CodexContainer from "@/components/dashBoard/codex/CodexContainer";
 import AppointmentContainer from "@/components/dashBoard/appointment/AppointmentContainer";
 import RecordsContainer from "@/components/dashBoard/records/RecordsContainer";
 
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { RootState } from "../src/redux/store";
+
 function Dashboard() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const savedSettings = localStorage.getItem("userSettings");
+    if (savedSettings) {
+      const settings = JSON.parse(savedSettings);
+      dispatch({
+        type: "SET_USER_SETTINGS",
+        payload: settings,
+      });
+    }
+  }, [dispatch]);
   const domainUrl = process.env.NEXT_PUBLIC_DOMAIN_URL;
 
   const [display, setDisplay] = useState("overview");

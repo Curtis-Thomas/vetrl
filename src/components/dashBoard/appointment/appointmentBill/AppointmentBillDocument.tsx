@@ -1,9 +1,13 @@
 import React, { useRef } from "react";
 import { useReactToPrint } from "react-to-print";
 import { useSelector } from "react-redux";
+import { RootState } from "../../../../redux/store";
+
 import { Appointment } from "../../../../redux/actions/appointmentActions";
 
 function AppointmentBillDocument() {
+  const userSettings = useSelector((state: RootState) => state.settings);
+
   const appointment = useSelector(
     (state: { appointment: Appointment }) => state.appointment
   );
@@ -68,9 +72,78 @@ function AppointmentBillDocument() {
         }}
       >
         {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: "20px" }}>
-          <h1>Appointment Bill</h1>
+        <div style={{ display: "flex" }}>
+          <div style={{ textAlign: "left", width: "50%" }}>
+            <h1>Invoice</h1>
+          </div>
+
+          <div style={{ textAlign: "right", width: "50%" }}>
+            <p
+              style={{
+                lineHeight: "0.75em",
+                marginTop: "0.25em",
+                marginBottom: "0.25em",
+              }}
+            >
+              {userSettings.surgeryName}
+            </p>
+            <p
+              style={{
+                lineHeight: "0.75em",
+                marginTop: "0.25em",
+                marginBottom: "0.25em",
+              }}
+            >
+              {userSettings.surgeryAddressNoStreet}
+            </p>
+            <p
+              style={{
+                lineHeight: "0.75em",
+                marginTop: "0.25em",
+                marginBottom: "0.25em",
+              }}
+            >
+              {userSettings.surgeryAddressArea}
+            </p>
+            <p
+              style={{
+                lineHeight: "0.75em",
+                marginTop: "0.25em",
+                marginBottom: "0.25em",
+              }}
+            >
+              {userSettings.surgeryAddressPostCode}
+            </p>
+            <p
+              style={{
+                lineHeight: "0.75em",
+                marginTop: "0.25em",
+                marginBottom: "0.25em",
+              }}
+            >
+              {userSettings.surgeryAddressCountry}
+            </p>
+            <p
+              style={{
+                lineHeight: "0.75em",
+                marginTop: "0.25em",
+                marginBottom: "0.25em",
+              }}
+            >
+              {userSettings.surgeryAddressPhoneNo}
+            </p>
+            <p
+              style={{
+                lineHeight: "0.75em",
+                marginTop: "0.25em",
+                marginBottom: "0.25em",
+              }}
+            >
+              {userSettings.businessId}
+            </p>
+          </div>
         </div>
+
         <div style={{ display: "flex", justifyContent: "space-evenly" }}>
           <div>
             <p>
@@ -114,19 +187,22 @@ function AppointmentBillDocument() {
             <tr>
               <td>Procedures</td>
               <td style={{ textAlign: "right" }}>
-                €{appointment.appointmentCardProceduresPrice}
+                {userSettings.currency}
+                {appointment.appointmentCardProceduresPrice}
               </td>
             </tr>
             <tr>
               <td>Medicine</td>
               <td style={{ textAlign: "right" }}>
-                €{appointment.appointmentCardMedicinePrice}
+                {userSettings.currency}
+                {appointment.appointmentCardMedicinePrice}
               </td>
             </tr>
             <tr>
               <td>Supplies</td>
               <td style={{ textAlign: "right" }}>
-                €{appointment.appointmentCardSuppliesPrice}
+                {userSettings.currency}
+                {appointment.appointmentCardSuppliesPrice}
               </td>
             </tr>
             <tr>
@@ -135,7 +211,7 @@ function AppointmentBillDocument() {
               </td>
               <td style={{ textAlign: "right" }}>
                 <strong>
-                  €
+                  {userSettings.currency}
                   {(
                     parseFloat(appointment.appointmentCardProceduresPrice) +
                     parseFloat(appointment.appointmentCardMedicinePrice) +
