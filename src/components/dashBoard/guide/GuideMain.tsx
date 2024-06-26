@@ -21,10 +21,10 @@ function GuideMain({
         zIndex: (theme) => theme.zIndex.drawer + 1,
         color: "#fff",
         backdropFilter: "blur(10px)",
-        height: "95%",
-        width: "95%",
-        ml: "auto",
-        mr: "auto",
+        height: "100%",
+        width: "100%",
+
+        overflowY: "scroll",
       }}
       open={guideBackdropState}
     >
@@ -105,7 +105,7 @@ function GuideMain({
             </Button>
           </Box>
         </Box>
-        <Box sx={{ minHeight: "90%", width: "100%", overflow: "auto" }}>
+        <Box sx={{ minHeight: "90%", width: "100%" }}>
           {displaySection === "overview" && <GuideOverview />}
           {displaySection === "appointment" && <GuideAppointment />}
           {displaySection === "calendar" && <GuideCalendar />}
