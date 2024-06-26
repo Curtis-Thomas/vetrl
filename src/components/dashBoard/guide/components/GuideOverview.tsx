@@ -2,7 +2,7 @@ import { Box, List, ListItem, Typography } from "@mui/material";
 
 function GuideOverview() {
   return (
-    <Box sx={{ height: "100%", width: "100%" }}>
+    <Box sx={{ height: "100%", width: "100%", overflow: "auto" }}>
       <Box
         sx={{
           height: "20%",
