@@ -2,12 +2,14 @@ import { Avatar, Backdrop, Box, Button, Typography } from "@mui/material";
 import { useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import packageJson from "../../../../package.json";
+import GuideMain from "../guide/GuideMain";
 
 function DashboardSideBar({
   onDisplayChange,
 }: {
   onDisplayChange: (location: string) => void;
 }) {
+  const [guideBackdropState, setGuideBackdropState] = useState(false);
   const [activeButton, setActiveButton] = useState("overview");
   const [feedbackBackdrop, setFeedbackBackdrop] = useState(false);
 
@@ -98,17 +100,31 @@ function DashboardSideBar({
       <Box
         sx={{
           p: 3,
+          display: "flex",
         }}
       >
-        <Button
-          sx={{
-            height: "100%",
-            width: "100%",
-          }}
-          onClick={() => setFeedbackBackdrop(true)}
-        >
-          Feedback
-        </Button>
+        <Box sx={{ height: "100%", width: "50%", p: 1 }}>
+          <Button
+            sx={{
+              height: "100%",
+              width: "100%",
+            }}
+            onClick={() => setGuideBackdropState(true)}
+          >
+            Guide
+          </Button>
+        </Box>
+        <Box sx={{ height: "100%", width: "50%", p: 1 }}>
+          <Button
+            sx={{
+              height: "100%",
+              width: "100%",
+            }}
+            onClick={() => setFeedbackBackdrop(true)}
+          >
+            Feedback
+          </Button>
+        </Box>
       </Box>
 
       <Backdrop
@@ -153,6 +169,10 @@ function DashboardSideBar({
           </Box>
         </Box>
       </Backdrop>
+      <GuideMain
+        guideBackdropState={guideBackdropState}
+        setGuideBackdropState={setGuideBackdropState}
+      />
     </Box>
   );
 }
