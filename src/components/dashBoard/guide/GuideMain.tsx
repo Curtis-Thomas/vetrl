@@ -21,8 +21,8 @@ function GuideMain({
         zIndex: (theme) => theme.zIndex.drawer + 1,
         color: "#fff",
         backdropFilter: "blur(10px)",
-        height: "100vh",
-        width: "100vw",
+        height: "100%",
+        width: "100%",
       }}
       open={guideBackdropState}
     >
