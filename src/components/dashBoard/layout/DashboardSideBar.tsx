@@ -169,10 +169,10 @@ function DashboardSideBar({
           </Box>
         </Box>
       </Backdrop>
-      <GuideMain
+      {/* <GuideMain
         guideBackdropState={guideBackdropState}
         setGuideBackdropState={setGuideBackdropState}
-      />
+      /> */}
     </Box>
   );
 }
