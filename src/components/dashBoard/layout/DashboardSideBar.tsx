@@ -99,11 +99,12 @@ function DashboardSideBar({
       </Box>
       <Box
         sx={{
+          height: "10vh",
           p: 3,
           display: "flex",
         }}
       >
-        <Box sx={{ height: "100%", width: "50%", p: 1 }}>
+        <Box sx={{ height: "100%", width: "40%", p: 1 }}>
           <Button
             sx={{
               height: "100%",
@@ -114,7 +115,7 @@ function DashboardSideBar({
             Guide
           </Button>
         </Box>
-        <Box sx={{ height: "100%", width: "50%", p: 1 }}>
+        <Box sx={{ height: "100%", width: "40%", p: 1 }}>
           <Button
             sx={{
               height: "100%",
@@ -169,10 +170,10 @@ function DashboardSideBar({
           </Box>
         </Box>
       </Backdrop>
-      {/* <GuideMain
+      <GuideMain
         guideBackdropState={guideBackdropState}
         setGuideBackdropState={setGuideBackdropState}
-      /> */}
+      />
     </Box>
   );
 }
