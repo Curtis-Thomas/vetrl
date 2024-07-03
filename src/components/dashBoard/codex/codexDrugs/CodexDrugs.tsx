@@ -46,7 +46,7 @@ function CodexDrugs() {
   const handleAddDrug = async () => {
     try {
       // Check for empty fields
-      if (!user?.sub || !drugName || !drugPrice || !drugDescription) {
+      if (!user?.sub || !drugName || !drugPrice) {
         console.error("All fields are required");
         return;
       }
@@ -153,7 +153,6 @@ function CodexDrugs() {
           <Box sx={{ ml: 1 }}>
             <TextField
               autoComplete="off"
-              required
               label="Description"
               value={drugDescription}
               sx={{ backgroundColor: "#ffffff" }}
