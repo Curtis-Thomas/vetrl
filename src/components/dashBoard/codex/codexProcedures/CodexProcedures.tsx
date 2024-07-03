@@ -25,12 +25,7 @@ function CodexProcedures() {
   const handleAddProcedure = async () => {
     try {
       // Check for empty fields
-      if (
-        !user?.sub ||
-        !procedureName ||
-        !procedurePrice ||
-        !procedureDescription
-      ) {
+      if (!user?.sub || !procedureName || !procedurePrice) {
         console.error("All fields are required");
         return;
       }
@@ -156,7 +151,6 @@ function CodexProcedures() {
           <Box sx={{ ml: 1 }}>
             <TextField
               autoComplete="off"
-              required
               label="Description"
               value={procedureDescription}
               sx={{ backgroundColor: "#ffffff" }}

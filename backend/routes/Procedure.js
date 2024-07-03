@@ -22,7 +22,7 @@ router.post(
   [
     body("name").notEmpty().isString(),
     body("price").notEmpty().isString(),
-    body("description").notEmpty().isString(),
+    body("description").isString(),
     // Add more validations for other fields if needed
   ],
   async (req, res) => {
