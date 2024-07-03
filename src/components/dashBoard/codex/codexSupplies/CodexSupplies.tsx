@@ -24,7 +24,7 @@ function CodexSupplies() {
   const handleAddSupply = async () => {
     try {
       // Check for empty fields
-      if (!user?.sub || !supplyName || !supplyPrice || !supplyDescription) {
+      if (!user?.sub || !supplyName || !supplyPrice) {
         console.error("All fields are required");
         return;
       }
@@ -151,7 +151,6 @@ function CodexSupplies() {
             <TextField
               autoComplete="off"
               label="Description"
-              required
               value={supplyDescription}
               sx={{ backgroundColor: "#ffffff" }}
               onChange={(e) => setSupplyDescription(e.target.value)}
