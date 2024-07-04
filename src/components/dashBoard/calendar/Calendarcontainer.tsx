@@ -106,7 +106,7 @@ function CalendarContainer() {
         sx={{
           height: "100%",
           width: "100%",
-          p: 2,
+          p: 1,
           display: { xs: "none", md: "block" },
         }}
       >

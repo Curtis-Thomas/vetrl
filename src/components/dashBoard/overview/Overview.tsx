@@ -25,7 +25,7 @@ function Overview() {
             width: { xs: "65vw", md: "35vw" },
             backgroundColor: "#ffffff",
             overflow: "auto",
-            borderRadius: "10px",
+            borderRadius: "16px",
             mr: 1,
           }}
         >
@@ -37,7 +37,7 @@ function Overview() {
             width: "50vw",
             backgroundColor: "#ffffff",
             display: { xs: "none", md: "block" },
-            borderRadius: "10px",
+            borderRadius: "16px",
             p: 1,
           }}
         >
