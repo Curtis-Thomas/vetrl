@@ -27,9 +27,11 @@ function Dashboard() {
   }, [dispatch]);
   const domainUrl = process.env.NEXT_PUBLIC_DOMAIN_URL;
 
+  // The display state sets which component will be shown in the main area of the dashboard.
   const [display, setDisplay] = useState("overview");
   const [loading, setLoading] = useState(false); // State to control loading state
 
+  // Function to change the display state
   const handleDisplayChange = (newDisplay: string) => {
     setDisplay(newDisplay);
   };
@@ -42,10 +44,12 @@ function Dashboard() {
         <CssBaseline />
 
         <Box sx={{ height: "100vh", width: "100vw", display: "flex" }}>
-          <Box sx={{ width: { xs: "30vw", md: "15vw" } }}>
+          {/* The sidebar is the main navigation, and the main are displays the relevant content based on the sidebar selection which updates the display state. */}
+          <Box sx={{ width: { xs: "30vw", md: "15%" } }}>
             <DashboardSideBar onDisplayChange={handleDisplayChange} />
           </Box>
-          <Box sx={{ width: "85vw", height: "100%" }}>
+          {/* The main area displays the relevant content based on the sidebar selection which updates the display state which is passed up through the side bar props, to add more screens, add another display with a unique state name and the relevant component to be rendered. */}
+          <Box sx={{ width: "85%", height: "100%" }}>
             {display === "overview" && <Overview />}
             {display === "calendar" && <CalendarContainer />}
             {display === "records" && <RecordsContainer />}
