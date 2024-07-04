@@ -66,6 +66,7 @@ const Header: React.FC = () => {
       </Box>
       <Box sx={{ width: "0vw" }}></Box>
       <Box sx={{ width: "66vw", display: "flex", justifyContent: "end" }}>
+        {/* If the user is NOT logged in, show the login button. If the user IS logged in, show the logout button. */}
         {user ? (
           <>
             <Link href="/api/auth/logout">
