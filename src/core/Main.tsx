@@ -16,6 +16,9 @@ function Main() {
   const { user, error, isLoading } = useUser();
 
   // Log user details when user is logged in
+
+  //The user login is handled by Auth0, the user details are stored in the user object, if the user is logged in, the user details are displayed in the console.
+  //If the user is NOT logged in or any other useUser state is returned, the landing page is shown, if the user IS logged in, the dashboard is shown.
   if (user && loading) {
     return (
       <Box>
