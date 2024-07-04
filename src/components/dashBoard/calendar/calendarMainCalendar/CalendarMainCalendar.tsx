@@ -33,7 +33,7 @@ function CalendarMainCalendar({ events }: { events: any[] }): JSX.Element {
   const weekStart = startOfWeek(now, { weekStartsOn: 1 }); // week starts on Monday
   const weekEnd = endOfWeek(now, { weekStartsOn: 1 }); // week starts on Monday
 
-  const currentMonth = format(now, "MMMM");
+  const [currentMonth, setCurrentMonth] = useState(format(now, "MMMM yyyy"));
 
   let weekDate = `${format(weekStart, "EEEE, MMMM do, yyyy")} - ${format(
     weekEnd,
@@ -87,7 +87,7 @@ function CalendarMainCalendar({ events }: { events: any[] }): JSX.Element {
   }
 
   if (monthView === true) {
-    const monthStart = startOfMonth(now);
+    let monthStart = startOfMonth(now);
     const monthEnd = endOfMonth(now);
     const daysInMonth = eachDayOfInterval({ start: monthStart, end: monthEnd });
 
@@ -96,6 +96,9 @@ function CalendarMainCalendar({ events }: { events: any[] }): JSX.Element {
     for (let i = 0; i < daysInMonth.length; i += 7) {
       weeksInMonth.push(daysInMonth.slice(i, i + 7));
     }
+    const handleClickPreviousMonth = () => {};
+
+    const handleClickNextMonth = () => {};
 
     return (
       <Box sx={{ display: `${monthView}`, height: "100%", width: "100%" }}>
@@ -136,13 +139,40 @@ function CalendarMainCalendar({ events }: { events: any[] }): JSX.Element {
             <Box
               sx={{
                 height: "100%",
-                width: "75%",
+                width: "50%",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
               }}
             >
               <Typography variant="h5">{currentMonth}</Typography>
+            </Box>
+            <Box sx={{ width: "25%", display: "flex", height: "100%" }}>
+              <Box
+                sx={{
+                  width: "50%",
+                  height: "100%",
+                  display: "flex",
+                  justifyContent: "right",
+                  alignItems: "center",
+                  pr: 1,
+                }}
+              >
+                <Button onClick={handleClickPreviousMonth}>
+                  Previous Month
+                </Button>
+              </Box>
+              <Box
+                sx={{
+                  width: "50%",
+                  height: "100%",
+                  display: "flex",
+                  justifyContent: "left",
+                  alignItems: "center",
+                }}
+              >
+                <Button onClick={handleClickNextMonth}>Next Month</Button>
+              </Box>
             </Box>
           </Box>
         </Box>
