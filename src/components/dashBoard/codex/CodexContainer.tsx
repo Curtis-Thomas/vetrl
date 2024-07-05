@@ -6,7 +6,6 @@ import CodexDrugs from "./codexDrugs/CodexDrugs";
 import CodexProcedures from "./codexProcedures/CodexProcedures";
 import CodexSupplies from "./codexSupplies/CodexSupplies";
 import CodexClient from "./codexClient/CodexClient";
-import CodexPatient from "./codexPatient/CodexPatient";
 
 function CodexContainer() {
   const domainUrl = process.env.NEXT_PUBLIC_DOMAIN_URL;
@@ -58,25 +57,23 @@ function CodexContainer() {
         <Box
           sx={{ height: "5vh", display: "flex", backgroundColor: "#ffffff" }}
         >
-          {["drugs", "procedures", "supplies", "client", "patient"].map(
-            (location) => (
-              <Box key={location} sx={buttonStyle(location)}>
-                <Button
-                  sx={{
-                    backgroundColor:
-                      activeButton === location ? "#38E5E5" : "#ffffff",
-                    color: activeButton === location ? "#ffffff" : "#231915",
-                    height: "100%",
-                    width: "100%",
-                    border: "none",
-                  }}
-                  onClick={() => handleButtonClick(location)}
-                >
-                  {location.charAt(0).toUpperCase() + location.slice(1)}
-                </Button>
-              </Box>
-            )
-          )}
+          {["drugs", "procedures", "supplies", "client"].map((location) => (
+            <Box key={location} sx={buttonStyle(location)}>
+              <Button
+                sx={{
+                  backgroundColor:
+                    activeButton === location ? "#38E5E5" : "#ffffff",
+                  color: activeButton === location ? "#ffffff" : "#231915",
+                  height: "100%",
+                  width: "100%",
+                  border: "none",
+                }}
+                onClick={() => handleButtonClick(location)}
+              >
+                {location.charAt(0).toUpperCase() + location.slice(1)}
+              </Button>
+            </Box>
+          ))}
           <Box
             sx={{ width: "55vw", height: "5vh", backgroundColor: "#ffffff" }}
           ></Box>
@@ -93,7 +90,6 @@ function CodexContainer() {
           {display === "procedures" && <CodexProcedures />}
           {display === "supplies" && <CodexSupplies />}
           {display === "client" && <CodexClient />}
-          {display === "patient" && <CodexPatient />}
         </Box>
       </Box>
     </>
