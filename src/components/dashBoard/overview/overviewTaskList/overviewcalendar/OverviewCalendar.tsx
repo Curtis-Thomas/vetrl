@@ -2,6 +2,7 @@ import {
   Backdrop,
   Box,
   Button,
+  Icon,
   Snackbar,
   TextField,
   Typography,
@@ -12,6 +13,8 @@ import axios from "axios";
 
 import { useEffect, useState } from "react";
 import React, { ChangeEvent } from "react";
+
+import AddIcon from "@mui/icons-material/Add";
 
 interface Event {
   title: string;
@@ -235,11 +238,20 @@ function OverviewCalender(): JSX.Element {
           p: 1,
         }}
       >
-        <Box sx={{ height: "50%", width: "100%" }}>
-          <Typography variant="h5">Schedule</Typography>
-        </Box>
-        <Box sx={{ height: "50%", width: "100%" }}>
-          <Typography variant="subtitle1">{dateToday}</Typography>
+
+
+
+        <Box
+          sx={{
+            height: "100%",
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+
+          <Typography variant="h4" color={"#444444"}>{dateToday}</Typography>
         </Box>
       </Box>
       <Box
@@ -279,20 +291,33 @@ function OverviewCalender(): JSX.Element {
         sx={{
           height: "10%",
           display: "flex",
-          justifyContent: "center",
+          justifyContent: "right",
           alignItems: "center",
+          border: "none",
         }}
       >
         <Button
           sx={{
-            width: "80%",
-            height: "80%",
+            width: "20%",
+            height: "50%",
+            borderRadius: "18px",
+            mr: 1,
           }}
           onClick={() => setBackdropState(true)}
         >
-          + Add appointment
+          Add appointment{" "}
+          <AddIcon
+            sx={{
+              backgroundColor: "white",
+              borderRadius: "30px",
+              color: "#BAE4F2",
+              ml:1
+
+            }}
+          />
         </Button>
       </Box>
+    
     </Box>
   );
 }

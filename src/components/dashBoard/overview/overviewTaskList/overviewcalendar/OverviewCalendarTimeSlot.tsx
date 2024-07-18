@@ -14,11 +14,10 @@ function OverviewCalendarTimeSlot({
   return (
     <Box
       sx={{
-        backgroundColor: "#ADF5F5",
         p: 1,
         mb: 1,
         display: "flex",
-        borderRadius: "16px",
+        borderLeft: "5px solid black",
         height: "100%",
         width: "100%",
       }}
@@ -26,39 +25,24 @@ function OverviewCalendarTimeSlot({
       <Box sx={{ width: "20%", height: "100%" }}>
         <Box
           sx={{
-            height: "40%",
+            height: "100%",
             width: "100%",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+        
+
           }}
         >
-          <Typography variant="h6">{start}</Typography>
-        </Box>
-        <Box
-          sx={{
-            height: "10%",
-            width: "100%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Typography variant="h6">-</Typography>
-        </Box>
-        <Box
-          sx={{
-            height: "40%",
-            width: "100%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Typography variant="h6">{end}</Typography>
+          <Typography variant="subtitle1" >
+            {start}-{end}
+          </Typography>
         </Box>
       </Box>
-      <Box sx={{ width: "80%", height: "100%" }}>
+      <Box sx={{ width: "80%", height: "100%",
+        borderLeft:"2px solid #BDBEBD",
+        pl:1
+       }}>
         <Box
           sx={{
             height: "40%",
@@ -67,7 +51,7 @@ function OverviewCalendarTimeSlot({
             alignItems: "center",
           }}
         >
-          <Typography variant="h5">{title}</Typography>
+          <Typography variant="h5" color={"#444444"}>{title}</Typography>
         </Box>
         <Box sx={{ height: "10%", width: "100%" }}></Box>
 
@@ -79,7 +63,7 @@ function OverviewCalendarTimeSlot({
             alignItems: "center",
           }}
         >
-          <Typography>{description}</Typography>
+          <Typography color={"#a6a6a6"}>{description}</Typography>
         </Box>
       </Box>
     </Box>

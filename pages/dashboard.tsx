@@ -43,13 +43,21 @@ function Dashboard() {
       <Box>
         <CssBaseline />
 
-        <Box sx={{ height: "100vh", width: "100vw", display: "flex" }}>
+        <Box
+          sx={{
+            height: "100vh",
+            width: "100vw",
+            display: "flex",
+          }}
+        >
           {/* The sidebar is the main navigation, and the main are displays the relevant content based on the sidebar selection which updates the display state. */}
           <Box sx={{ width: { xs: "30vw", md: "15%" } }}>
             <DashboardSideBar onDisplayChange={handleDisplayChange} />
           </Box>
           {/* The main area displays the relevant content based on the sidebar selection which updates the display state which is passed up through the side bar props, to add more screens, add another display with a unique state name and the relevant component to be rendered. */}
-          <Box sx={{ width: "85%", height: "100%" }}>
+          <Box
+            sx={{ width: "85%", height: "100%", backgroundColor: "#F8F9F9" }}
+          >
             {display === "overview" && <Overview />}
             {display === "calendar" && <CalendarContainer />}
             {display === "records" && <RecordsContainer />}

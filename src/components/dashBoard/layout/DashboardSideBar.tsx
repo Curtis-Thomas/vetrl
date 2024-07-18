@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import packageJson from "../../../../package.json";
 import GuideMain from "../guide/GuideMain";
+import Image from "next/image";
+import logo from "../../../../vetrl logo.png";
 
 function DashboardSideBar({
   onDisplayChange,
@@ -26,17 +28,6 @@ function DashboardSideBar({
     onDisplayChange(location);
   };
 
-  const buttonStyle = (location: string) => ({
-    height: "13vh",
-    width: "13vw",
-    ml: "auto",
-    mr: "auto",
-    backgroundColor: activeButton === location ? "#7AA8BB" : "#ffffff",
-    "&:hover": {
-      backgroundColor: "#7AA7BA",
-    },
-  });
-
   const handleCloseBackdrop = () => {
     setFeedbackBackdrop(false);
   };
@@ -45,31 +36,58 @@ function DashboardSideBar({
     <Box>
       <Box
         sx={{
-          height: "10vh",
+          height: "15vh",
           p: 1,
         }}
       >
-        <Box sx={{ height: "40%", width: "100%" }}>
-          <Avatar
-            src={user?.picture || undefined}
-            alt="User"
-            style={{ height: "auto", width: "10%" }}
-          />
+        <Box sx={{ height: "40%", width: "100%", display: "flex" }}>
+          <Box sx={{ height: "100%", width: "30%" }}>
+            <Image src={logo} alt="VetRL Logo" width={50} height={50} />
+          </Box>
+          <Box sx={{ height: "100%", width: "70%" }}>
+            <Typography
+              sx={{ color: "#ffffff", fontSize: "2rem", fontWeight: "600" }}
+            >
+              vetrl
+            </Typography>
+          </Box>
         </Box>
-        <Box sx={{ height: "30%", display: "flex", alignItems: "center" }}>
-          <Typography color={"#ffffff"} variant="subtitle1">
-            {user?.nickname}
+        <Box
+          sx={{
+            height: "30%",
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <Typography
+            color={"#ffffff"}
+            variant="subtitle1"
+            sx={{ textAlign: "right", width: "100%" }}
+          >
+            Logged in: {user?.nickname}
           </Typography>
         </Box>
-        <Box sx={{ height: "30%", display: "flex", alignItems: "center" }}>
-          <Typography color={"#ffffff"} variant="body2">
+        <Box
+          sx={{
+            height: "30%",
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <Typography
+            color={"#ffffff"}
+            variant="body2"
+            sx={{ textAlign: "right", width: "100%" }}
+          >
             Version: {packageJson.version}
           </Typography>
         </Box>
       </Box>
       <Box
         sx={{
-          height: "80vh",
+          height: "70vh",
         }}
       >
         {[
@@ -80,12 +98,12 @@ function DashboardSideBar({
           "codex",
           "settings",
         ].map((location) => (
-          <Box key={location} sx={buttonStyle(location)}>
+          <Box key={location} sx={{ height: "10%" }}>
             <Button
               sx={{
                 backgroundColor:
-                  activeButton === location ? "#7AA7BA" : "#ffffff",
-                color: activeButton === location ? "#ffffff" : "#2D2B42",
+                  activeButton === location ? "#33577A" : "#3F769D",
+                color: activeButton === location ? "#ffffff" : "#ffffff",
                 height: "100%",
                 width: "100%",
                 border: "none",
@@ -102,31 +120,31 @@ function DashboardSideBar({
       </Box>
       <Box
         sx={{
-          height: "10vh",
+          height: "15vh",
           p: 3,
           display: "flex",
         }}
       >
-        <Box sx={{ height: "100%", width: "40%", p: 1 }}>
+        <Box
+          sx={{
+            height: "100%",
+            width: "100%",
+            p: 1,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <Button
             sx={{
-              height: "100%",
-              width: "100%",
+              height: "70%",
+              width: "70%",
+
+              borderRadius: "18px",
             }}
             onClick={() => setGuideBackdropState(true)}
           >
-            Guide
-          </Button>
-        </Box>
-        <Box sx={{ height: "100%", width: "40%", p: 1 }}>
-          <Button
-            sx={{
-              height: "100%",
-              width: "100%",
-            }}
-            onClick={() => setFeedbackBackdrop(true)}
-          >
-            Feedback
+            Need Help?
           </Button>
         </Box>
       </Box>

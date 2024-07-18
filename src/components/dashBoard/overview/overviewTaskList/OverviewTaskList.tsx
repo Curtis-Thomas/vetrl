@@ -3,6 +3,11 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import React, { useState, useCallback, useEffect } from "react";
 import axios from "axios";
+
+import AddIcon from "@mui/icons-material/Add";
+
+
+
 interface task {
   title: string;
   description: string;
@@ -109,8 +114,16 @@ function OverviewTaskList() {
 
   return (
     <Box sx={{ height: "100%", width: "100%" }}>
-      <Box sx={{ height: "5%", width: "100%" }}>
-        <Typography variant="h4">Task List</Typography>
+      <Box
+        sx={{
+          height: "5%",
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Typography variant="h4" color={"#444444"}>Task List</Typography>
       </Box>
       <Box
         sx={{
@@ -137,8 +150,6 @@ function OverviewTaskList() {
               <Box
                 key={index}
                 sx={{
-                  backgroundColor: "#7AA8BB",
-                  borderRadius: "16px",
                   p: 1,
                   mt: 1,
                   mb: 1,
@@ -151,24 +162,36 @@ function OverviewTaskList() {
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
+                      
                     }}
                   >
-                    <Typography variant="h4">{task.deadline}</Typography>
+                    <Typography variant="subtitle1" color={"#a6a6a6"}>{task.deadline}</Typography>
                   </Box>
-                  <Box sx={{ width: "80%", pl: 5 }}>
+                  <Box sx={{ width: "80%", pl: 5, 
+        borderLeft:"2px solid #BDBEBD",
+
+                   }}>
                     <Box>
                       <Typography variant="h5">{task.title}</Typography>
                     </Box>
                     <Box>
-                      <Typography>{task.description}</Typography>
+                      <Typography color={"#a6a6a6"}>{task.description}</Typography>
                     </Box>
-                    <Box>
-                      <Button onClick={() => handleDeleteTask(task.title)}>
+                  
+                  </Box>
+                  <Box>
+                      <Button
+                        sx={{
+                          color: "red",
+                          border: "solid 1px red",
+                          backgroundColor: "#ffffff",
+                        }}
+                        onClick={() => handleDeleteTask(task.title)}
+                      >
                         {" "}
                         Delete
                       </Button>
                     </Box>
-                  </Box>
                 </Box>
               </Box>
             ))}
@@ -177,9 +200,7 @@ function OverviewTaskList() {
       <Box sx={{ height: "35%" }}>
         <Box
           sx={{
-            backgroundColor: "#7AA8BB",
             p: 1,
-            borderRadius: "16px",
             height: "100%",
             width: "100%",
           }}
@@ -193,7 +214,7 @@ function OverviewTaskList() {
               margin="dense"
               autoComplete="off"
               inputProps={{
-                style: { height: "10%" },
+                style: { height: "10%", backgroundColor:"#D9D9D9" },
               }}
               sx={{
                 backgroundColor: "#ffffff",
@@ -212,7 +233,7 @@ function OverviewTaskList() {
               margin="dense"
               autoComplete="off"
               sx={{
-                backgroundColor: "#ffffff",
+                backgroundColor: "#D9D9D9",
                 color: "#94ddde",
                 width: "100%",
               }}
@@ -229,7 +250,7 @@ function OverviewTaskList() {
               onChange={(e) => setDeadline(e.target.value)}
               autoComplete="off"
               sx={{
-                backgroundColor: "#ffffff",
+                backgroundColor: "#D9D9D9",
                 color: "#94ddde",
                 width: "100%",
               }}
@@ -244,10 +265,21 @@ function OverviewTaskList() {
               height: "25%",
               width: "100%",
               display: "flex",
+              justifyContent: "right",
               alignItems: "center",
             }}
           >
-            <Button onClick={handleAddTask}>+ Add Task</Button>
+            <Button 
+            sx={{borderRadius:"16px"}}
+             onClick={handleAddTask}>Add Task
+                <AddIcon
+            sx={{
+              backgroundColor: "white",
+              borderRadius: "30px",
+              color: "#BAE4F2",
+              ml:1
+            }}
+          /></Button>
           </Box>
         </Box>
       </Box>

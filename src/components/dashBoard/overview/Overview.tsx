@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 import OverviewCalender from "./overviewTaskList/overviewcalendar/OverviewCalendar";
 import OverviewTaskList from "./overviewTaskList/OverviewTaskList";
@@ -22,7 +22,7 @@ function Overview() {
         <Box
           sx={{
             height: "100%",
-            width: { xs: "65vw", md: "35vw" },
+            width: { xs: "65vw", md: "75%" },
             backgroundColor: "#ffffff",
             overflow: "auto",
             borderRadius: "16px",
@@ -34,7 +34,7 @@ function Overview() {
         <Box
           sx={{
             height: "100%",
-            width: "50vw",
+            width: "25%",
             backgroundColor: "#ffffff",
             display: { xs: "none", md: "block" },
             borderRadius: "16px",
