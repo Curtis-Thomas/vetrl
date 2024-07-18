@@ -1,7 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
 import { useState, useEffect, useCallback } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import AppointmentHeaderPatientBackdrop from "../../appointmentBill/AppointmentHeaderPatientBackdrop";
+import AppointmentHeaderPatientBackdrop from "./AppointmentHeaderPatientBackdrop";
 
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../../redux/store";
