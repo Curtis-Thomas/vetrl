@@ -105,7 +105,6 @@ function AppointmentHeaderClient({
       setClientData(null);
 
       const ClientData = {
-        sub: user.sub,
         name: clientName,
       };
 
@@ -113,6 +112,7 @@ function AppointmentHeaderClient({
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          sub: user.sub,
         },
         body: JSON.stringify(ClientData),
       });

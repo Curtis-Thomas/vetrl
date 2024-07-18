@@ -21,7 +21,7 @@ router.post(
   "/client/add",
   [
     body("sub").notEmpty().isString(),
-    body("name").notEmpty().isString(),
+    body("name").isString(),
     body("phone").isString(),
     body("email").isString(),
     body("businessId").isString(),
@@ -86,12 +86,14 @@ router.post(
 );
 router.post("/client/search", async (req, res) => {
   try {
-    let { sub } = req.headers;
+    let sub = req.headers["sub"];
 
     if (!sub) {
       console.log("No sub received");
       return res.status(401).json({ message: "Authentication failed" });
     }
+
+    console.log("Sub received:", sub);
 
     const clientData = req.body;
     console.log("Received request with data:", clientData);
@@ -99,7 +101,7 @@ router.post("/client/search", async (req, res) => {
     const clientCollection = client.db("crm").collection("client");
 
     // Find the document using the 'sub' field
-    const document = await clientCollection.findOne({ sub: clientData.sub });
+    const document = await clientCollection.findOne({ sub: sub });
 
     if (!document || !document.events) {
       console.log("Document or events not found");
