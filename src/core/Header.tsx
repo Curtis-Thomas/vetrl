@@ -28,12 +28,6 @@ const Header: React.FC = () => {
           },
           body: JSON.stringify(userData),
         });
-
-        if (response.ok) {
-          console.log("+");
-        } else {
-          console.error("-");
-        }
       } catch (error) {
         console.error("-", error);
       }

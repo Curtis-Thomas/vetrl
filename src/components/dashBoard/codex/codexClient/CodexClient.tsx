@@ -59,7 +59,6 @@ function CodexClient() {
 
       const response = await axios.get(url, { headers });
       setPatient(response.data.patients[0].patients);
-      // console.log("response.data.patients", response.data.patients);
     } catch (error) {
       console.error("Error:", error);
     }

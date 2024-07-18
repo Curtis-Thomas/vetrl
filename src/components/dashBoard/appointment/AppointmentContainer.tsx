@@ -47,7 +47,6 @@ function AppointmentContainer() {
         type: "SET_APPOINTMENT",
         payload: { appointmentCardAppointmentNo: response.data.nextId },
       });
-      console.log(appointmentNo);
     } catch (error) {
       console.error("Error:", error);
     }

@@ -135,7 +135,6 @@ function AppointmentHeaderClient({
       type: "SET_APPOINTMENT",
       payload: { appointmentCardClientId: client.id },
     });
-    console.log(clientId);
 
     setClientName(client.name); // Set the client name
     setClientData(client); // Set the client data

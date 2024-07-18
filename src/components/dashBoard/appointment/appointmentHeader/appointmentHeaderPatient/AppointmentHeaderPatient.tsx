@@ -119,8 +119,6 @@ function AppointmentHeaderPatient({
       type: "SET_APPOINTMENT",
       payload: { appointmentCardPatientId: patient.id },
     });
-
-    console.log(patientId);
   };
 
   return (
