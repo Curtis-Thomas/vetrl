@@ -20,6 +20,7 @@ client.connect();
 router.post(
   "/procedure/add",
   [
+    body("sub").notEmpty().isString(),
     body("name").notEmpty().isString(),
     body("price").notEmpty().isString(),
     body("description").isString(),

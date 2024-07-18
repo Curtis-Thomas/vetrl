@@ -20,8 +20,8 @@ client.connect();
 router.post(
   "/patient/add",
   [
+    body("sub").notEmpty().isString(),
     body("clientId").notEmpty().isString(),
-
     body("name").notEmpty().isString(),
     body("species").isString(),
     body("breed").isString(),
@@ -89,6 +89,13 @@ router.post("/patient/search", async (req, res) => {
   console.log("Received request:", req.body); // Log the incoming request
 
   try {
+    let { sub } = req.headers;
+
+    if (!sub) {
+      console.log("No sub received");
+      return res.status(401).json({ message: "Authentication failed" });
+    }
+
     const { id } = req.body;
 
     const patientCollection = client.db("crm").collection("patient");
@@ -117,6 +124,13 @@ router.get("/patient/all", async (req, res) => {
   console.log("Received request for all patients");
 
   try {
+    let { sub } = req.headers;
+
+    if (!sub) {
+      console.log("No sub received");
+      return res.status(401).json({ message: "Authentication failed" });
+    }
+
     const patientCollection = client.db("crm").collection("patient");
 
     // Find all documents in the 'patient' collection

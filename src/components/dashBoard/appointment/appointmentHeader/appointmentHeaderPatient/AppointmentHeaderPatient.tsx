@@ -1,10 +1,12 @@
 import { Box, Button, Typography } from "@mui/material";
 import { useState, useEffect, useCallback } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import AppointmentHeaderPatientBackdrop from "./AppointmentHeaderPatientBackdrop";
+import AppointmentHeaderPatientBackdrop from "../../appointmentBill/AppointmentHeaderPatientBackdrop";
 
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../../redux/store";
+
+import axios from "axios";
 
 interface Patient {
   ownerId: string;
@@ -65,6 +67,12 @@ function AppointmentHeaderPatient({
   const SearchPatientData = useCallback(
     async (clientPatients: string[]) => {
       try {
+        if (!user) return;
+        const headers = {
+          sub: user.sub,
+          "Content-Type": "application/json",
+        };
+
         if (clientPatients[0] === "No patients") {
           setPatientsArray([]); // Set the state variable with an empty array
           return;
@@ -77,19 +85,17 @@ function AppointmentHeaderPatient({
             id: patientId,
           };
 
-          const response = await fetch(domainUrl + `/patient/patient/search`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(PatientData),
-          });
+          const response = await axios.post(
+            `${domainUrl}/patient/patient/search`,
+            PatientData,
+            { headers }
+          );
 
-          if (!response.ok) {
+          if (response.status !== 200) {
             throw new Error(`HTTP error! status: ${response.status}`);
           }
 
-          const responseData = await response.json();
+          const responseData = response.data;
 
           // If a patient was found, add it to the patientsArray
           if (responseData.patient) {
@@ -99,7 +105,7 @@ function AppointmentHeaderPatient({
 
         setPatientsArray(patientsArray); // Set the state variable with the populated array
       } catch (error) {
-        console.error("Error:", error);
+        console.error("Error fetching patient data:", error);
       }
     },
     [domainUrl, setPatientsArray]

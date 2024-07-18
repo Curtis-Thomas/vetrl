@@ -20,6 +20,7 @@ client.connect();
 router.post(
   "/task/add",
   [
+    body("sub").notEmpty().isString(),
     body("title").notEmpty().isString(),
     body("description").notEmpty().isString(),
     body("deadline").notEmpty().isString(),

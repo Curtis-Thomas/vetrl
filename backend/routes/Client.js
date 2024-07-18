@@ -20,6 +20,7 @@ client.connect();
 router.post(
   "/client/add",
   [
+    body("sub").notEmpty().isString(),
     body("name").notEmpty().isString(),
     body("phone").isString(),
     body("email").isString(),
@@ -85,6 +86,13 @@ router.post(
 );
 router.post("/client/search", async (req, res) => {
   try {
+    let { sub } = req.headers;
+
+    if (!sub) {
+      console.log("No sub received");
+      return res.status(401).json({ message: "Authentication failed" });
+    }
+
     const clientData = req.body;
     console.log("Received request with data:", clientData);
 
@@ -134,6 +142,12 @@ router.get("/client/searchAll", async (req, res) => {
   console.log("Received request for all clients");
 
   try {
+    let { sub } = req.headers;
+
+    if (!sub) {
+      console.log("No sub received");
+      return res.status(401).json({ message: "Authentication failed" });
+    }
     const clientCollection = client.db("crm").collection("client");
 
     // Find all documents in the 'client' collection

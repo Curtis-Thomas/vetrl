@@ -23,9 +23,7 @@ router.post(
     body("sub").notEmpty().isString(),
     body("title").notEmpty().isString(),
     body("clientId").isString(),
-
     body("patientId").isString(),
-
     body("date").notEmpty().isString(),
     body("description").isString(),
     body("start").isString(),
