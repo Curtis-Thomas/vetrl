@@ -22,8 +22,12 @@ router.post(
   [
     body("sub").notEmpty().isString(),
     body("name").notEmpty().isString(),
-    body("price").notEmpty().isString(),
-    body("description").isString(),
+    body("form").notEmpty().isString(),
+    body("strength").notEmpty().isString(),
+    body("packSize").notEmpty().isNumeric(),
+    body("pricePerUnit").notEmpty().isNumeric(),
+    body("vat").notEmpty().isNumeric(),
+    body("profitMargin").notEmpty().isNumeric(),
     // Add more validations for other fields if needed
   ],
   async (req, res) => {
@@ -41,8 +45,12 @@ router.post(
       // Add the new drug to the user's collection
       const newDrug = {
         name: drugData.name,
-        price: drugData.price,
-        description: drugData.description,
+        form: drugData.form,
+        strength: drugData.strength,
+        packSize: drugData.packSize,
+        pricePerUnit: drugData.pricePerUnit,
+        vat: drugData.vat,
+        profitMargin: drugData.profitMargin,
       };
 
       // Update or insert the user's drug document

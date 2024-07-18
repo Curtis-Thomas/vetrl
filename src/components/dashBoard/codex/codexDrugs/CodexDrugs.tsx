@@ -15,8 +15,12 @@ import axios from "axios";
 
 interface Drug {
   name: string;
-  price: number;
-  description: string;
+  form: string;
+  strength: string;
+  packSize: number;
+  pricePerUnit: number;
+  vat: number;
+  profitMargin: number;
   sub: string;
 }
 
@@ -67,6 +71,12 @@ function CodexDrugs() {
         sub: user.sub,
 
         name: drugName,
+        form: drugForm,
+        strength: drugStrength,
+        packSize: drugPackSize,
+        pricePerUnit: drugPricePerUnit,
+        vat: drugVat,
+        profitMargin: drugProfitMargin,
       };
 
       const response = await fetch(domainUrl + `/drugs/drug/add`, {
@@ -302,7 +312,7 @@ function CodexDrugs() {
               >
                 <Box
                   sx={{
-                    width: "30%",
+                    width: "10%",
                     height: "100%",
                     display: "flex",
                     justifyContent: "center",
@@ -313,18 +323,40 @@ function CodexDrugs() {
                 </Box>
                 <Box
                   sx={{
-                    width: "30%",
+                    width: "10%",
                     height: "100%",
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
                   }}
                 >
-                  <Typography textAlign={"center"}>{drug.price}</Typography>
+                  <Typography textAlign={"center"}>{drug.form}</Typography>
                 </Box>
                 <Box
                   sx={{
-                    width: "30%",
+                    width: "10%",
+                    height: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Typography textAlign={"center"}>{drug.strength}</Typography>
+                </Box>
+                <Box
+                  sx={{
+                    width: "10%",
+                    height: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Typography textAlign={"center"}>{drug.packSize}</Typography>
+                </Box>
+                <Box
+                  sx={{
+                    width: "10%",
                     height: "100%",
                     display: "flex",
                     justifyContent: "center",
@@ -332,9 +364,66 @@ function CodexDrugs() {
                   }}
                 >
                   <Typography textAlign={"center"}>
-                    {drug.description}
+                    {drug.pricePerUnit}
                   </Typography>
                 </Box>
+                <Box
+                  sx={{
+                    width: "10%",
+                    height: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Typography textAlign={"center"}>{drug.vat}</Typography>
+                </Box>
+                <Box
+                  sx={{
+                    width: "10%",
+                    height: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Typography textAlign={"center"}>
+                    {parseFloat((drug.packSize * drug.pricePerUnit).toFixed(2))}
+                  </Typography>
+                </Box>
+                <Box
+                  sx={{
+                    width: "10%",
+                    height: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Typography textAlign={"center"}>
+                    {drug.profitMargin}
+                  </Typography>
+                </Box>
+                <Box
+                  sx={{
+                    width: "10%",
+                    height: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Typography textAlign={"center"}>
+                    {parseFloat(
+                      (
+                        drug.pricePerUnit *
+                        (1 + drug.vat / 100) *
+                        (1 + drug.profitMargin / 100)
+                      ).toFixed(2)
+                    )}
+                  </Typography>
+                </Box>
+
                 <Box sx={{ width: "10%" }}>
                   <Button
                     onClick={() => handleDeleteDrug(drug.name)}
