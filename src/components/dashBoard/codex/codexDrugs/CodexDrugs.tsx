@@ -1,4 +1,11 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  MenuItem,
+  Select,
+  TextField,
+  Typography,
+} from "@mui/material";
 
 import { useCallback, useEffect, useState } from "react";
 
@@ -19,8 +26,13 @@ function CodexDrugs() {
   const { user, error, isLoading } = useUser();
 
   const [drugName, setDrugName] = useState("");
-  const [drugPrice, setDrugPrice] = useState("");
-  const [drugDescription, setDrugDescription] = useState("");
+  const [drugForm, setDrugForm] = useState("");
+  const [drugStrength, setDrugStrength] = useState("");
+  const [drugPackSize, setDrugPackSize] = useState<number>(0);
+  const [drugPricePerUnit, setDrugPricePerUnit] = useState<number>(0);
+  const [drugVat, setDrugVat] = useState<number>(0);
+  const [drugProfitMargin, setDrugProfitMargin] = useState<number>(0);
+
   const [drugs, setDrugs] = useState<Drug[]>([]);
 
   const getDrugsData = useCallback(async () => {
@@ -46,16 +58,15 @@ function CodexDrugs() {
   const handleAddDrug = async () => {
     try {
       // Check for empty fields
-      if (!user?.sub || !drugName || !drugPrice) {
+      if (!user?.sub) {
         console.error("All fields are required");
         return;
       }
 
       const drugData = {
         sub: user.sub,
+
         name: drugName,
-        price: drugPrice,
-        description: drugDescription,
       };
 
       const response = await fetch(domainUrl + `/drugs/drug/add`, {
@@ -120,59 +131,158 @@ function CodexDrugs() {
         }}
       >
         <Box sx={{ display: "flex", pl: 5, pt: 5, pr: 5 }}>
-          <Box>
+          <Box sx={{ height: "100%", width: "10%" }}>
             <TextField
               autoComplete="off"
-              label="Name"
+              label="Drug Name"
               required
               type="text"
               value={drugName}
               margin="normal"
               sx={{ backgroundColor: "#ffffff" }}
               onChange={(e) => setDrugName(e.target.value)}
-              InputLabelProps={{
-                shrink: true,
-              }}
-            />
-          </Box>
-          <Box sx={{ ml: 1 }}>
-            <TextField
-              autoComplete="off"
-              required
-              label="Price"
-              type="text"
-              value={drugPrice}
-              sx={{ backgroundColor: "#ffffff" }}
-              onChange={(e) => setDrugPrice(e.target.value)}
-              margin="normal"
-              InputLabelProps={{
-                shrink: true,
-              }}
-            />
-          </Box>
-          <Box sx={{ ml: 1 }}>
-            <TextField
-              autoComplete="off"
-              label="Description"
-              value={drugDescription}
-              sx={{ backgroundColor: "#ffffff" }}
-              onChange={(e) => setDrugDescription(e.target.value)}
-              margin="normal"
-              InputLabelProps={{
-                shrink: true,
-              }}
             />
           </Box>
           <Box
             sx={{
+              height: "100%",
+              width: "10%",
               display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              ml: 1,
+              pt: 1.75,
+              pl: 2,
             }}
           >
-            <Button onClick={handleAddDrug}>Add Drug</Button>
+            <Select
+              required
+              sx={{ backgroundColor: "#ffffff" }}
+              value={drugForm}
+              defaultValue="Capsule"
+              onChange={(e) => setDrugForm(e.target.value)}
+              style={{ width: 120 }}
+            >
+              <MenuItem value={"Capsule"}>Capsule</MenuItem>
+              <MenuItem value={"Cremor"}>Cremor</MenuItem>
+              <MenuItem value={"Gel"}>Gel</MenuItem>
+              <MenuItem value={"Infusion"}>Infusion</MenuItem>
+              <MenuItem value={"Injection"}>Injection</MenuItem>
+              <MenuItem value={"Intramam."}>Intramam.</MenuItem>
+              <MenuItem value={"Mixture"}>Mixture</MenuItem>
+              <MenuItem value={"Oculogtt."}>Oculogtt.</MenuItem>
+              <MenuItem value={"Paste"}>Paste</MenuItem>
+              <MenuItem value={"Solution"}>Solution</MenuItem>
+              <MenuItem value={"Tablet"}>Tablet</MenuItem>
+            </Select>
           </Box>
+          <Box sx={{ height: "100%", width: "10%" }}>
+            <TextField
+              autoComplete="off"
+              label="Drug Strength"
+              required
+              type="text"
+              value={drugStrength}
+              margin="normal"
+              sx={{ backgroundColor: "#ffffff" }}
+              onChange={(e) => setDrugStrength(e.target.value)}
+            />
+          </Box>
+          <Box sx={{ height: "100%", width: "10%" }}>
+            <TextField
+              autoComplete="off"
+              label="Package Size"
+              required
+              type="number"
+              value={drugPackSize}
+              margin="normal"
+              sx={{ backgroundColor: "#ffffff" }}
+              onChange={(e) => {
+                setDrugPackSize(Number(e.target.value));
+              }}
+            />
+          </Box>
+          <Box sx={{ height: "100%", width: "10%" }}>
+            <TextField
+              autoComplete="off"
+              label="Price Per Unit"
+              required
+              type="number"
+              value={drugPricePerUnit}
+              margin="normal"
+              sx={{ backgroundColor: "#ffffff" }}
+              onChange={(e) => {
+                setDrugPricePerUnit(Number(e.target.value));
+              }}
+            />
+          </Box>
+          <Box sx={{ height: "100%", width: "10%" }}>
+            <TextField
+              autoComplete="off"
+              label="Vat %"
+              required
+              type="number"
+              value={drugVat}
+              margin="normal"
+              sx={{ backgroundColor: "#ffffff" }}
+              onChange={(e) => {
+                setDrugVat(Number(e.target.value));
+              }}
+            />
+          </Box>
+          <Box sx={{ height: "100%", width: "10%" }}>
+            <TextField
+              autoComplete="off"
+              label="price per package(exc vat)"
+              type="number"
+              value={parseFloat((drugPackSize * drugPricePerUnit).toFixed(2))}
+              margin="normal"
+              sx={{ backgroundColor: "#ffffff" }}
+              disabled
+            />
+          </Box>
+          <Box sx={{ height: "100%", width: "10%" }}>
+            <TextField
+              autoComplete="off"
+              label="Profit Margin %"
+              required
+              type="number"
+              value={drugProfitMargin}
+              margin="normal"
+              sx={{ backgroundColor: "#ffffff" }}
+              onChange={(e) => {
+                setDrugProfitMargin(Number(e.target.value));
+              }}
+            />
+          </Box>
+          <Box sx={{ height: "100%", width: "10%" }}>
+            <TextField
+              autoComplete="off"
+              label="Total Price Per Unit"
+              required
+              type="number"
+              value={parseFloat(
+                (
+                  drugPricePerUnit *
+                  (1 + drugVat / 100) *
+                  (1 + drugProfitMargin / 100)
+                ).toFixed(2)
+              )}
+              margin="normal"
+              sx={{ backgroundColor: "#ffffff" }}
+              disabled
+              InputProps={{
+                readOnly: true,
+              }}
+            />
+          </Box>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            ml: 1,
+          }}
+        >
+          <Button onClick={handleAddDrug}>Add Drug</Button>
         </Box>
 
         <Box>
