@@ -1,4 +1,4 @@
-![Cover Picture](https://github.com/Curtis-Thomas/vetrl/blob/main/vetrl.jpg)
+![Cover Picture](https://github.com/Curtis-Thomas/vetrl/blob/main/vetrl%20banner.png)
 
 
 # vetrl - Veterinary management solution
