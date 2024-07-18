@@ -8,7 +8,11 @@ type UserSettings = {
   surgeryAddressCountry: string;
   surgeryAddressPhoneNo: string;
   businessId: string;
+
+  weightUnit: string;
+  distanceUnit: string;
   currency: string;
+  pricePerKmMile: number;
 };
 
 const initialState: UserSettings = {
@@ -19,7 +23,11 @@ const initialState: UserSettings = {
   surgeryAddressCountry: "_____",
   surgeryAddressPhoneNo: "_____",
   businessId: "_____",
+
+  weightUnit: "...",
+  distanceUnit: "...",
   currency: "€",
+  pricePerKmMile: 0,
 };
 
 const settingsReducer = (

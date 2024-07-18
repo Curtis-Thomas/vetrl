@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Input,
   MenuItem,
   Select,
   TextField,
@@ -28,7 +29,11 @@ function Settings() {
   const [surgeryAddressCountry, setSurgeryAddressCountry] = useState("");
   const [surgeryAddressPhoneNo, setSurgeryAddressPhoneNo] = useState("");
   const [businessId, setBusinessId] = useState("");
+
+  const [weightUnit, setWeightUnit] = useState("");
+  const [distanceUnit, setDistanceUnit] = useState("");
   const [currency, setCurrency] = useState("");
+  const [pricePerKmMile, setPricePerKmMile] = useState("");
 
   // Function to update both Redux store and localStorage
   function updateSettings(settings: RootState["settings"]) {
@@ -95,7 +100,7 @@ function Settings() {
                 display: "flex",
               }}
             >
-              <Box sx={{ height: "100%", width: "50%" }}>
+              <Box sx={{ height: "100%", width: "33.33%" }}>
                 <Box sx={{ height: "20%", width: "100%" }}>
                   <Typography>
                     <strong>Surgery Name:</strong> {userSettings.surgeryName}
@@ -126,21 +131,39 @@ function Settings() {
                   </Typography>
                 </Box>
               </Box>
-              <Box sx={{ height: "100%", width: "50%" }}>
-                <Box sx={{ height: "33.33%", width: "100%" }}>
+              <Box sx={{ height: "100%", width: "33.33%" }}>
+                <Box sx={{ height: "50%", width: "100%" }}>
                   <Typography>
                     <strong>Surgery Phone No.:</strong>{" "}
                     {userSettings.surgeryAddressPhoneNo}
                   </Typography>
                 </Box>
-                <Box sx={{ height: "33.33%", width: "100%" }}>
+                <Box sx={{ height: "50%", width: "100%" }}>
                   <Typography>
                     <strong>Business ID:</strong> {userSettings.businessId}
                   </Typography>
                 </Box>
-                <Box sx={{ height: "33.33%", width: "100%" }}>
+              </Box>
+              <Box sx={{ height: "100%", width: "33.33%" }}>
+                <Box sx={{ height: "25%", width: "100%" }}>
+                  <Typography>
+                    <strong>Weight:</strong> {userSettings.weightUnit}
+                  </Typography>
+                </Box>
+                <Box sx={{ height: "25%", width: "100%" }}>
+                  <Typography>
+                    <strong>Distance Unit:</strong> {userSettings.distanceUnit}
+                  </Typography>
+                </Box>
+                <Box sx={{ height: "25%", width: "100%" }}>
                   <Typography>
                     <strong>Currency:</strong> {userSettings.currency}
+                  </Typography>
+                </Box>
+                <Box sx={{ height: "25%", width: "100%" }}>
+                  <Typography>
+                    <strong>Price per Km/Mile:</strong>{" "}
+                    {userSettings.pricePerKmMile}
                   </Typography>
                 </Box>
               </Box>
@@ -257,37 +280,125 @@ function Settings() {
                 borderTop: "dotted 1px grey",
               }}
             >
-              <Box sx={{ height: "70%", width: "100%" }}>
-                <Typography>Currency:</Typography>
-                <Select
-                  value={currency}
-                  onChange={(e) => setCurrency(e.target.value)}
-                  style={{ width: 120 }}
-                >
-                  <MenuItem value="€">EUR - €</MenuItem>
-                  <MenuItem value="$">USD - $</MenuItem>
-                  <MenuItem value="£">GBP - £</MenuItem>
-                  <MenuItem value="¥">JPY - ¥</MenuItem>
-                  <MenuItem value="₹">IND - ₹</MenuItem>
-                  <MenuItem value="₩">KOR - ₩</MenuItem>
-                </Select>
-              </Box>
-              <Box sx={{ height: "30%", width: "100%" }}>
-                <Button
-                  onClick={() => {
-                    const settings = {
-                      ...JSON.parse(
-                        localStorage.getItem("userSettings") || "{}"
-                      ), // Load existing settings and spread them
-                      currency,
-                    };
+              <Box sx={{ height: "70%", width: "100%", display: "flex", p: 1 }}>
+                <Box sx={{ height: "100%", width: "25%" }}>
+                  <Typography>Weight:</Typography>
+                  <Select
+                    value={weightUnit}
+                    onChange={(e) => setWeightUnit(e.target.value)}
+                    style={{ width: 120 }}
+                  >
+                    <MenuItem value="kg">KG</MenuItem>
+                    <MenuItem value="lb">lb</MenuItem>
+                  </Select>
+                </Box>
+                <Box sx={{ height: "100%", width: "25%" }}>
+                  <Typography>Distance Unit:</Typography>
+                  <Select
+                    value={distanceUnit}
+                    onChange={(e) => setDistanceUnit(e.target.value)}
+                    style={{ width: 120 }}
+                  >
+                    <MenuItem value="km">KM</MenuItem>
+                    <MenuItem value="miles">Miles</MenuItem>
+                  </Select>
+                </Box>
+                <Box sx={{ height: "100%", width: "25%" }}>
+                  <Typography>Currency:</Typography>
+                  <Select
+                    value={currency}
+                    onChange={(e) => setCurrency(e.target.value)}
+                    style={{ width: 120 }}
+                  >
+                    <MenuItem value="€">EUR - €</MenuItem>
+                    <MenuItem value="$">USD - $</MenuItem>
+                    <MenuItem value="£">GBP - £</MenuItem>
+                    <MenuItem value="¥">JPY - ¥</MenuItem>
+                    <MenuItem value="₹">IND - ₹</MenuItem>
+                    <MenuItem value="₩">KOR - ₩</MenuItem>
+                  </Select>
+                </Box>
 
-                    // Function to update both Redux store and localStorage
-                    updateSettings(settings);
-                  }}
-                >
-                  Save Currency
-                </Button>
+                <Box sx={{ height: "100%", width: "25%" }}>
+                  <Typography>Milage rate:</Typography>
+                  <Input
+                    value={pricePerKmMile}
+                    placeholder={userSettings.pricePerKmMile.toString()}
+                    onChange={(e) => setPricePerKmMile(e.target.value)}
+                    style={{ width: 120 }}
+                  />
+                </Box>
+              </Box>
+
+              <Box sx={{ height: "30%", width: "100%", display: "flex" }}>
+                <Box sx={{ height: "100%", width: "25%" }}>
+                  <Button
+                    onClick={() => {
+                      const settings = {
+                        ...JSON.parse(
+                          localStorage.getItem("userSettings") || "{}"
+                        ), // Load existing settings and spread them
+                        weightUnit,
+                      };
+
+                      // Function to update both Redux store and localStorage
+                      updateSettings(settings);
+                    }}
+                  >
+                    Save Weight
+                  </Button>
+                </Box>
+                <Box sx={{ height: "100%", width: "25%" }}>
+                  <Button
+                    onClick={() => {
+                      const settings = {
+                        ...JSON.parse(
+                          localStorage.getItem("userSettings") || "{}"
+                        ), // Load existing settings and spread them
+                        distanceUnit,
+                      };
+
+                      // Function to update both Redux store and localStorage
+                      updateSettings(settings);
+                    }}
+                  >
+                    Save Distance Unit
+                  </Button>
+                </Box>
+                <Box sx={{ height: "100%", width: "25%" }}>
+                  <Button
+                    onClick={() => {
+                      const settings = {
+                        ...JSON.parse(
+                          localStorage.getItem("userSettings") || "{}"
+                        ), // Load existing settings and spread them
+                        currency,
+                      };
+
+                      // Function to update both Redux store and localStorage
+                      updateSettings(settings);
+                    }}
+                  >
+                    Save Currency
+                  </Button>
+                </Box>
+                <Box sx={{ height: "100%", width: "25%" }}>
+                  <Button
+                    onClick={() => {
+                      const settings = {
+                        ...JSON.parse(
+                          localStorage.getItem("userSettings") || "{}"
+                        ), // Load existing settings and spread them
+                        pricePerKmMile,
+                      };
+
+                      // Function to update both Redux store and localStorage
+                      updateSettings(settings);
+                    }}
+                  >
+                    Save Price per Km/Mile
+                  </Button>
+                </Box>
               </Box>
             </Box>
           </Box>

@@ -10,7 +10,7 @@ const defaultTheme = createTheme({
   palette: {
     mode: "light",
     background: {
-      default: "#ADF5F5",
+      default: "#33577A",
     },
     text: {
       primary: "#2D2B42",
@@ -48,7 +48,7 @@ const defaultTheme = createTheme({
           borderRadius: "10px",
           color: "#2D2B42",
           "&:hover": {
-            backgroundColor: "#81EFEF",
+            backgroundColor: "#7AA7BA",
           },
         },
       },

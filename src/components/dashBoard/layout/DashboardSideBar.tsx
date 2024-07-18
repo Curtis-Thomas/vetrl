@@ -31,9 +31,9 @@ function DashboardSideBar({
     width: "13vw",
     ml: "auto",
     mr: "auto",
-    backgroundColor: activeButton === location ? "#38E5E5" : "#ffffff",
+    backgroundColor: activeButton === location ? "#7AA8BB" : "#ffffff",
     "&:hover": {
-      backgroundColor: "#81EFEF",
+      backgroundColor: "#7AA7BA",
     },
   });
 
@@ -57,10 +57,12 @@ function DashboardSideBar({
           />
         </Box>
         <Box sx={{ height: "30%", display: "flex", alignItems: "center" }}>
-          <Typography variant="subtitle1">{user?.nickname}</Typography>
+          <Typography color={"#ffffff"} variant="subtitle1">
+            {user?.nickname}
+          </Typography>
         </Box>
         <Box sx={{ height: "30%", display: "flex", alignItems: "center" }}>
-          <Typography variant="body2">
+          <Typography color={"#ffffff"} variant="body2">
             Version: {packageJson.version}
           </Typography>
         </Box>
@@ -82,11 +84,12 @@ function DashboardSideBar({
             <Button
               sx={{
                 backgroundColor:
-                  activeButton === location ? "#38E5E5" : "#ffffff",
+                  activeButton === location ? "#7AA7BA" : "#ffffff",
                 color: activeButton === location ? "#ffffff" : "#2D2B42",
                 height: "100%",
                 width: "100%",
                 border: "none",
+                borderRadius: "0px",
               }}
               onClick={() => handleLocationClick(location)}
             >

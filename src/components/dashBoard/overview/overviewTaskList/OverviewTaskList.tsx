@@ -137,7 +137,7 @@ function OverviewTaskList() {
               <Box
                 key={index}
                 sx={{
-                  backgroundColor: "#ADF5F5",
+                  backgroundColor: "#7AA8BB",
                   borderRadius: "16px",
                   p: 1,
                   mt: 1,
@@ -177,7 +177,7 @@ function OverviewTaskList() {
       <Box sx={{ height: "35%" }}>
         <Box
           sx={{
-            backgroundColor: "#ADF5F5",
+            backgroundColor: "#7AA8BB",
             p: 1,
             borderRadius: "16px",
             height: "100%",
@@ -192,9 +192,6 @@ function OverviewTaskList() {
               onChange={(e) => setTitle(e.target.value)}
               margin="dense"
               autoComplete="off"
-              InputLabelProps={{
-                shrink: true,
-              }}
               inputProps={{
                 style: { height: "10%" },
               }}
@@ -219,9 +216,6 @@ function OverviewTaskList() {
                 color: "#94ddde",
                 width: "100%",
               }}
-              InputLabelProps={{
-                shrink: true,
-              }}
               inputProps={{
                 style: { height: "10%" },
               }}
@@ -234,9 +228,6 @@ function OverviewTaskList() {
               required
               onChange={(e) => setDeadline(e.target.value)}
               autoComplete="off"
-              InputLabelProps={{
-                shrink: true,
-              }}
               sx={{
                 backgroundColor: "#ffffff",
                 color: "#94ddde",

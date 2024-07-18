@@ -8,7 +8,11 @@ export type UserSettings = {
   surgeryAddressCountry: string;
   surgeryAddressPhoneNo: string;
   businessId: string;
+
+  weightUnit: string;
+  distanceUnit: string;
   currency: string;
+  pricePerKmMile: number;
 };
 
 export const setUserSettings = (settings: UserSettings) => ({
