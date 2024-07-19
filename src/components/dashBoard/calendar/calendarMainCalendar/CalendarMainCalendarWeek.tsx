@@ -103,16 +103,11 @@ function CalendarMainCalendarWeek({
               alignItems: "center",
             }}
           >
-            <Button sx={{ backgroundColor: "#81EFEF" }}>Week</Button>
-            <Button
-              sx={{
-                ml: 1,
-                mr: 1,
-              }}
-              onClick={handleMonthClick}
-            >
-              Month
-            </Button>
+            <Button sx={{mr:1}} onClick={handleClickPreviousWeek}>Previous Week</Button>
+            <Button onClick={handleClickNextWeek}>Next Week</Button>
+
+            
+       
           </Box>
           <Box
             sx={{
@@ -135,7 +130,17 @@ function CalendarMainCalendarWeek({
                 pr: 1,
               }}
             >
-              <Button onClick={handleClickPreviousWeek}>Previous Week</Button>
+                       <Button
+              sx={{
+                ml: 1,
+                mr: 1,
+              }}
+              onClick={handleMonthClick}
+            >
+              Month
+            </Button>
+            
+              
             </Box>
             <Box
               sx={{
@@ -146,7 +151,8 @@ function CalendarMainCalendarWeek({
                 alignItems: "center",
               }}
             >
-              <Button onClick={handleClickNextWeek}>Next Week</Button>
+                <Button sx={{ backgroundColor: "#81EFEF" }}>Week</Button>
+          
             </Box>
           </Box>
         </Box>
