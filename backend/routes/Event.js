@@ -28,6 +28,14 @@ router.post(
     body("description").isString(),
     body("start").isString(),
     body("end").isString(),
+    body("ownerName").isString(),
+    body("ownerPhoneNo").isString(),
+    body("ownerEmail").isString(),
+    body("animalName").isString(),
+    body("animalSpecies").isString(),
+    body("animalBreed").isString(),
+
+
 
     // Add more validations for other fields if needed
   ],
@@ -53,6 +61,13 @@ router.post(
         description: eventData.description,
         start: eventData.start,
         end: eventData.end,
+        ownerName: eventData.ownerName,
+        ownerPhoneNo: eventData.ownerPhoneNo,
+        ownerEmail: eventData.ownerEmail,
+        animalName: eventData.animalName,
+        animalSpecies: eventData.animalSpecies,
+        animalBreed: eventData.animalBreed,
+
       };
 
       // Update or insert the user's calendar document

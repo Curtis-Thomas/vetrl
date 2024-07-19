@@ -5,11 +5,24 @@ function OverviewCalendarTimeSlot({
   start,
   end,
   description,
+  ownerName,
+  ownerPhoneNo,
+  ownerEmail,
+  animalName,
+  animalSpecies,
+  animalBreed
+
 }: {
   title: string;
   start: string;
   end: string;
   description: string;
+  ownerName: string;
+  ownerPhoneNo: string;
+  ownerEmail: string;
+  animalName: string;
+  animalSpecies: string;
+  animalBreed: string;
 }) {
 
   function randomColor(){
@@ -56,25 +69,46 @@ function OverviewCalendarTimeSlot({
        }}>
         <Box
           sx={{
-            height: "40%",
+            height: "50%",
             width: "100%",
             display: "flex",
             alignItems: "center",
+            // backgroundColor:"cyan"
           }}
         >
-          <Typography variant="h5" color={"#444444"}>{title}</Typography>
+          <Typography variant="h5" color={"#444444"} sx={{mr:2}}>{title} </Typography>
+          <Typography
+          color={"#a6a6a6"} >{description}</Typography>
         </Box>
-        <Box sx={{ height: "10%", width: "100%" }}></Box>
+        
 
         <Box
           sx={{
-            height: "40%",
+            height: "50%",
             width: "100%",
             display: "flex",
-            alignItems: "center",
+          
+            // backgroundColor:"pink"
+
           }}
         >
-          <Typography color={"#a6a6a6"}>{description}</Typography>
+         
+             
+              <Typography color={"#a6a6a6"} >{ownerName}, {ownerPhoneNo}, {ownerEmail} </Typography>
+              <Typography color={"#a6a6a6"} sx={{mr:1, ml:1}}>│ </Typography>
+              <Typography color={"#a6a6a6"}>
+              {animalName}, {animalSpecies}, {animalBreed}
+              </Typography>
+                
+
+              
+             
+
+       
+        
+        
+         
+          
         </Box>
       </Box>
     </Box>

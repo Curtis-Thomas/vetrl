@@ -21,6 +21,12 @@ interface Event {
   start: string;
   end: string;
   description: string;
+  ownerName: string;
+  ownerPhoneNo: string;
+  ownerEmail: string;
+  animalName: string;
+  animalSpecies: string;
+  animalBreed: string;
 }
 
 function OverviewCalender(): JSX.Element {
@@ -30,10 +36,21 @@ function OverviewCalender(): JSX.Element {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
+
   const [clientId, setClientId] = useState("");
   const [patientId, setPatientId] = useState("");
+  const [ownerName, setOwnerName] = useState("");
+  const [ownerPhoneNo, setOwnerPhoneNo] = useState("");
+  const [ownerEmail, setOwnerEmail] = useState("");
+  const [animalName, setAnimalName] = useState("");
+  const [animalSpecies, setAnimalSpecies] = useState("");
+  const [animalBreed, setAnimalBreed] = useState("");
+
+
   const [start, setStart] = useState("00:00");
   const [end, setEnd] = useState("00:00");
+
+
   const [backdropState, setBackdropState] = useState(false);
   const [snackBarState, setSnackBarState] = useState(false);
 
@@ -78,6 +95,14 @@ function OverviewCalender(): JSX.Element {
         description,
         start,
         end,
+        ownerName,
+        ownerPhoneNo,
+        ownerEmail,
+        animalName,
+        animalSpecies,
+        animalBreed
+        
+
       };
       const response = await fetch(domainUrl + `/event/event/add`, {
         method: "POST",
@@ -218,11 +243,99 @@ function OverviewCalender(): JSX.Element {
                 shrink: true,
               }}
             />
-            <Box>
+            
+          </Box>
+          <Box sx={{ p: 5 }}>
+           
+
+           <TextField
+             sx={{ backgroundColor: "#ffffff" }}
+             label="Owner"
+             required
+             value={ownerName}
+             onChange={(e) => setOwnerName(e.target.value)}
+             margin="normal"
+             autoComplete="off"
+             InputLabelProps={{
+               shrink: true,
+             }}
+           />
+           <TextField
+             sx={{ backgroundColor: "#ffffff", ml: 1 }}
+             label="Owner Phone No"
+             required
+             type="number"
+             value={ownerPhoneNo}
+             onChange={(e) => setOwnerPhoneNo(e.target.value)}
+             margin="normal"
+             autoComplete="off"
+             InputLabelProps={{
+               shrink: true,
+             }}
+           />
+
+           <TextField
+             sx={{ ml: 1 }}
+             label="Owner Email"
+             value={ownerEmail}
+             onChange={(e) => setOwnerEmail(e.target.value)}
+             margin="normal"
+             autoComplete="off"
+             InputLabelProps={{
+               shrink: true,
+             }}
+           />
+          
+           
+         </Box>
+          <Box sx={{ p: 5 }}>
+           
+
+            <TextField
+              sx={{ backgroundColor: "#ffffff" }}
+              label="Animal Name"
+              required
+              value={animalName}
+              onChange={(e) => setAnimalName(e.target.value)}
+              margin="normal"
+              autoComplete="off"
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+         
+
+            <TextField
+              sx={{ ml: 1 }}
+              label="Animal Species"
+              value={animalSpecies}
+              onChange={(e) => setAnimalSpecies(e.target.value)}
+              margin="normal"
+              autoComplete="off"
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+            <TextField
+              sx={{ ml: 1 }}
+              label="Animal Breed"
+           
+              value={animalBreed}
+              onChange={(e) => setAnimalBreed(e.target.value)}
+              margin="normal"
+              autoComplete="off"
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+           
+            
+          </Box>
+         
+          <Box>
               <Button onClick={handleAddEvent}>
                Add Appointment</Button>
             </Box>
-          </Box>
           <Snackbar
             anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
             open={snackBarState}
@@ -284,6 +397,12 @@ function OverviewCalender(): JSX.Element {
               start={event.start}
               end={event.end}
               description={event.description}
+              ownerName={event.ownerName}
+              ownerPhoneNo={event.ownerPhoneNo}
+              ownerEmail={event.ownerEmail}
+              animalName={event.animalName}
+              animalSpecies={event.animalSpecies}
+              animalBreed={event.animalBreed}
             />
           ))}
         </Box>
