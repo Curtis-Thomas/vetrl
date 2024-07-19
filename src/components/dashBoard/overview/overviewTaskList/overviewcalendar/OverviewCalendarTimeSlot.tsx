@@ -27,6 +27,9 @@ function OverviewCalendarTimeSlot({
         borderLeft: "2px solid " + borderColor,
         height: "65%",
         width: "100%",
+        "&:hover": {
+          backgroundColor: "#F5F5F5",
+        },
       }}
     >
       <Box sx={{ width: "20%", height: "100%" }}>
