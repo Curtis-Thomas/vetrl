@@ -23,6 +23,7 @@ function OverviewCalendarTimeSlot({
       sx={{
         p: 1,
         mb: 1.5,
+        borderRadius: "2px 0px 0px 2px",
         display: "flex",
         borderLeft: "2px solid " + borderColor,
         height: "65%",
