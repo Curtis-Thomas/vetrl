@@ -11,14 +11,21 @@ function OverviewCalendarTimeSlot({
   end: string;
   description: string;
 }) {
+
+  function randomColor(){
+    let colors = ["#f94144", "#f3722c", "#f8961e", "#f9844a", "#f9c74f", "#90be6d", "#43aa8b", "#4d908e", "#577590", "#277da1"];
+    return colors[Math.floor(Math.random() * colors.length)];
+  }
+
+  const borderColor = randomColor();
   return (
     <Box
       sx={{
         p: 1,
-        mb: 1,
+        mb: 1.5,
         display: "flex",
-        borderLeft: "5px solid black",
-        height: "100%",
+        borderLeft: "5px solid " + borderColor,
+        height: "65%",
         width: "100%",
       }}
     >
