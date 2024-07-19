@@ -274,20 +274,34 @@ function OverviewTaskList() {
             }}
           >
             <Button 
-            sx={{ borderRadius: "30px",
-            backgroundColor:" #BAE4F2",
-            p:1
-
+            sx={{
+              width: "30%",
+              height: "40%",
+              borderRadius: "30px",
+              mr: 1,
+              backgroundColor:" #BAE4F2",
+              display:"flex",
+              justifyContent:"space-between",
+              alignItems:"center",
             }}
-             onClick={handleAddTask}><Typography sx={{textTransform:"none"}}>Add task</Typography>
-                <AddIcon
+             onClick={handleAddTask}>
+            <Box sx={{height:"100%", width:"85%", display:"flex", justifyContent:"center", alignItems:"center"}}>
+         <Typography sx={{textTransform:"none"}}>Add task</Typography>
+
+          </Box>
+          <Box sx={{height:"100%", width:"15%"
+            , display:"flex", justifyContent:"center", alignItems:"center"
+          }}>
+          <AddIcon
             sx={{
               backgroundColor: "white",
               borderRadius: "30px",
               color: "#BAE4F2",
-              ml:1
             }}
-          /></Button>
+          />
+          </Box>
+          
+          </Button>
           </Box>
         </Box>
       </Box>

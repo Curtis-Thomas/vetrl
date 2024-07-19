@@ -299,24 +299,34 @@ function OverviewCalender(): JSX.Element {
       >
         <Button
           sx={{
-            width: "20%",
-            height: "50%",
+            width: "15%",
+            height: "37.5%",
             borderRadius: "30px",
             mr: 1,
-            backgroundColor:" #BAE4F2"
+            backgroundColor:" #BAE4F2",
+            display:"flex",
+            justifyContent:"space-between",
+            alignItems:"center",
+            p:0.5
           }}
           onClick={() => setBackdropState(true)}
         >
+          <Box sx={{height:"100%", width:"85%", display:"flex", justifyContent:"center", alignItems:"center"}}>
          <Typography sx={{textTransform:"none"}}>Add appointment</Typography>
+
+          </Box>
+          <Box sx={{height:"100%", width:"15%"
+            , display:"flex", justifyContent:"center", alignItems:"center"
+          }}>
           <AddIcon
             sx={{
               backgroundColor: "white",
               borderRadius: "30px",
               color: "#BAE4F2",
-              ml:1
-
             }}
           />
+          </Box>
+        
         </Button>
       </Box>
     
