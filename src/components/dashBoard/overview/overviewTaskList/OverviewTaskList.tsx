@@ -168,7 +168,7 @@ function OverviewTaskList() {
                     <Typography variant="subtitle1" color={"#a6a6a6"}>{task.deadline}</Typography>
                   </Box>
                   <Box sx={{ width: "80%", pl: 5, 
-        borderLeft:"2px solid #BDBEBD",
+        borderLeft:"1px solid #BDBEBD",
 
                    }}>
                     <Box>
@@ -183,8 +183,11 @@ function OverviewTaskList() {
                       <Button
                         sx={{
                           color: "red",
+              borderRadius: "30px",
+
                           border: "solid 1px red",
                           backgroundColor: "#ffffff",
+                          ml:1
                         }}
                         onClick={() => handleDeleteTask(task.title)}
                       >
@@ -267,11 +270,16 @@ function OverviewTaskList() {
               display: "flex",
               justifyContent: "right",
               alignItems: "center",
+
             }}
           >
             <Button 
-            sx={{borderRadius:"16px"}}
-             onClick={handleAddTask}>Add Task
+            sx={{ borderRadius: "30px",
+            backgroundColor:" #BAE4F2",
+            p:1
+
+            }}
+             onClick={handleAddTask}><Typography sx={{textTransform:"none"}}>Add task</Typography>
                 <AddIcon
             sx={{
               backgroundColor: "white",

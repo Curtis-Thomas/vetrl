@@ -219,7 +219,8 @@ function OverviewCalender(): JSX.Element {
               }}
             />
             <Box>
-              <Button onClick={handleAddEvent}>Add Appointment</Button>
+              <Button onClick={handleAddEvent}>
+               Add Appointment</Button>
             </Box>
           </Box>
           <Snackbar
@@ -300,12 +301,13 @@ function OverviewCalender(): JSX.Element {
           sx={{
             width: "20%",
             height: "50%",
-            borderRadius: "18px",
+            borderRadius: "30px",
             mr: 1,
+            backgroundColor:" #BAE4F2"
           }}
           onClick={() => setBackdropState(true)}
         >
-          Add appointment{" "}
+         <Typography sx={{textTransform:"none"}}>Add appointment</Typography>
           <AddIcon
             sx={{
               backgroundColor: "white",

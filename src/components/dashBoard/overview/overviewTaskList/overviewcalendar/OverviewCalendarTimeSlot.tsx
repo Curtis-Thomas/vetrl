@@ -24,7 +24,7 @@ function OverviewCalendarTimeSlot({
         p: 1,
         mb: 1.5,
         display: "flex",
-        borderLeft: "5px solid " + borderColor,
+        borderLeft: "2px solid " + borderColor,
         height: "65%",
         width: "100%",
       }}
@@ -47,7 +47,7 @@ function OverviewCalendarTimeSlot({
         </Box>
       </Box>
       <Box sx={{ width: "80%", height: "100%",
-        borderLeft:"2px solid #BDBEBD",
+        borderLeft:"1px solid #BDBEBD",
         pl:1
        }}>
         <Box
